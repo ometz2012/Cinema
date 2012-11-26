@@ -44,6 +44,7 @@ namespace Ometz.Cinema.UI.ContentPages.Theaters.TheaterSearchMVP
 
 		protected void btnSearch_Click(object sender, EventArgs e)
 		{
+			
 			//string city = Session["City"].ToString();
 			string city = ViewState["City"].ToString();
 			TheaterServices showTheaters=new TheaterServices();
@@ -54,9 +55,10 @@ namespace Ometz.Cinema.UI.ContentPages.Theaters.TheaterSearchMVP
 
 		protected void GridViewTheaterList_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			//Session["TheaterID"] = GridViewTheaterList.SelectedRow.Cells[0].Text;
-			string theaterID = GridViewTheaterList.SelectedRow.Cells[0].Text;
-			Response.Redirect("~/ContentPages/Theaters/TheaterInfo.aspx?TheaterID="+theaterID);
+				//Session["TheaterID"] = GridViewTheaterList.SelectedRow.Cells[0].Text;
+				string theaterID = GridViewTheaterList.SelectedRow.Cells[0].Text;
+				Response.Redirect("~/ContentPages/Theaters/TheaterInfo.aspx?TheaterID=" + theaterID);
+			
 		}
 		
 	}

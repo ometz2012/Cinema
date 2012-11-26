@@ -8,7 +8,7 @@ namespace Ometz.Cinema.UI.ContentPages.Theaters.TheaterSearchMVP
 {
 	public class TheaterSearchPresenter
 	{
-	public ITheaterSearchView Myview { get; set; }
+			public ITheaterSearchView Myview { get; set; }
 
 		public TheaterSearchPresenter(ITheaterSearchView myView)
        {

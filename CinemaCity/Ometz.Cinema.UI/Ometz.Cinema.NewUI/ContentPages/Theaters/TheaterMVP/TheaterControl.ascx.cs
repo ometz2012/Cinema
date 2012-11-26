@@ -29,8 +29,6 @@ namespace Ometz.Cinema.UI.ContentPages.Theaters.TheaterMVP
 
 
 
-	//	[Guid("4531D5B6-268C-4AB3-81EB-57D0845E21DF")]
-
 	 protected void Page_Load(object sender, EventArgs e)
 	 {
 		 if (!IsPostBack)
@@ -85,5 +83,11 @@ namespace Ometz.Cinema.UI.ContentPages.Theaters.TheaterMVP
 		 string performanceId = GridViewPerformance.SelectedRow.Cells[0].Text;
 		 Response.Redirect("~/ContentPages/Users/Payment.aspx?PerformanceID=" + performanceId);
 	 }
+
+	 protected void btnBack_Click(object sender, EventArgs e)
+	 {
+		 Response.Redirect("~/ContentPages/Theaters/Theater.aspx");
+	 }
+	 
 	}
 	}
