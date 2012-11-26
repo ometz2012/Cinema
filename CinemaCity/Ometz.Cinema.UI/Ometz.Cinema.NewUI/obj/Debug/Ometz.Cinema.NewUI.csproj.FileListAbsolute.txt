@@ -16,3 +16,12 @@ C:\Users\Yuri\Desktop\Ometz. Development\Projects\Cinema\NewCinema\Ometz.Cinema.
 C:\Users\Yuri\Desktop\Ometz. Development\Projects\Cinema\NewCinema\Ometz.Cinema.UI\Ometz.Cinema.NewUI\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Yuri\Desktop\Ometz. Development\Projects\Cinema\NewCinema\Ometz.Cinema.UI\Ometz.Cinema.NewUI\obj\Debug\Ometz.Cinema.NewUI.dll
 C:\Users\Yuri\Desktop\Ometz. Development\Projects\Cinema\NewCinema\Ometz.Cinema.UI\Ometz.Cinema.NewUI\obj\Debug\Ometz.Cinema.NewUI.pdb
+C:\Users\student01\Documents\Visual Studio 2010\Projects\NewCinema\trunk\CinemaCity\Ometz.Cinema.UI\Ometz.Cinema.NewUI\bin\Ometz.Cinema.NewUI.dll
+C:\Users\student01\Documents\Visual Studio 2010\Projects\NewCinema\trunk\CinemaCity\Ometz.Cinema.UI\Ometz.Cinema.NewUI\bin\Ometz.Cinema.NewUI.pdb
+C:\Users\student01\Documents\Visual Studio 2010\Projects\NewCinema\trunk\CinemaCity\Ometz.Cinema.UI\Ometz.Cinema.NewUI\bin\Ometz.Cinema.BLL.dll
+C:\Users\student01\Documents\Visual Studio 2010\Projects\NewCinema\trunk\CinemaCity\Ometz.Cinema.UI\Ometz.Cinema.NewUI\bin\Ometz.Cinema.DAL.dll
+C:\Users\student01\Documents\Visual Studio 2010\Projects\NewCinema\trunk\CinemaCity\Ometz.Cinema.UI\Ometz.Cinema.NewUI\bin\Ometz.Cinema.BLL.pdb
+C:\Users\student01\Documents\Visual Studio 2010\Projects\NewCinema\trunk\CinemaCity\Ometz.Cinema.UI\Ometz.Cinema.NewUI\bin\Ometz.Cinema.DAL.pdb
+C:\Users\student01\Documents\Visual Studio 2010\Projects\NewCinema\trunk\CinemaCity\Ometz.Cinema.UI\Ometz.Cinema.NewUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\student01\Documents\Visual Studio 2010\Projects\NewCinema\trunk\CinemaCity\Ometz.Cinema.UI\Ometz.Cinema.NewUI\obj\Debug\Ometz.Cinema.NewUI.dll
+C:\Users\student01\Documents\Visual Studio 2010\Projects\NewCinema\trunk\CinemaCity\Ometz.Cinema.UI\Ometz.Cinema.NewUI\obj\Debug\Ometz.Cinema.NewUI.pdb

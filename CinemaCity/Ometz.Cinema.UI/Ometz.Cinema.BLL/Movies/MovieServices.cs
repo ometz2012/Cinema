@@ -39,8 +39,83 @@ namespace Ometz.Cinema.BLL.Movies
                 {
                     return null;
                 }
-               
+
             }
+        }
+
+        public List<MovieModelDTO> GetAllYears()
+        {
+            using (var context = new CinemaEntities())
+            {
+                var allYears = (from movie in context.Movies
+                                select new
+                                {
+                                    MovieId = movie.MovieID,
+                                    Year = movie.Year
+
+                                }).ToList();
+
+                List<MovieModelDTO> allYearsToReturn = new List<MovieModelDTO>();
+
+                if (allYears != null)
+                {
+
+                    foreach (var item in allYears)
+                    {
+                        MovieModelDTO yearRow = new MovieModelDTO()
+                        {
+                            MovieID = item.MovieId,
+                            Year = item.Year
+                        };
+                        allYearsToReturn.Add(yearRow);
+                    }
+
+                    return allYearsToReturn;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+        }
+
+        public List<MovieModelDTO> GetAllGenres()
+        {
+            using (var context = new CinemaEntities())
+            {
+                var allGenre = (from genre in context.Genres
+                                select new
+                                {
+
+                                    GenreName = genre.Name
+
+                                }).ToList();
+
+                List<MovieModelDTO> allGenresToReturn = new List<MovieModelDTO>();
+
+                if (allGenre != null)
+                {
+
+                    foreach (var item in allGenre)
+                    {
+                        MovieModelDTO genreRow = new MovieModelDTO()
+                        {
+                            GenreName = item.GenreName
+                        };
+                        allGenresToReturn.Add(genreRow);
+                    }
+
+                    return allGenresToReturn;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+
         }
     }
 }
+

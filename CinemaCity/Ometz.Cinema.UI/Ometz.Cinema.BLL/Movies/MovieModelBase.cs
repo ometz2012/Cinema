@@ -10,6 +10,11 @@ namespace Ometz.Cinema.BLL.Movies
 	// public Guid MovieID { get; set; } // changed by Marat to "int" because in the database MovieId is a "int".
      public int MovieID { get; set; }
 	 public string Tilte { get; set; }
+     public string Description { get; set; }
+     public string Year { get; set; }
+     public byte[] Photo { get; set; }
+     public string GenreName { get; set; }
+
 
 	 public List<Performances.PerformanceModelDTO> Performance { get; set; }
 	}

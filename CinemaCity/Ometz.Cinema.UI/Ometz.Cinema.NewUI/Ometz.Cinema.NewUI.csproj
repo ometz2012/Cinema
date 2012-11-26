@@ -56,6 +56,8 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="ContentPages\Movies\Movie.aspx" />
+    <Content Include="ContentPages\Movies\MovieMain.aspx" />
     <Content Include="ContentPages\Theaters\Theater.aspx" />
     <Content Include="ContentPages\Theaters\TheaterInfo.aspx" />
     <Content Include="ContentPages\Theaters\TheaterMVP\TheaterControl.ascx" />
@@ -115,6 +117,20 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Movies\Movie.aspx.cs">
+      <DependentUpon>Movie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\Movies\Movie.aspx.designer.cs">
+      <DependentUpon>Movie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Movies\MovieMain.aspx.cs">
+      <DependentUpon>MovieMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\Movies\MovieMain.aspx.designer.cs">
+      <DependentUpon>MovieMain.aspx</DependentUpon>
     </Compile>
     <Compile Include="ContentPages\Theaters\Theater.aspx.cs">
       <DependentUpon>Theater.aspx</DependentUpon>
