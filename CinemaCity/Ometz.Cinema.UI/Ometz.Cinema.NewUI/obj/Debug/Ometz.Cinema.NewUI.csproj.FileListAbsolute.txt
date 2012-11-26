@@ -7,3 +7,12 @@ C:\Development\Projects\19 Movies Application\Ometz.Cinema.UI\Ometz.Cinema.NewUI
 C:\Development\Projects\19 Movies Application\Ometz.Cinema.UI\Ometz.Cinema.NewUI\obj\Debug\ResolveAssemblyReference.cache
 C:\Development\Projects\19 Movies Application\Ometz.Cinema.UI\Ometz.Cinema.NewUI\obj\Debug\Ometz.Cinema.NewUI.dll
 C:\Development\Projects\19 Movies Application\Ometz.Cinema.UI\Ometz.Cinema.NewUI\obj\Debug\Ometz.Cinema.NewUI.pdb
+C:\Users\Yuri\Desktop\Ometz. Development\Projects\Cinema\NewCinema\Ometz.Cinema.UI\Ometz.Cinema.NewUI\bin\Ometz.Cinema.NewUI.dll
+C:\Users\Yuri\Desktop\Ometz. Development\Projects\Cinema\NewCinema\Ometz.Cinema.UI\Ometz.Cinema.NewUI\bin\Ometz.Cinema.NewUI.pdb
+C:\Users\Yuri\Desktop\Ometz. Development\Projects\Cinema\NewCinema\Ometz.Cinema.UI\Ometz.Cinema.NewUI\bin\Ometz.Cinema.BLL.dll
+C:\Users\Yuri\Desktop\Ometz. Development\Projects\Cinema\NewCinema\Ometz.Cinema.UI\Ometz.Cinema.NewUI\bin\Ometz.Cinema.DAL.dll
+C:\Users\Yuri\Desktop\Ometz. Development\Projects\Cinema\NewCinema\Ometz.Cinema.UI\Ometz.Cinema.NewUI\bin\Ometz.Cinema.BLL.pdb
+C:\Users\Yuri\Desktop\Ometz. Development\Projects\Cinema\NewCinema\Ometz.Cinema.UI\Ometz.Cinema.NewUI\bin\Ometz.Cinema.DAL.pdb
+C:\Users\Yuri\Desktop\Ometz. Development\Projects\Cinema\NewCinema\Ometz.Cinema.UI\Ometz.Cinema.NewUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Yuri\Desktop\Ometz. Development\Projects\Cinema\NewCinema\Ometz.Cinema.UI\Ometz.Cinema.NewUI\obj\Debug\Ometz.Cinema.NewUI.dll
+C:\Users\Yuri\Desktop\Ometz. Development\Projects\Cinema\NewCinema\Ometz.Cinema.UI\Ometz.Cinema.NewUI\obj\Debug\Ometz.Cinema.NewUI.pdb

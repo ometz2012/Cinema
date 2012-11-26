@@ -56,6 +56,10 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="ContentPages\Theaters\Theater.aspx" />
+    <Content Include="ContentPages\Theaters\TheaterInfo.aspx" />
+    <Content Include="ContentPages\Theaters\TheaterMVP\TheaterControl.ascx" />
+    <Content Include="ContentPages\Theaters\TheaterSearchMVP\TheaterSearchControl.ascx" />
     <Content Include="ContentPages\Users\MyArea.aspx" />
     <Content Include="ContentPages\Users\MyAreaMVP\MyAreaControl.ascx" />
     <Content Include="ContentPages\Users\Payment.aspx" />
@@ -112,8 +116,43 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ContentPages\Theaters\Theater.aspx.cs">
+      <DependentUpon>Theater.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\Theaters\Theater.aspx.designer.cs">
+      <DependentUpon>Theater.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Theaters\TheaterInfo.aspx.cs">
+      <DependentUpon>TheaterInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\Theaters\TheaterInfo.aspx.designer.cs">
+      <DependentUpon>TheaterInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Theaters\TheaterMVP\ITheaterView.cs" />
+    <Compile Include="ContentPages\Theaters\TheaterMVP\TheaterControl.ascx.cs">
+      <DependentUpon>TheaterControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\Theaters\TheaterMVP\TheaterControl.ascx.designer.cs">
+      <DependentUpon>TheaterControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Theaters\TheaterMVP\TheaterModel.cs" />
+    <Compile Include="ContentPages\Theaters\TheaterMVP\TheaterPresenter.cs" />
+    <Compile Include="ContentPages\Theaters\TheaterSearchMVP\ITheaterSearchView.cs" />
+    <Compile Include="ContentPages\Theaters\TheaterSearchMVP\TheaterSearchControl.ascx.cs">
+      <DependentUpon>TheaterSearchControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\Theaters\TheaterSearchMVP\TheaterSearchControl.ascx.designer.cs">
+      <DependentUpon>TheaterSearchControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Theaters\TheaterSearchMVP\TheaterSearchModel.cs" />
+    <Compile Include="ContentPages\Theaters\TheaterSearchMVP\TheaterSearchPresenter.cs" />
     <Compile Include="ContentPages\Users\MyArea.aspx.cs">
       <DependentUpon>MyArea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ContentPages\Users\MyArea.aspx.designer.cs">
       <DependentUpon>MyArea.aspx</DependentUpon>
@@ -121,6 +160,7 @@
     <Compile Include="ContentPages\Users\MyAreaMVP\IMyAreaView.cs" />
     <Compile Include="ContentPages\Users\MyAreaMVP\MyAreaControl.ascx.cs">
       <DependentUpon>MyAreaControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ContentPages\Users\MyAreaMVP\MyAreaControl.ascx.designer.cs">
       <DependentUpon>MyAreaControl.ascx</DependentUpon>
@@ -129,6 +169,7 @@
     <Compile Include="ContentPages\Users\MyAreaMVP\MyAreaPresenter.cs" />
     <Compile Include="ContentPages\Users\Payment.aspx.cs">
       <DependentUpon>Payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ContentPages\Users\Payment.aspx.designer.cs">
       <DependentUpon>Payment.aspx</DependentUpon>
@@ -136,6 +177,7 @@
     <Compile Include="ContentPages\Users\PaymentMVP\IPaymentView.cs" />
     <Compile Include="ContentPages\Users\PaymentMVP\PaymentControl.ascx.cs">
       <DependentUpon>PaymentControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ContentPages\Users\PaymentMVP\PaymentControl.ascx.designer.cs">
       <DependentUpon>PaymentControl.ascx</DependentUpon>
@@ -144,6 +186,7 @@
     <Compile Include="ContentPages\Users\PaymentMVP\PaymentPresenter.cs" />
     <Compile Include="ContentPages\Users\TicketSelection.aspx.cs">
       <DependentUpon>TicketSelection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ContentPages\Users\TicketSelection.aspx.designer.cs">
       <DependentUpon>TicketSelection.aspx</DependentUpon>
@@ -151,6 +194,7 @@
     <Compile Include="ContentPages\Users\TicketSelectionMVP\ITicketView.cs" />
     <Compile Include="ContentPages\Users\TicketSelectionMVP\TicketControl.ascx.cs">
       <DependentUpon>TicketControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ContentPages\Users\TicketSelectionMVP\TicketControl.ascx.designer.cs">
       <DependentUpon>TicketControl.ascx</DependentUpon>

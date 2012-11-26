@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Ometz.Cinema.NewUI
+namespace Ometz.Cinema.UI
 {
     public partial class SiteMaster : System.Web.UI.MasterPage
     {

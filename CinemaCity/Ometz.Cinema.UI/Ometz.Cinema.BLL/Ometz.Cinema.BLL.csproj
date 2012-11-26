@@ -59,6 +59,7 @@
     <Compile Include="Orders\OrderModelBase.cs" />
     <Compile Include="Orders\OrderModelDTO.cs" />
     <Compile Include="Orders\OrderServices.cs" />
+    <Compile Include="Performances\DeleteMe.cs" />
     <Compile Include="Performances\IPerformance.cs" />
     <Compile Include="Performances\PerformanceModelBase.cs" />
     <Compile Include="Performances\PerformanceModelDTO.cs" />

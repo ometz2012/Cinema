@@ -12,31 +12,12 @@ namespace Ometz.Cinema.BLL.Performances
 
 		public IList<PerformanceModelDTO> GetPerformances(Guid theaterId)
 		{
+		
 			IList<PerformanceModelDTO> performancesList = new List<PerformanceModelDTO>();
-			IList<RoomModelDTO>roomsList=new List<RoomModelDTO>();
-
-
-			using (var context1 = new CinemaEntities())
-			{
-				var rooms = (from room in context1.Rooms
-										 where room.TheaterID == theaterId
-										 select room).ToList();
-
-				if (rooms.Count > 0)
-				{
-					foreach (var room in rooms)
-					{
-						var roomRow = new RoomModelDTO();
-						roomRow.RoomNumber = room.RoomID;
-						roomRow.RoomNumber = room.RoomNumber;
-						roomsList.Add(roomRow);
-
-
-						if (roomsList != null)
-						{
+			
 							using (var context = new CinemaEntities())
 							{
-								var performances = (from performance in context.Perfomances
+								var performances = (from performance in context.Perfomances.Include("Room")
 																		where performance.TheaterID == theaterId
 																		select performance).ToList();
 
@@ -45,21 +26,20 @@ namespace Ometz.Cinema.BLL.Performances
 								{
 									var performanceRow = new PerformanceModelDTO();
 									performanceRow.PerformanceID = perform.PerfomanceID;
+									string date = perform.Date.ToString("yyyy'/'MM'/'dd");
+									performanceRow.Date = date;//(DateTime)perform.Date;
+									TimeSpan time = (TimeSpan)perform.StartingTime;
+									performanceRow.StartingTime = string.Format("{0:hh\\:mm}", time);// (TimeSpan)perform.StartingTime;
 									performanceRow.Tilte = perform.Movie.Title;
 									performanceRow.Price = perform.Price;
-									//performanceRow.Room.RoomNumber = perform.Room.RoomNumber;
+									performanceRow.RoomNumber = perform.Room.RoomNumber;
 									performanceRow.Duration = perform.Duration; ;
 									performancesList.Add(performanceRow);
 
 								}
 							}
+								return performancesList;
 						}
-
-					} 
-
-
-				}
-			} return performancesList;
-		}
+			
 	}
 }

@@ -68,7 +68,7 @@ namespace Ometz.Cinema.BLL.Addresses
 			IList<AddressModelDTO> citiesList = new List<AddressModelDTO>();
 			using (var context = new CinemaEntities())
 			{
-				var cities = (from city in context.Addresses
+				var cities = (from city in context.Addresses.Distinct()
 											where city.ObjectType.Description == "Theater"
 											select city).ToList();
 				if (cities.Count > 0)

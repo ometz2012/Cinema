@@ -57,8 +57,8 @@ namespace Ometz.Cinema.BLL.Theaters
 																where theater.TheaterID == currentTheater
 																select theater).ToList();
 
-								//if (theaters.Count>0)
-								//{
+								if (theaters.Count>0)
+								{
 									foreach (var theater in theaters)
 									{
 										var theaterRow = new TheaterModelDTO();
@@ -67,7 +67,7 @@ namespace Ometz.Cinema.BLL.Theaters
 										theaterList.Add(theaterRow);
 
 									}
-								//}
+								}
 							}						
 						}
 					}
@@ -76,15 +76,7 @@ namespace Ometz.Cinema.BLL.Theaters
 			return theaterList;
 		}
 
-		public TheaterModelDTO GetTheater(string city)
-		{
-			throw new NotImplementedException();
-		}
-
-		public IList<TheaterModelDTO> GetTheaters(Guid objectId)
-		{
-			throw new NotImplementedException();
-		}
+		
 	}
 }
 

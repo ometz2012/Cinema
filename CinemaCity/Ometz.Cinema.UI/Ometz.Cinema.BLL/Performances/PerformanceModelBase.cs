@@ -10,13 +10,14 @@ namespace Ometz.Cinema.BLL.Performances
   public	class PerformanceModelBase:MovieModelBase
 	{
 		public int PerformanceID { get; set; }
-		public DateTime Date { get; set; }
-		public DateTime StartingTime { get; set; }
+		public string Date { get; set; }
+		public string StartingTime { get; set; }
 		public String Duration { get; set; }
 		public Decimal Price { get; set; }
 		public RoomModelDTO Room { get; set; }
 		public TheaterModelDTO Theater { get; set; }
 		public MovieModelDTO Movie { get; set; }
-	}
 
+		public int RoomNumber { get; set; }
+	}
 }
