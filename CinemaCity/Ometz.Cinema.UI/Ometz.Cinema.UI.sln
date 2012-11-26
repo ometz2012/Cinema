@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ometz.Cinema.BLL", "Ometz.Cinema.BLL\Ometz.Cinema.BLL.csproj", "{9598C618-7673-4AFF-BBB0-4C1A37C593C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ometz.Cinema.DAL", "Ometz.Cinema.DAL\Ometz.Cinema.DAL.csproj", "{A5107C53-F278-41F5-8ED8-7F1D126E3913}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ometz.Cinema.UI", "..\..\CinemaProject\Ometz.Cinema.UI\Ometz.Cinema.UI.csproj", "{69E664AC-76E8-4069-87F4-23B6C12398F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9598C618-7673-4AFF-BBB0-4C1A37C593C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9598C618-7673-4AFF-BBB0-4C1A37C593C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9598C618-7673-4AFF-BBB0-4C1A37C593C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9598C618-7673-4AFF-BBB0-4C1A37C593C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5107C53-F278-41F5-8ED8-7F1D126E3913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5107C53-F278-41F5-8ED8-7F1D126E3913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5107C53-F278-41F5-8ED8-7F1D126E3913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5107C53-F278-41F5-8ED8-7F1D126E3913}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69E664AC-76E8-4069-87F4-23B6C12398F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69E664AC-76E8-4069-87F4-23B6C12398F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69E664AC-76E8-4069-87F4-23B6C12398F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69E664AC-76E8-4069-87F4-23B6C12398F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
