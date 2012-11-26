@@ -8,7 +8,7 @@ using Ometz.Cinema.DAL;
 
 namespace Ometz.Cinema.BLL.Users
 {
-    public class UserServices:IUser
+    public class UserServices : IUser
     {
         //Method that gets all Comments of specific user
         public IList<UserCommentDTO> GetAllUserComments(System.Guid userID)
@@ -21,7 +21,7 @@ namespace Ometz.Cinema.BLL.Users
                                where com.UserID == userID
                                select com);
 
-                if (results!=null)
+                if (results != null)
                 {
                     foreach (var item in results)
                     {
@@ -71,7 +71,7 @@ namespace Ometz.Cinema.BLL.Users
                         row.movieID = item.MovieID;
                         row.MovieTitle = item.Movie.Title;
                         row.rate = item.Rate;
-                        ListOfRatings.Add(row);                  
+                        ListOfRatings.Add(row);
                     }
                 }
             }
@@ -113,5 +113,134 @@ namespace Ometz.Cinema.BLL.Users
 
             return ListOfMovies;
         }
+
+        //==============================================================================================
+        #region UserMovieTheater
+
+        //Method that gets all movies
+        public IList<UserFavoriteMovieDTO> GetListOfMovies()
+        {
+            IList<UserFavoriteMovieDTO> ListOfMovies = new List<UserFavoriteMovieDTO>();
+            using (var context = new CinemaEntities())
+            {
+                var results = (from mv in context.Movies
+                               select mv);
+
+                foreach (var item in results)
+                {
+                    UserFavoriteMovieDTO row = new UserFavoriteMovieDTO();
+                    row.movieID = item.MovieID;
+                    row.MovieTitle = item.Title;
+                    ListOfMovies.Add(row);
+                }
+            }
+            return ListOfMovies;
+        }
+
+        //Method that gets Movie description
+        public String GetMovieDescriptionByMovieID(int movieID)
+        {
+            String Description = null;
+            using (var context = new CinemaEntities())
+            {
+                var results = (from mv in context.Movies
+                               where mv.MovieID == movieID
+                               select mv);
+
+                foreach (var item in results)
+                {
+                    Description = item.Description;
+                }
+
+            }
+            return Description;
+        }
+
+        //Method that gets all the cities
+        public IList<String> GetCitiesByMovieID(int movieID)
+        {
+            IList<String> ListOfCities = new List<String>();
+            using (var context = new CinemaEntities())
+            {
+                var results = (from pr in context.Perfomances
+                               where pr.MovieID == movieID
+                               join ad in context.Addresses
+                               on pr.TheaterID equals ad.ObjectID
+                               select new { City = ad.City });
+                foreach (var item in results)
+                {
+                    String row = null;
+                    row = item.City;
+                    ListOfCities.Add(row);
+                }
+            }
+            return ListOfCities;
+        }
+
+
+        //Method that gets the theaters by City
+        public IList<UserTheaterDTO> GetTheatersByCity(String City)
+        {
+            IList<UserTheaterDTO> ListOfTheaters = new List<UserTheaterDTO>();
+            using (var context = new CinemaEntities())
+            {
+                var results = (from th in context.Theaters
+                               join ad in context.Addresses
+                               on th.TheaterID equals ad.ObjectTypeID
+                               where ad.City == City
+                               select new
+                               {
+                                   TheaterID = th.TheaterID,
+                                   TheaterName = th.Name,
+                                   AddressTh= ad
+                               });
+
+                foreach (var item in results)
+                {
+                    UserTheaterDTO row = new UserTheaterDTO();
+                    row.TheaterID = item.TheaterID;
+                    row.TheaterName = item.TheaterName;
+                    row.TheaterAddress = String.Format("str. {0}, {1}, phone number: {2}.",item.AddressTh.AddressLine1,item.AddressTh.City,item.AddressTh.Phone);
+                    ListOfTheaters.Add(row);
+                }
+                               
+            }
+            return ListOfTheaters;
+        }
+
+
+        //Method that gets Performances by Theater
+        public IList<UserPerformanceDTO> GetPerformancesByTheaterID(Guid TheaterID)
+        {
+            IList<UserPerformanceDTO> ListOfPerformances = new List<UserPerformanceDTO>();
+            using (var context = new CinemaEntities())
+            {
+                var results = (from pr in context.Perfomances
+                               where pr.TheaterID == TheaterID
+                               select pr);
+                foreach (var item in results)
+                {
+                    UserPerformanceDTO row = new UserPerformanceDTO();
+                    row.performanceID = item.PerfomanceID;
+                    row.MovieTitle = item.Movie.Title;
+                    row.roomNumber = item.Room.RoomNumber;
+                    row.Date = item.Date.ToString("yyyy/MM/dd");
+                    string hours = item.StartingTime.Hours.ToString();
+                    string minutes = item.StartingTime.Minutes.ToString();
+                    row.StartingTime = string.Format("{0}:{1}",hours,minutes);
+                    row.Duration = item.Duration;
+                    row.price = item.Price;
+                    ListOfPerformances.Add(row);
+                }
+            }
+            return ListOfPerformances;
+
+        }
+
+
+
+        #endregion
+
+
     }
 }

@@ -56,6 +56,12 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="ContentPages\Users\MyArea.aspx" />
+    <Content Include="ContentPages\Users\MyAreaMVP\MyAreaControl.ascx" />
+    <Content Include="ContentPages\Users\Payment.aspx" />
+    <Content Include="ContentPages\Users\PaymentMVP\PaymentControl.ascx" />
+    <Content Include="ContentPages\Users\TicketSelection.aspx" />
+    <Content Include="ContentPages\Users\TicketSelectionMVP\TicketControl.ascx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -106,6 +112,51 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ContentPages\Users\MyArea.aspx.cs">
+      <DependentUpon>MyArea.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Users\MyArea.aspx.designer.cs">
+      <DependentUpon>MyArea.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Users\MyAreaMVP\IMyAreaView.cs" />
+    <Compile Include="ContentPages\Users\MyAreaMVP\MyAreaControl.ascx.cs">
+      <DependentUpon>MyAreaControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Users\MyAreaMVP\MyAreaControl.ascx.designer.cs">
+      <DependentUpon>MyAreaControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Users\MyAreaMVP\MyAreaModel.cs" />
+    <Compile Include="ContentPages\Users\MyAreaMVP\MyAreaPresenter.cs" />
+    <Compile Include="ContentPages\Users\Payment.aspx.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Users\Payment.aspx.designer.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Users\PaymentMVP\IPaymentView.cs" />
+    <Compile Include="ContentPages\Users\PaymentMVP\PaymentControl.ascx.cs">
+      <DependentUpon>PaymentControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Users\PaymentMVP\PaymentControl.ascx.designer.cs">
+      <DependentUpon>PaymentControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Users\PaymentMVP\PaymentModel.cs" />
+    <Compile Include="ContentPages\Users\PaymentMVP\PaymentPresenter.cs" />
+    <Compile Include="ContentPages\Users\TicketSelection.aspx.cs">
+      <DependentUpon>TicketSelection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Users\TicketSelection.aspx.designer.cs">
+      <DependentUpon>TicketSelection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Users\TicketSelectionMVP\ITicketView.cs" />
+    <Compile Include="ContentPages\Users\TicketSelectionMVP\TicketControl.ascx.cs">
+      <DependentUpon>TicketControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Users\TicketSelectionMVP\TicketControl.ascx.designer.cs">
+      <DependentUpon>TicketControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\Users\TicketSelectionMVP\TicketModel.cs" />
+    <Compile Include="ContentPages\Users\TicketSelectionMVP\TicketPresenter.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

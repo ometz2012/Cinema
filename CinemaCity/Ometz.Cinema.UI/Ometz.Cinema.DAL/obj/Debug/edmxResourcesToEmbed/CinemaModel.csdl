@@ -1,0 +1,525 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CinemaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="CinemaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Addresses" EntityType="CinemaModel.Address" />
+    <EntitySet Name="AuthenticatedUsers" EntityType="CinemaModel.AuthenticatedUser" />
+    <EntitySet Name="Comments" EntityType="CinemaModel.Comment" />
+    <EntitySet Name="Favorites" EntityType="CinemaModel.Favorite" />
+    <EntitySet Name="Genres" EntityType="CinemaModel.Genre" />
+    <EntitySet Name="Movies" EntityType="CinemaModel.Movie" />
+    <EntitySet Name="ObjectTypes" EntityType="CinemaModel.ObjectType" />
+    <EntitySet Name="Orders" EntityType="CinemaModel.Order" />
+    <EntitySet Name="Perfomances" EntityType="CinemaModel.Perfomance" />
+    <EntitySet Name="People" EntityType="CinemaModel.Person" />
+    <EntitySet Name="PersonMovies" EntityType="CinemaModel.PersonMovie" />
+    <EntitySet Name="PersonTypes" EntityType="CinemaModel.PersonType" />
+    <EntitySet Name="Ratings" EntityType="CinemaModel.Rating" />
+    <EntitySet Name="Rooms" EntityType="CinemaModel.Room" />
+    <EntitySet Name="sysdiagrams" EntityType="CinemaModel.sysdiagram" />
+    <EntitySet Name="Theaters" EntityType="CinemaModel.Theater" />
+    <EntitySet Name="Users" EntityType="CinemaModel.User" />
+    <AssociationSet Name="FK_Address_ObjectType" Association="CinemaModel.FK_Address_ObjectType">
+      <End Role="ObjectType" EntitySet="ObjectTypes" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuthorisedUser_Person" Association="CinemaModel.FK_AuthorisedUser_Person">
+      <End Role="Person" EntitySet="People" />
+      <End Role="AuthenticatedUser" EntitySet="AuthenticatedUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuthorisedUser_User" Association="CinemaModel.FK_AuthorisedUser_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="AuthenticatedUser" EntitySet="AuthenticatedUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_Movie" Association="CinemaModel.FK_Comment_Movie">
+      <End Role="Movie" EntitySet="Movies" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_User" Association="CinemaModel.FK_Comment_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Favorite_Movie" Association="CinemaModel.FK_Favorite_Movie">
+      <End Role="Movie" EntitySet="Movies" />
+      <End Role="Favorite" EntitySet="Favorites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Favorite_User" Association="CinemaModel.FK_Favorite_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Favorite" EntitySet="Favorites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Movie_Genre" Association="CinemaModel.FK_Movie_Genre">
+      <End Role="Genre" EntitySet="Genres" />
+      <End Role="Movie" EntitySet="Movies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Perfomance_Movie" Association="CinemaModel.FK_Perfomance_Movie">
+      <End Role="Movie" EntitySet="Movies" />
+      <End Role="Perfomance" EntitySet="Perfomances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonMovie_Movie" Association="CinemaModel.FK_PersonMovie_Movie">
+      <End Role="Movie" EntitySet="Movies" />
+      <End Role="PersonMovie" EntitySet="PersonMovies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rating_Movie" Association="CinemaModel.FK_Rating_Movie">
+      <End Role="Movie" EntitySet="Movies" />
+      <End Role="Rating" EntitySet="Ratings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Perfomance" Association="CinemaModel.FK_Order_Perfomance">
+      <End Role="Perfomance" EntitySet="Perfomances" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_User" Association="CinemaModel.FK_Order_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Perfomance_Room" Association="CinemaModel.FK_Perfomance_Room">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="Perfomance" EntitySet="Perfomances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Perfomance_Theater" Association="CinemaModel.FK_Perfomance_Theater">
+      <End Role="Theater" EntitySet="Theaters" />
+      <End Role="Perfomance" EntitySet="Perfomances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Person_PersonType" Association="CinemaModel.FK_Person_PersonType">
+      <End Role="PersonType" EntitySet="PersonTypes" />
+      <End Role="Person" EntitySet="People" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonMovie_Person" Association="CinemaModel.FK_PersonMovie_Person">
+      <End Role="Person" EntitySet="People" />
+      <End Role="PersonMovie" EntitySet="PersonMovies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rating_User" Association="CinemaModel.FK_Rating_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Rating" EntitySet="Ratings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Room_Theater" Association="CinemaModel.FK_Room_Theater">
+      <End Role="Theater" EntitySet="Theaters" />
+      <End Role="Room" EntitySet="Rooms" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AddressLine1" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="AddressLine2" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Province" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Country" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ObjectTypeID" Type="Guid" Nullable="false" />
+    <Property Name="ObjectID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="ObjectType" Relationship="CinemaModel.FK_Address_ObjectType" FromRole="Address" ToRole="ObjectType" />
+  </EntityType>
+  <EntityType Name="AuthenticatedUser">
+    <Key>
+      <PropertyRef Name="AuthenticatedUserID" />
+    </Key>
+    <Property Name="PersonID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="Guid" Nullable="false" />
+    <Property Name="AuthenticatedUserID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Person" Relationship="CinemaModel.FK_AuthorisedUser_Person" FromRole="AuthenticatedUser" ToRole="Person" />
+    <NavigationProperty Name="User" Relationship="CinemaModel.FK_AuthorisedUser_User" FromRole="AuthenticatedUser" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentID" />
+    </Key>
+    <Property Name="CommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="MovieID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Movie" Relationship="CinemaModel.FK_Comment_Movie" FromRole="Comment" ToRole="Movie" />
+    <NavigationProperty Name="User" Relationship="CinemaModel.FK_Comment_User" FromRole="Comment" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Favorite">
+    <Key>
+      <PropertyRef Name="FavoriteID" />
+    </Key>
+    <Property Name="FavoriteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MovieID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Movie" Relationship="CinemaModel.FK_Favorite_Movie" FromRole="Favorite" ToRole="Movie" />
+    <NavigationProperty Name="User" Relationship="CinemaModel.FK_Favorite_User" FromRole="Favorite" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Genre">
+    <Key>
+      <PropertyRef Name="GenreID" />
+    </Key>
+    <Property Name="GenreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Movies" Relationship="CinemaModel.FK_Movie_Genre" FromRole="Genre" ToRole="Movie" />
+  </EntityType>
+  <EntityType Name="Movie">
+    <Key>
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="MovieID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Year" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="OfficialSite" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="GenreID" Type="Int32" Nullable="false" />
+    <Property Name="PhotoType" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Comments" Relationship="CinemaModel.FK_Comment_Movie" FromRole="Movie" ToRole="Comment" />
+    <NavigationProperty Name="Favorites" Relationship="CinemaModel.FK_Favorite_Movie" FromRole="Movie" ToRole="Favorite" />
+    <NavigationProperty Name="Genre" Relationship="CinemaModel.FK_Movie_Genre" FromRole="Movie" ToRole="Genre" />
+    <NavigationProperty Name="Perfomances" Relationship="CinemaModel.FK_Perfomance_Movie" FromRole="Movie" ToRole="Perfomance" />
+    <NavigationProperty Name="PersonMovies" Relationship="CinemaModel.FK_PersonMovie_Movie" FromRole="Movie" ToRole="PersonMovie" />
+    <NavigationProperty Name="Ratings" Relationship="CinemaModel.FK_Rating_Movie" FromRole="Movie" ToRole="Rating" />
+  </EntityType>
+  <EntityType Name="ObjectType">
+    <Key>
+      <PropertyRef Name="ObjectTypeID" />
+    </Key>
+    <Property Name="ObjectTypeID" Type="Guid" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Addresses" Relationship="CinemaModel.FK_Address_ObjectType" FromRole="ObjectType" ToRole="Address" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumberOfSeatsReserved" Type="Int32" Nullable="false" />
+    <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="PerfomanceID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Perfomance" Relationship="CinemaModel.FK_Order_Perfomance" FromRole="Order" ToRole="Perfomance" />
+    <NavigationProperty Name="User" Relationship="CinemaModel.FK_Order_User" FromRole="Order" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Perfomance">
+    <Key>
+      <PropertyRef Name="PerfomanceID" />
+    </Key>
+    <Property Name="PerfomanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="StartingTime" Type="Time" Nullable="false" />
+    <Property Name="Duration" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="MovieID" Type="Int32" Nullable="false" />
+    <Property Name="RoomID" Type="Int32" Nullable="false" />
+    <Property Name="TheaterID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Movie" Relationship="CinemaModel.FK_Perfomance_Movie" FromRole="Perfomance" ToRole="Movie" />
+    <NavigationProperty Name="Orders" Relationship="CinemaModel.FK_Order_Perfomance" FromRole="Perfomance" ToRole="Order" />
+    <NavigationProperty Name="Room" Relationship="CinemaModel.FK_Perfomance_Room" FromRole="Perfomance" ToRole="Room" />
+    <NavigationProperty Name="Theater" Relationship="CinemaModel.FK_Perfomance_Theater" FromRole="Perfomance" ToRole="Theater" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="PersonID" />
+    </Key>
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BirthDate" Type="DateTime" />
+    <Property Name="BirthPlace" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PersonTypeID" Type="Int32" Nullable="false" />
+    <Property Name="PersonID" Type="Guid" Nullable="false" />
+    <Property Name="PhotoType" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="AuthenticatedUsers" Relationship="CinemaModel.FK_AuthorisedUser_Person" FromRole="Person" ToRole="AuthenticatedUser" />
+    <NavigationProperty Name="PersonType" Relationship="CinemaModel.FK_Person_PersonType" FromRole="Person" ToRole="PersonType" />
+    <NavigationProperty Name="PersonMovies" Relationship="CinemaModel.FK_PersonMovie_Person" FromRole="Person" ToRole="PersonMovie" />
+  </EntityType>
+  <EntityType Name="PersonMovie">
+    <Key>
+      <PropertyRef Name="PersonMovieID" />
+    </Key>
+    <Property Name="PersonMovieID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MovieID" Type="Int32" Nullable="false" />
+    <Property Name="PersonID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Movie" Relationship="CinemaModel.FK_PersonMovie_Movie" FromRole="PersonMovie" ToRole="Movie" />
+    <NavigationProperty Name="Person" Relationship="CinemaModel.FK_PersonMovie_Person" FromRole="PersonMovie" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="PersonType">
+    <Key>
+      <PropertyRef Name="PersonType1" />
+    </Key>
+    <Property Name="PersonType1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="People" Relationship="CinemaModel.FK_Person_PersonType" FromRole="PersonType" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="Rating">
+    <Key>
+      <PropertyRef Name="RatingID" />
+    </Key>
+    <Property Name="RatingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rate" Type="Int16" Nullable="false" />
+    <Property Name="MovieID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Movie" Relationship="CinemaModel.FK_Rating_Movie" FromRole="Rating" ToRole="Movie" />
+    <NavigationProperty Name="User" Relationship="CinemaModel.FK_Rating_User" FromRole="Rating" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="RoomID" />
+    </Key>
+    <Property Name="RoomNumber" Type="Int32" Nullable="false" />
+    <Property Name="NumberOfSeats" Type="Int32" Nullable="false" />
+    <Property Name="TheaterID" Type="Guid" Nullable="false" />
+    <Property Name="RoomID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Perfomances" Relationship="CinemaModel.FK_Perfomance_Room" FromRole="Room" ToRole="Perfomance" />
+    <NavigationProperty Name="Theater" Relationship="CinemaModel.FK_Room_Theater" FromRole="Room" ToRole="Theater" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Theater">
+    <Key>
+      <PropertyRef Name="TheaterID" />
+    </Key>
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="TheaterID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Perfomances" Relationship="CinemaModel.FK_Perfomance_Theater" FromRole="Theater" ToRole="Perfomance" />
+    <NavigationProperty Name="Rooms" Relationship="CinemaModel.FK_Room_Theater" FromRole="Theater" ToRole="Room" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="UserID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="AuthenticatedUsers" Relationship="CinemaModel.FK_AuthorisedUser_User" FromRole="User" ToRole="AuthenticatedUser" />
+    <NavigationProperty Name="Comments" Relationship="CinemaModel.FK_Comment_User" FromRole="User" ToRole="Comment" />
+    <NavigationProperty Name="Favorites" Relationship="CinemaModel.FK_Favorite_User" FromRole="User" ToRole="Favorite" />
+    <NavigationProperty Name="Orders" Relationship="CinemaModel.FK_Order_User" FromRole="User" ToRole="Order" />
+    <NavigationProperty Name="Ratings" Relationship="CinemaModel.FK_Rating_User" FromRole="User" ToRole="Rating" />
+  </EntityType>
+  <Association Name="FK_Address_ObjectType">
+    <End Role="ObjectType" Type="CinemaModel.ObjectType" Multiplicity="1" />
+    <End Role="Address" Type="CinemaModel.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ObjectType">
+        <PropertyRef Name="ObjectTypeID" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="ObjectTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuthorisedUser_Person">
+    <End Role="Person" Type="CinemaModel.Person" Multiplicity="1" />
+    <End Role="AuthenticatedUser" Type="CinemaModel.AuthenticatedUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="PersonID" />
+      </Principal>
+      <Dependent Role="AuthenticatedUser">
+        <PropertyRef Name="PersonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuthorisedUser_User">
+    <End Role="User" Type="CinemaModel.User" Multiplicity="1" />
+    <End Role="AuthenticatedUser" Type="CinemaModel.AuthenticatedUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="AuthenticatedUser">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_Movie">
+    <End Role="Movie" Type="CinemaModel.Movie" Multiplicity="1" />
+    <End Role="Comment" Type="CinemaModel.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movie">
+        <PropertyRef Name="MovieID" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="MovieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_User">
+    <End Role="User" Type="CinemaModel.User" Multiplicity="1" />
+    <End Role="Comment" Type="CinemaModel.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Favorite_Movie">
+    <End Role="Movie" Type="CinemaModel.Movie" Multiplicity="1" />
+    <End Role="Favorite" Type="CinemaModel.Favorite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movie">
+        <PropertyRef Name="MovieID" />
+      </Principal>
+      <Dependent Role="Favorite">
+        <PropertyRef Name="MovieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Favorite_User">
+    <End Role="User" Type="CinemaModel.User" Multiplicity="1" />
+    <End Role="Favorite" Type="CinemaModel.Favorite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Favorite">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Movie_Genre">
+    <End Role="Genre" Type="CinemaModel.Genre" Multiplicity="1" />
+    <End Role="Movie" Type="CinemaModel.Movie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genre">
+        <PropertyRef Name="GenreID" />
+      </Principal>
+      <Dependent Role="Movie">
+        <PropertyRef Name="GenreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Perfomance_Movie">
+    <End Role="Movie" Type="CinemaModel.Movie" Multiplicity="1" />
+    <End Role="Perfomance" Type="CinemaModel.Perfomance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movie">
+        <PropertyRef Name="MovieID" />
+      </Principal>
+      <Dependent Role="Perfomance">
+        <PropertyRef Name="MovieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonMovie_Movie">
+    <End Role="Movie" Type="CinemaModel.Movie" Multiplicity="1" />
+    <End Role="PersonMovie" Type="CinemaModel.PersonMovie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movie">
+        <PropertyRef Name="MovieID" />
+      </Principal>
+      <Dependent Role="PersonMovie">
+        <PropertyRef Name="MovieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rating_Movie">
+    <End Role="Movie" Type="CinemaModel.Movie" Multiplicity="1" />
+    <End Role="Rating" Type="CinemaModel.Rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movie">
+        <PropertyRef Name="MovieID" />
+      </Principal>
+      <Dependent Role="Rating">
+        <PropertyRef Name="MovieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Perfomance">
+    <End Role="Perfomance" Type="CinemaModel.Perfomance" Multiplicity="1" />
+    <End Role="Order" Type="CinemaModel.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfomance">
+        <PropertyRef Name="PerfomanceID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="PerfomanceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_User">
+    <End Role="User" Type="CinemaModel.User" Multiplicity="1" />
+    <End Role="Order" Type="CinemaModel.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Perfomance_Room">
+    <End Role="Room" Type="CinemaModel.Room" Multiplicity="1" />
+    <End Role="Perfomance" Type="CinemaModel.Perfomance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="RoomID" />
+      </Principal>
+      <Dependent Role="Perfomance">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Perfomance_Theater">
+    <End Role="Theater" Type="CinemaModel.Theater" Multiplicity="1" />
+    <End Role="Perfomance" Type="CinemaModel.Perfomance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Theater">
+        <PropertyRef Name="TheaterID" />
+      </Principal>
+      <Dependent Role="Perfomance">
+        <PropertyRef Name="TheaterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Person_PersonType">
+    <End Role="PersonType" Type="CinemaModel.PersonType" Multiplicity="1" />
+    <End Role="Person" Type="CinemaModel.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PersonType">
+        <PropertyRef Name="PersonType1" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="PersonTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonMovie_Person">
+    <End Role="Person" Type="CinemaModel.Person" Multiplicity="1" />
+    <End Role="PersonMovie" Type="CinemaModel.PersonMovie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="PersonID" />
+      </Principal>
+      <Dependent Role="PersonMovie">
+        <PropertyRef Name="PersonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rating_User">
+    <End Role="User" Type="CinemaModel.User" Multiplicity="1" />
+    <End Role="Rating" Type="CinemaModel.Rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Rating">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Room_Theater">
+    <End Role="Theater" Type="CinemaModel.Theater" Multiplicity="1" />
+    <End Role="Room" Type="CinemaModel.Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Theater">
+        <PropertyRef Name="TheaterID" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="TheaterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

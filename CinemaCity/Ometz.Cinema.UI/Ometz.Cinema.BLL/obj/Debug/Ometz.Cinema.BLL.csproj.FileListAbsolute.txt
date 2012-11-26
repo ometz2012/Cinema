@@ -1,0 +1,7 @@
+C:\Development\Projects\19 Movies Application\Ometz.Cinema.UI\Ometz.Cinema.BLL\bin\Debug\Ometz.Cinema.BLL.dll
+C:\Development\Projects\19 Movies Application\Ometz.Cinema.UI\Ometz.Cinema.BLL\bin\Debug\Ometz.Cinema.BLL.pdb
+C:\Development\Projects\19 Movies Application\Ometz.Cinema.UI\Ometz.Cinema.BLL\bin\Debug\Ometz.Cinema.DAL.dll
+C:\Development\Projects\19 Movies Application\Ometz.Cinema.UI\Ometz.Cinema.BLL\bin\Debug\Ometz.Cinema.DAL.pdb
+C:\Development\Projects\19 Movies Application\Ometz.Cinema.UI\Ometz.Cinema.BLL\obj\Debug\ResolveAssemblyReference.cache
+C:\Development\Projects\19 Movies Application\Ometz.Cinema.UI\Ometz.Cinema.BLL\obj\Debug\Ometz.Cinema.BLL.dll
+C:\Development\Projects\19 Movies Application\Ometz.Cinema.UI\Ometz.Cinema.BLL\obj\Debug\Ometz.Cinema.BLL.pdb

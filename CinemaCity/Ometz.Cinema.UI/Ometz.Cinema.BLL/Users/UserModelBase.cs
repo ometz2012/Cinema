@@ -12,7 +12,7 @@ namespace Ometz.Cinema.BLL.Users
 
     public abstract class UserBase
     {
-        
+
     }
 
     public abstract class UserCommentBase
@@ -31,12 +31,32 @@ namespace Ometz.Cinema.BLL.Users
         public String MovieTitle { get; set; }
         public String userID { get; set; }
     }
-
+    //----------------------------------------------
     public abstract class UserFavoriteMovieBase
     {
         public int movieID { get; set; }
         public String MovieTitle { get; set; }
         public String userID { get; set; }
+    }
+
+    public abstract class UserTheaterBase
+    {
+        public Guid TheaterID { get; set; }
+        public String TheaterName { get; set; }
+        public String TheaterAddress { get; set; }
+    }
+
+    public abstract class UserPerformanceBase
+    {
+        public int performanceID { get; set; }
+        public String Date { get; set; }
+        public String StartingTime { get; set; }
+        public String Duration { get; set; }
+        public decimal price { get; set; }
+        public String MovieTitle { get; set; }
+        public String TheaterName { get; set; }
+        public String TheaterAddress { get; set; }
+        public int roomNumber { get; set; }
     }
 
 }

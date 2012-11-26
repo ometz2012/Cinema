@@ -18,4 +18,10 @@ namespace Ometz.Cinema.BLL.Users
 
     public class UserFavoriteMovieDTO : UserFavoriteMovieBase
     { }
+
+
+    public class UserTheaterDTO: UserTheaterBase
+    { }
+    public class UserPerformanceDTO : UserPerformanceBase
+    { }
 }

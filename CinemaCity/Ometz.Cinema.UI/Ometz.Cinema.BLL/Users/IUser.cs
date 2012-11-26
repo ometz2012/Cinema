@@ -21,7 +21,25 @@ namespace Ometz.Cinema.BLL.Users
         IList<UserRatingDTO> GetUserRatingsByMovie(System.Guid userID, int movieID);
 
         //Method that gets all Favorite movies of a specific user
-        IList<UserFavoriteMovieDTO> GetFavoriteMoviesByUser(System.Guid userID);
+        IList<UserFavoriteMovieDTO> GetFavoriteMoviesByUser(System.Guid userID); 
+
+        //===========================================25/11/2012
+        //Method that gets all movies
+        IList<UserFavoriteMovieDTO> GetListOfMovies();
+
+        //Method that gets Movie description
+        String GetMovieDescriptionByMovieID(int movieID);
+
+        //Method that gets all the cities
+        IList<String> GetCitiesByMovieID(int movieID);
+
+
+        //Method that gets the theaters by City
+        IList<UserTheaterDTO> GetTheatersByCity(String City);
+
+
+        //Method that gets Performances by Theater
+        IList<UserPerformanceDTO> GetPerformancesByTheaterID(Guid TheaterID);
 
         
         //Method that presents User information

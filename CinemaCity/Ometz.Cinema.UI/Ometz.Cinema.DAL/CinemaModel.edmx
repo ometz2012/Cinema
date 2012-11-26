@@ -1152,7 +1152,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="Model">
+      <Diagram Name="CinemaModel">
         <EntityTypeShape EntityType="CinemaModel.Address" Width="1.5" PointX="13" PointY="1" Height="3.3263964843749996" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaModel.AuthenticatedUser" Width="1.5" PointX="8.25" PointY="12.125" Height="1.9802864583333317" IsExpanded="true" />
         <EntityTypeShape EntityType="CinemaModel.Comment" Width="1.5" PointX="5.25" PointY="7.75" Height="2.1725878906249996" IsExpanded="true" />

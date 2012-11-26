@@ -10,3 +10,9 @@ D:\Project1\Ometz.Cinema.UI\Ometz.Cinema.DAL\bin\Debug\Ometz.Cinema.DAL.pdb
 D:\Project1\Ometz.Cinema.UI\Ometz.Cinema.DAL\obj\Debug\ResolveAssemblyReference.cache
 D:\Project1\Ometz.Cinema.UI\Ometz.Cinema.DAL\obj\Debug\Ometz.Cinema.DAL.dll
 D:\Project1\Ometz.Cinema.UI\Ometz.Cinema.DAL\obj\Debug\Ometz.Cinema.DAL.pdb
+C:\Development\Projects\19 Movies Application\Ometz.Cinema.UI\Ometz.Cinema.DAL\bin\Debug\Ometz.Cinema.DAL.dll.config
+C:\Development\Projects\19 Movies Application\Ometz.Cinema.UI\Ometz.Cinema.DAL\bin\Debug\Ometz.Cinema.DAL.dll
+C:\Development\Projects\19 Movies Application\Ometz.Cinema.UI\Ometz.Cinema.DAL\bin\Debug\Ometz.Cinema.DAL.pdb
+C:\Development\Projects\19 Movies Application\Ometz.Cinema.UI\Ometz.Cinema.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Development\Projects\19 Movies Application\Ometz.Cinema.UI\Ometz.Cinema.DAL\obj\Debug\Ometz.Cinema.DAL.dll
+C:\Development\Projects\19 Movies Application\Ometz.Cinema.UI\Ometz.Cinema.DAL\obj\Debug\Ometz.Cinema.DAL.pdb
