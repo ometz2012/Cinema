@@ -132,6 +132,12 @@
     <Content Include="Account\Web.config" />
     <Content Include="Site.Master" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ometz.Cinema.BLL\Ometz.Cinema.BLL.csproj">
+      <Project>{9598C618-7673-4AFF-BBB0-4C1A37C593C0}</Project>
+      <Name>Ometz.Cinema.BLL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
