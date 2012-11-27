@@ -179,19 +179,21 @@ namespace Ometz.Cinema.BLL.Users
 
 
         //Method that gets the theaters by City
-        public IList<UserTheaterDTO> GetTheatersByCity(String City)
+        public IList<UserTheaterDTO> GetTheatersByCity(String City, int movieID)
         {
             IList<UserTheaterDTO> ListOfTheaters = new List<UserTheaterDTO>();
             using (var context = new CinemaEntities())
             {
-                var results = (from th in context.Theaters
-                               join ad in context.Addresses
-                               on th.TheaterID equals ad.ObjectTypeID
+                var results = (from pr in context.Perfomances.Include("Theater")
+                               join ad in context.Addresses.Include("ObjectType")
+                               on pr.TheaterID equals ad.ObjectID
+                               where pr.MovieID==movieID
                                where ad.City == City
+                               where ad.ObjectType.Description=="Theater"
                                select new
                                {
-                                   TheaterID = th.TheaterID,
-                                   TheaterName = th.Name,
+                                   TheaterID = pr.TheaterID,
+                                   TheaterName = pr.Theater.Name,
                                    AddressTh= ad
                                });
 
@@ -210,13 +212,13 @@ namespace Ometz.Cinema.BLL.Users
 
 
         //Method that gets Performances by Theater
-        public IList<UserPerformanceDTO> GetPerformancesByTheaterID(Guid TheaterID)
+        public IList<UserPerformanceDTO> GetPerformancesByTheaterIDandMovieID(Guid TheaterID, int movieID)
         {
             IList<UserPerformanceDTO> ListOfPerformances = new List<UserPerformanceDTO>();
             using (var context = new CinemaEntities())
             {
-                var results = (from pr in context.Perfomances
-                               where pr.TheaterID == TheaterID
+                var results = (from pr in context.Perfomances.Include("Movie").Include("Theater")
+                               where pr.TheaterID == TheaterID && pr.MovieID==movieID
                                select pr);
                 foreach (var item in results)
                 {

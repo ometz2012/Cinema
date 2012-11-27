@@ -13,7 +13,7 @@
     }
     .style4
     {
-        width: 242px;
+        width: 265px;
     }
 </style>
 
@@ -48,7 +48,9 @@
             CHOOSE A CITY:</td>
         <td colspan="2">
             <asp:DropDownList ID="ddlCityList" runat="server" Width="177px" 
-                AutoPostBack="True" onselectedindexchanged="ddlCityList_SelectedIndexChanged">
+                AutoPostBack="True" 
+                onselectedindexchanged="ddlCityList_SelectedIndexChanged" 
+                DataTextField="CityName" DataValueField="CityID">
             </asp:DropDownList>
         </td>
     </tr>
@@ -63,10 +65,9 @@
             CHOOSE THEATER:</td>
         <td colspan="2">
             <asp:GridView ID="GridViewTheater" runat="server" AutoGenerateColumns="False" 
-                onselectedindexchanged="GridViewTheater_SelectedIndexChanged">
+                OnRowCreated ="GridViewTheater_RowCreated" OnRowCommand="GridViewTheater_RowCommand">
                 <Columns>
-                    <asp:BoundField DataField="TheaterID" HeaderText="Theater ID" 
-                        InsertVisible="False" />
+                    <asp:BoundField DataField="TheaterID" HeaderText="Theater ID" />
                     <asp:BoundField DataField="TheaterName" HeaderText="Theater Name" />
                     <asp:BoundField DataField="Address" HeaderText="Address" />
                     <asp:ButtonField CommandName="Select" HeaderText="Select" Text="Select" />
@@ -85,16 +86,16 @@
             CHOOSE PERFORMANCE:</td>
         <td colspan="2">
             <asp:GridView ID="GridViewPerformance" runat="server" 
-                AutoGenerateColumns="False" 
-                onselectedindexchanged="GridViewPerformance_SelectedIndexChanged">
+                AutoGenerateColumns="False"
+                onrowcommand="GridViewPerformance_RowCommand" 
+                onrowcreated="GridViewPerformance_RowCreated">
                 <Columns>
-                    <asp:BoundField DataField="PerformanceID" HeaderText="Performance ID" 
-                        InsertVisible="False" />
+                    <asp:BoundField DataField="PerformanceID" HeaderText="Performance ID" />
                     <asp:BoundField DataField="PerformaceDate" HeaderText="Performace Date" />
                     <asp:BoundField DataField="StartingTime" HeaderText="Starting Time" />
                     <asp:BoundField DataField="Duration" HeaderText="Duration" />
-                    <asp:BoundField DataField="Price" HeaderText="Price" />
-                    <asp:ButtonField HeaderText="Select" Text="Select" />
+                    <asp:BoundField DataField="Price" HeaderText="Price ($CAD)" />
+                    <asp:ButtonField HeaderText="Select" Text="Select" CommandName="Select" />
                 </Columns>
             </asp:GridView>
         </td>
@@ -111,6 +112,7 @@
         <td class="style4">
             <asp:Label ID="lblMovie" runat="server"></asp:Label>
             <asp:Label ID="lblSelectedMovie" runat="server"></asp:Label>
+            <asp:Label ID="lblMovieID" runat="server" Visible="False"></asp:Label>
             <br />
             <asp:Label ID="lblCity" runat="server"></asp:Label>
             <asp:Label ID="lblSelectedCity" runat="server"></asp:Label>
@@ -120,12 +122,20 @@
             <br />
         </td>
         <td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnReset" runat="server" Text="RESET" Width="143px" 
+                onclick="btnReset_Click" 
+                ToolTip="By pushing the button you will be able reset your choice and start over." />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnReset" runat="server" Text="RESET" Width="89px" 
-                onclick="btnReset_Click" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnCancel" runat="server" Text="CANCEL" Width="89px" />
-        </td>
+            </td>
+    </tr>
+    <tr>
+        <td class="style2">
+            &nbsp;</td>
+        <td class="style4">
+            &nbsp;</td>
+        <td>
+            &nbsp;</td>
     </tr>
 </table>
 

@@ -15,7 +15,7 @@ namespace Ometz.Cinema.UI.ContentPages.Users.TicketSelectionMVP
         public event CitySelectionHandler CitySelection;
         public event TheaterSelectionHandler TheaterSelection;
         public event PerformanceSelectionHandler PerformanceSelection;
-        public event PageReset PageReset;
+
 
         public TicketModel Model { get; set; }
         public TicketPresenter Presenter { get; set; }
@@ -36,7 +36,7 @@ namespace Ometz.Cinema.UI.ContentPages.Users.TicketSelectionMVP
                 {
                     var ex = new EventArgs();
                     LoadData(ex);
-                    ListBoxMovies.DataSource =this.Model.MovieList;
+                    ListBoxMovies.DataSource = this.Model.MovieList;
                     ListBoxMovies.DataTextField = "MovieTitle";
                     ListBoxMovies.DataValueField = "MovieID";
                     ListBoxMovies.DataBind();
@@ -57,11 +57,12 @@ namespace Ometz.Cinema.UI.ContentPages.Users.TicketSelectionMVP
             }
         }
 
+        //This method peresents list of cities according to movie choice
         protected void btnSelectMovie_Click(object sender, EventArgs e)
         {
-            String SlectedMovieID = ListBoxMovies.SelectedItem.Value.ToString();
-            String SelectedMovieName= ListBoxMovies.SelectedItem.Text;
-            SelectedParamterArgs esp = new SelectedParamterArgs(SlectedMovieID);
+            String SelectedMovieID = ListBoxMovies.SelectedItem.Value.ToString();
+            String SelectedMovieName = ListBoxMovies.SelectedItem.Text;
+            SelectedParamterArgs esp = new SelectedParamterArgs(SelectedMovieID);
             if (MovieWasSelected != null)
             {
                 MovieWasSelected(esp);
@@ -69,68 +70,119 @@ namespace Ometz.Cinema.UI.ContentPages.Users.TicketSelectionMVP
                 ddlCityList.DataBind();
                 lblMovie.Text = "Selected movie: ";
                 lblSelectedMovie.Text = string.Format("{0}.", SelectedMovieName);
+                lblMovieID.Text = SelectedMovieID;
                 //btnSelectMovie.Enabled = false;
             }
         }
 
+        //This method presents List of theaters according to city and movie choice
         protected void ddlCityList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String SelectedCity = ddlCityList.SelectedItem.Text;
-            SelectedParamterArgs esp = new SelectedParamterArgs(SelectedCity);
-            if (CitySelection != null)
+            String SelectedCity = ddlCityList.SelectedItem.Value.ToString();
+            String SelectedMovie = lblMovieID.Text;
+            if (SelectedCity != "None")
             {
-                CitySelection(esp);
-                GridViewTheater.DataSource = Model.TheaterList;
-                GridViewTheater.DataBind();
-                lblCity.Text = "Selected city: ";
-                lblSelectedCity.Text = string.Format("{0}.", SelectedCity);
-                btnSelectMovie.Enabled = false;
+                SelectedParamterArgs esp = new SelectedParamterArgs(SelectedCity,SelectedMovie);
+                if (CitySelection != null)
+                {
+                    CitySelection(esp);
+                    GridViewTheater.DataSource = Model.TheaterList;
+                    GridViewTheater.DataBind();
+                    lblCity.Text = "Selected city: ";
+                    lblSelectedCity.Text = string.Format("{0}.", SelectedCity);
+                    btnSelectMovie.Enabled = false;
+                }
             }
 
-        }
-
-        protected void GridViewTheater_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            String SelectedTheaterID = GridViewTheater.SelectedRow.Cells[0].Text;
-            String SelectedTheaterName=GridViewTheater.SelectedRow.Cells[1].Text;
-            SelectedParamterArgs esp = new SelectedParamterArgs(SelectedTheaterID);
-            if (TheaterSelection != null)
-            {
-                TheaterSelection(esp);
-                GridViewPerformance.DataSource = Model.PerformanceList;
-                GridViewPerformance.DataBind();
-                lblTheater.Text = "Selected Theater: ";
-                lblSelectedTheater.Text = string.Format("{0}.", SelectedTheaterName);
-                ddlCityList.Enabled = false;
-            }
-
-        }
-
-        protected void GridViewPerformance_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            String SelectedPerformanceID = GridViewPerformance.SelectedRow.Cells[0].Text;
-            SelectedParamterArgs esp = new SelectedParamterArgs(SelectedPerformanceID);
-            if (PerformanceSelection != null)
-            {
-                PerformanceSelection(esp);
-            }
         }
 
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
-            if (PageReset != null)
-            {
-                EventArgs ex = new EventArgs();
-                PageReset(ex);
-            }
+            Response.Redirect("~/ContentPages/Users/TicketSelection.aspx");
             btnSelectMovie.Enabled = true;
             ddlCityList.Enabled = true;
         }
 
-   
 
-     
+        //Working with GridViewTheater - making ID colomn invisible and extracting the data
+        #region GridViewTheater
+        protected void GridViewTheater_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                e.Row.Cells[0].Visible = false;
+            }
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Cells[0].Visible = false;
+            }
+
+        }
+
+        protected void GridViewTheater_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Select")
+            {
+
+                int index = Convert.ToInt32(e.CommandArgument);
+
+                GridViewRow row = GridViewTheater.Rows[index];
+
+                String SelectedTheaterID = row.Cells[0].Text;
+                String SelectedTheaterName = row.Cells[1].Text;
+
+                String SelectedMovieID = lblMovieID.Text;
+
+                SelectedParamterArgs esp = new SelectedParamterArgs(SelectedTheaterID, SelectedMovieID);
+                if (TheaterSelection != null)
+                {
+                    TheaterSelection(esp);
+                    GridViewPerformance.DataSource = Model.PerformanceList;
+                    GridViewPerformance.DataBind();
+                    lblTheater.Text = "Selected Theater: ";
+                    lblSelectedTheater.Text = string.Format("{0}.", SelectedTheaterName);
+                    ddlCityList.Enabled = false;
+                }
+
+            }
+        }
+        #endregion
+
+
+        //GridViewPerformance - creating ID colomn as hidden and extracting the data
+        #region GridViewPerformance
+
+        protected void GridViewPerformance_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                e.Row.Cells[0].Visible = false;
+            }
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Cells[0].Visible = false;
+            }
+
+        }
+
+        protected void GridViewPerformance_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int index = Convert.ToInt32(e.CommandArgument);
+
+            GridViewRow row = GridViewPerformance.Rows[index];
+
+            String SelectedPerformanceID = row.Cells[0].Text;
+
+            string path = string.Format("~/ContentPages/Users/Payment.aspx?PerformanceID={0}",SelectedPerformanceID);
+            Response.Redirect(path);
+        }
+
+        #endregion
+
+
 
 
 

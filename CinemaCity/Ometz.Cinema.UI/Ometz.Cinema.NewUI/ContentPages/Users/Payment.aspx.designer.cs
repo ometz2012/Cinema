@@ -11,5 +11,14 @@ namespace Ometz.Cinema.UI.ContentPages.Users {
     
     
     public partial class Payment {
+        
+        /// <summary>
+        /// PaymentControlInput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ometz.Cinema.UI.ContentPages.Users.PaymentMVP.PaymentControl PaymentControlInput;
     }
 }

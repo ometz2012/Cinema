@@ -35,11 +35,11 @@ namespace Ometz.Cinema.BLL.Users
 
 
         //Method that gets the theaters by City
-        IList<UserTheaterDTO> GetTheatersByCity(String City);
+        IList<UserTheaterDTO> GetTheatersByCity(String City, int movieID);
 
 
         //Method that gets Performances by Theater
-        IList<UserPerformanceDTO> GetPerformancesByTheaterID(Guid TheaterID);
+        IList<UserPerformanceDTO> GetPerformancesByTheaterIDandMovieID(Guid TheaterID, int movieID);
 
         
         //Method that presents User information

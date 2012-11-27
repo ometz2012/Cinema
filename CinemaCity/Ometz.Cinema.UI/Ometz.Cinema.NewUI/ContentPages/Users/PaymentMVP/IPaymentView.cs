@@ -5,7 +5,12 @@ using System.Text;
 
 namespace Ometz.Cinema.UI.ContentPages.Users.PaymentMVP
 {
-    interface IPaymentView
+    public interface IPaymentView
     {
+        event DataLoadHandler LoadData;
+        event ButtonSubmitHandler Submit;
+
+        PaymentPresenter Presenter { get; set; }
+        PaymentModel Model { get; set; }
     }
 }

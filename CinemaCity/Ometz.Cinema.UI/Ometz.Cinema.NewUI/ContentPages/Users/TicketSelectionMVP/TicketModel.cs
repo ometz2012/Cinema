@@ -9,7 +9,7 @@ namespace Ometz.Cinema.UI.ContentPages.Users.TicketSelectionMVP
     {
         public String MovieDescription { get; set; }
         public List<MovieLine> MovieList { get; set; }
-        public List<String> CityList { get; set; }
+        public List<CityLine> CityList { get; set; }
         public List<TheaterLine> TheaterList { get; set; }
         public List<PerformanceLine> PerformanceList { get; set; }
     }
@@ -21,6 +21,12 @@ namespace Ometz.Cinema.UI.ContentPages.Users.TicketSelectionMVP
         public String MovieTitle { get; set; }
     }
 
+    public class CityLine//it is created in order better to arrange the drop downlist
+    {
+        public String CityID { get; set; }
+        public String CityName { get; set; }
+    }
+
     public class TheaterLine
     {
         public String TheaterID { get; set; }
@@ -30,6 +36,7 @@ namespace Ometz.Cinema.UI.ContentPages.Users.TicketSelectionMVP
 
     public class PerformanceLine
     {
+        public String PerformanceID { get; set; }
         public String PerformaceDate { get; set; }
         public String StartingTime { get; set; }
         public String Duration { get; set; }

@@ -13,7 +13,7 @@ namespace Ometz.Cinema.UI.ContentPages.Users.TicketSelectionMVP
         event CitySelectionHandler CitySelection;
         event TheaterSelectionHandler TheaterSelection;
         event PerformanceSelectionHandler PerformanceSelection;
-        event PageReset PageReset;
+        
 
         TicketModel Model { get; set; }
         TicketPresenter Presenter { get; set; }
