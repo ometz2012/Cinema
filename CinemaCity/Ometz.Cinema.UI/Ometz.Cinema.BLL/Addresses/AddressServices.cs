@@ -33,88 +33,24 @@ namespace Ometz.Cinema.BLL.Addresses
 			return addressToReturn;
 		}
 
-
-
-		//public IList<String> GetCities()
-		//{
-		//  List<String> citiesList = new List<String>();
-		//  using (var context = new CinemaEntities())
-		//  {
-		//    var cities = (from city in context.Addresses
-		//                  where city.ObjectType.Description == "Theater"
-		//                  select city).ToList();
-		//    if (cities.Count > 0)
-		//    {
-		//      foreach (var city in cities)
-		//      {
-		//        AddressModelDTO cityRow = new AddressModelDTO();
-		//        cityRow.City = city.City;
-
-						
-
-		//        citiesList.Add(cityRow);
-		//      }
-		//    }
-
-
-		//    return citiesList;
-		//  }
-		//}
-
-
-
-		public IList<AddressModelDTO> GetCities()
+		public IList<String> GetCities()
 		{
-			IList<AddressModelDTO> citiesList = new List<AddressModelDTO>();
+			IList<String> citiesList = new List<String>();
 			using (var context = new CinemaEntities())
 			{
-				var cities = (from city in context.Addresses.Distinct()
-											where city.ObjectType.Description == "Theater"
-											select city).ToList();
-				if (cities.Count > 0)
+				var cities = (from ct in context.Addresses
+											select new { City = ct.City }).Distinct();
+				foreach (var item in cities)
 				{
-					foreach (var city in cities)
-					{
-						var cityRow = new AddressModelDTO();
-						cityRow.City = city.City;
-						citiesList.Add(cityRow);
-						List<AddressModelDTO> newCitiesList = new List<AddressModelDTO>();
-
-						foreach (var item in citiesList)
-						{
-							if (!newCitiesList.Contains(item))
-							{ newCitiesList.Add(item);}
-							
-						}
-
-
-						//if (citiesList != null)
-						//{
-						//  foreach (var cit in citiesList)
-						//  {
-						//    if (cit.City != cityRow.City)
-						//    { citiesList.Add(cityRow); }
-
-						//  //if (cityRow.City != city.City)
-						//  //{
-						//  //  citiesList.Add(cityRow);
-						//  //}
-						//    else
-						//    {
-						//      return citiesList;
-						//    }
-					}
+					String cityRow = null;
+					cityRow = item.City;
+					citiesList.Add(cityRow);
 				}
 			}
 			return citiesList;
 		}
 
-
-
-		public AddressModelDTO GetObject(string city)
-		{
-			throw new NotImplementedException();
-		}
+		
 	}
 
 }

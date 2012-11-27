@@ -35,8 +35,14 @@ namespace Ometz.Cinema.UI.ContentPages.Theaters.TheaterSearchMVP
 					var ex = new EventArgs();
 					LoadData(ex);
 				}
-				
-				
+
+
+
+				AddressServices citiesList = new AddressServices();
+				ddlCity.DataSource = citiesList.GetCities();
+				ddlCity.DataBind();
+				ddlCity.Items.Insert(0, new ListItem("<-Choose City->", ""));
+
 			}
 		//Session["City"]=ddlCity.SelectedValue.ToString();
 			ViewState["City"] = ddlCity.SelectedValue.ToString();

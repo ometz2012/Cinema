@@ -41,9 +41,6 @@
 		</td>
 		<td class="style3">
 			<asp:DropDownList ID="ddlCity" runat="server">
-				<asp:ListItem>&lt;Choose City-&gt;</asp:ListItem>
-				<asp:ListItem>Montreal</asp:ListItem>
-				<asp:ListItem>Toronto</asp:ListItem>
 			</asp:DropDownList>
 		</td>
 		<td>
