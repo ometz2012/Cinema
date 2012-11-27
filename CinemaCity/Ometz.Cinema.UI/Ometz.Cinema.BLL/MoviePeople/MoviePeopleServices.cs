@@ -22,13 +22,15 @@ namespace Ometz.Cinema.BLL.MoviePeople
                     List<MoviePersonDTO> moviePeopleToReturn = new List<MoviePersonDTO>();
                     foreach (var item in moviePeople)
                     {
-                        MoviePersonDTO moviePeopleRow = new MoviePersonDTO()
-                        {
-                            FirstName = item.Person.FirstName,
-                            LastName = item.Person.LastName,
-                            BirthDate = (DateTime)item.Person.BirthDate,
-                            BirthPlace = item.Person.BirthPlace
-                        };
+                        MoviePersonDTO moviePeopleRow = new MoviePersonDTO();
+                        
+                            moviePeopleRow.FirstName = item.Person.FirstName;
+                            moviePeopleRow.LastName = item.Person.LastName;
+                            moviePeopleRow.BirthDate = (DateTime)item.Person.BirthDate;
+                            //
+                         // string BirthDate = item.Person.BirthDate.ToString("yyyy'/'MM'/'dd");
+                          moviePeopleRow.BirthPlace = item.Person.BirthPlace;
+                        
                         moviePeopleToReturn.Add(moviePeopleRow);
                     }
                     return moviePeopleToReturn;

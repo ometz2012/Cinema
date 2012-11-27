@@ -32,7 +32,7 @@
         <td class="style3">
             <asp:GridView ID="gridPersonInMovie" runat="server">
                 <Columns>
-                    <asp:CommandField ShowSelectButton="True" />
+                    <asp:CommandField ShowSelectButton="True" />                     
                 </Columns>
             </asp:GridView>
         </td>

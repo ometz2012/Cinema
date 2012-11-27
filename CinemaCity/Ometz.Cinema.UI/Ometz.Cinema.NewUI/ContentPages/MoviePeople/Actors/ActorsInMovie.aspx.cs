@@ -38,6 +38,9 @@ namespace Ometz.Cinema.UI.ContentPages.MoviePeople.Actors
             foreach (GridViewRow row in actorsGrid.Rows)
             {
                 row.Cells[(int)PeopleInMovie2.SelectButton].Visible = false;
+                DateTime birthDate = Convert.ToDateTime(row.Cells[(int)PeopleInMovie2.BirthDate].Text);
+                string result = birthDate.ToString("d/MM/yyyy");
+                row.Cells[(int)PeopleInMovie2.BirthDate].Text = result;              
             }
         }
     }
