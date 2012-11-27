@@ -30,7 +30,7 @@ namespace Ometz.Cinema.BLL.Performances
 									performanceRow.Date = date;//(DateTime)perform.Date;
 									TimeSpan time = (TimeSpan)perform.StartingTime;
 									performanceRow.StartingTime = string.Format("{0:hh\\:mm}", time);// (TimeSpan)perform.StartingTime;
-									performanceRow.Tilte = perform.Movie.Title;
+									performanceRow.Title = perform.Movie.Title;
 									performanceRow.Price = perform.Price;
 									performanceRow.RoomNumber = perform.Room.RoomNumber;
 									performanceRow.Duration = perform.Duration; ;

@@ -35,45 +35,24 @@ namespace Ometz.Cinema.UI.ContentPages.Theaters.TheaterMVP
 		 {
 			 if (this.LoadData != null)
 			 {
-				 var ex = new EventArgs();
-				 LoadData(ex);
-			 }
+				 string theat = Request.QueryString["TheaterID"];// "4531D5B6-268C-4AB3-81EB-57D0845E21DF";
+				 Guid theaterId = new Guid();
+				 theaterId = Guid.Parse(theat);
+				 LoadData(theaterId);
 
-			 //Label1.Text = "it works, yeah!!!!";
+			 lblName.Text =Model.TheaterName;
+			 lblAddressLine1.Text = Model.AddressLine1;
+			 lblCity.Text = Model.City;
+			 lblCountry.Text = Model.Country;
+			 lblEmail.Text = Model.Email;
+			 lblPhone.Text = Model.Phone;
+			 lblPostalCode.Text = Model.PostalCode;
+			 lblProvince.Text = Model.Province;
 
-
-			 //string theat = Session["TheaterID"].ToString();
-			 string theat = Request.QueryString["TheaterID"]; 
-			 Guid theaterId = new Guid();
-				theaterId= Guid.Parse(theat);
-			  
-			 
-
-			 TheaterServices showTheater=new TheaterServices();
-			 TheaterModelDTO currentTheater = new TheaterModelDTO();
-			 currentTheater = showTheater.GetTheater(theaterId);
-
-			 lblName.Text = currentTheater.Name;
-
-			 
-			 AddressServices showAddress = new AddressServices();
-			 AddressModelDTO currentAddress = new AddressModelDTO();
-
-			 currentAddress=showAddress.GetAddress(theaterId);
-
-			 lblAddressLine1.Text = currentAddress.AddressLine1;
-			 lblCity.Text = currentAddress.City;
-			 lblCountry.Text = currentAddress.Country;
-			 lblEmail.Text = currentAddress.Email;
-			 lblPhone.Text = currentAddress.Phone;
-			 lblPostalCode.Text = currentAddress.PostalCode;
-			 lblProvince.Text = currentAddress.Province;
-
-			 PerformanceServices showAllPerformances=new PerformanceServices();
-
-			 GridViewPerformance.DataSource = showAllPerformances.GetPerformances(theaterId);
+			 GridViewPerformance.DataSource = Model.ListOfPerformances;
 			 GridViewPerformance.DataBind();
 			 GridViewPerformance.Columns[0].Visible = false;
+			 }
 		 }
 
 	 }

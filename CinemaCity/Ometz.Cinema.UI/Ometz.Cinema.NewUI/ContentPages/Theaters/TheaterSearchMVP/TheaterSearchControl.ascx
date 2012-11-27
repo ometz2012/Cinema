@@ -66,8 +66,11 @@
 				AutoGenerateColumns="False" 
 				onselectedindexchanged="GridViewTheaterList_SelectedIndexChanged">
 				<Columns>
-					<asp:BoundField DataField="TheaterID" HeaderText="TheaterID" Visible="True" ItemStyle-CssClass="hidden"  />
-					<asp:BoundField DataField="Name" HeaderText="Theater Name" />
+					<asp:BoundField DataField="TheaterID" HeaderText="TheaterID" Visible="True" 
+						ItemStyle-CssClass="hidden"  >
+<ItemStyle CssClass="hidden"></ItemStyle>
+					</asp:BoundField>
+					<asp:BoundField DataField="TheaterName" HeaderText="Theater Name" />
 					<asp:CommandField SelectText="Select theater" ShowSelectButton="True" />
 				</Columns>
 			</asp:GridView>

@@ -3,45 +3,65 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Ometz.Cinema.BLL.Theaters;
+using Ometz.Cinema.BLL.Addresses;
 
 namespace Ometz.Cinema.UI.ContentPages.Theaters.TheaterSearchMVP
 {
 	public class TheaterSearchPresenter
 	{
-			public ITheaterSearchView Myview { get; set; }
+		public ITheaterSearchView TheaterSearchView { get; set; }
 
 		public TheaterSearchPresenter(ITheaterSearchView myView)
-       {
-           Myview = myView;
+		{
+			TheaterSearchView = myView;
+			TheaterSearchView.LoadData += LoadData;
+			TheaterSearchView.LoadCity += LoadCity;
+			TheaterSearchView.LoadTheaters += LoadTheaters;
+		}
 
-           Myview.LoadData += LoadData;
-       }
+		private void LoadData(EventArgs e)
+		{
 
-       private void LoadData(EventArgs e)
-       {
-				 //Extraction DropDownList from the database
 
-				 string cityTemp = "Montreal";
+		}
 
-           //Method that extracts all data to populate the table
-				 Myview.Model.ChosenTheater = "It works";
+		public void LoadCity(EventArgs e)
+		{
+			//Populate Cities from database
+			IAddress citiesList = new AddressServices();
+			IList<String> listOfCities = new List<String>();
+			listOfCities=citiesList.GetCities();
+			
+			//Transfer to Model
+			TheaterSearchView.Model.ListOfCities =new List<String>();
+			TheaterSearchView.Model.ListOfCities = listOfCities;
+		
+		}
 
-				 ITheater theaterServices=new TheaterServices();
-				 IList<TheaterModelDTO> listOfTheaters = theaterServices.GetTheaters(cityTemp);
-				 //Data transfer to TheaterSearch MODEL
-				 Myview.Model.ListOfTheaters = new List<TheaterLine>();
+		public void LoadTheaters(String city)
+		{
+			//Method that extracts data to populate the table
+			ITheater theaterServices = new TheaterServices();
+			IList<TheaterModelDTO> listOfTheaters = theaterServices.GetTheaters(city);
+			
 
-				 foreach (var item in listOfTheaters)
-				 {
-					 TheaterLine row = new TheaterLine();
-					 row.TheaterName = item.Name;
+			//Transfer to Model
+			TheaterSearchView.Model.ListOfTheaters = new List<TheaterLine>();
 
-					 Myview.Model.ListOfTheaters.Add(row);
-				 }
+			foreach (var item in listOfTheaters)
+			{
+				TheaterLine row = new TheaterLine();
+				row.TheaterID = item.TheaterID.ToString();
+				row.TheaterName = item.Name;
 
-       }
-
+				TheaterSearchView.Model.ListOfTheaters.Add(row);
+			}
+			
+		}
 
 	}
-	public delegate void DataLoadHandler(EventArgs e);
+
+		public delegate void DataLoadHandler(EventArgs e);
+		public delegate void LoadCityHandler(EventArgs e);
+		public delegate void LoadTheatersHandler(String city);
 }

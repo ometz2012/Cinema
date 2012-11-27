@@ -77,14 +77,18 @@
 	</tr>
 	<tr>
 		<td class="style2">
-			&nbsp;</td>
+			<asp:Label ID="lblPerformances" runat="server" Text="Performances :"></asp:Label>
+		</td>
 		<td>
 			<asp:GridView ID="GridViewPerformance" runat="server" 
 				AutoGenerateColumns="False" 
 				onselectedindexchanged="GridViewPerformance_SelectedIndexChanged">
 				<Columns>
-					<asp:BoundField DataField="PerformanceID" HeaderText="PerformanceID" ItemStyle-CssClass="hidden" />
-					<asp:BoundField DataField="Tilte" HeaderText="Movie Name" />
+					<asp:BoundField DataField="PerformanceID" HeaderText="PerformanceID" 
+						ItemStyle-CssClass="hidden" >
+<ItemStyle CssClass="hidden"></ItemStyle>
+					</asp:BoundField>
+					<asp:BoundField DataField="Title" HeaderText="Movie Name" />
 					<asp:BoundField DataField="RoomNumber" HeaderText="Room Number" />
 					<asp:BoundField DataField="Date" HeaderText="Date" />
 					<asp:BoundField DataField="StartingTime" HeaderText="Starting Time" />
@@ -103,8 +107,7 @@
 	</tr>
 	<tr>
 		<td class="style2">
-			<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-		</td>
+			&nbsp;</td>
 		<td>
 			&nbsp;</td>
 		<td>

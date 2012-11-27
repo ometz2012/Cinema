@@ -28,7 +28,7 @@ namespace Ometz.Cinema.BLL.Movies
                         MovieModelDTO movieRow = new MovieModelDTO()
                         {
                             MovieID = item.MovieId,
-                            Tilte = item.Title
+                            Title = item.Title
                         };
                         allMoviesToReturn.Add(movieRow);
                     }

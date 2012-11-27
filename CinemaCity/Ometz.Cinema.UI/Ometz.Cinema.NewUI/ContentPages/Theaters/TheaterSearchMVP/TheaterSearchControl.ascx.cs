@@ -12,8 +12,10 @@ namespace Ometz.Cinema.UI.ContentPages.Theaters.TheaterSearchMVP
 	public partial class TheaterSearchControl : System.Web.UI.UserControl,ITheaterSearchView
 	{
 
-		//public string theaterID;
+		
 		public event DataLoadHandler LoadData;
+		public event LoadCityHandler LoadCity;
+		public event LoadTheatersHandler LoadTheaters;
 
 		public TheaterSearchPresenter Presenter { get; set; }
 		public TheaterSearchModel Model { get; set; }
@@ -33,35 +35,31 @@ namespace Ometz.Cinema.UI.ContentPages.Theaters.TheaterSearchMVP
 				if (this.LoadData != null)
 				{
 					var ex = new EventArgs();
-					LoadData(ex);
+					
+					LoadCity(ex);
+					ddlCity.DataSource = Model.ListOfCities;
+					ddlCity.DataBind();
+					ddlCity.Items.Insert(0, new ListItem("<-Choose City->", ""));
+
 				}
-
-
-
-				AddressServices citiesList = new AddressServices();
-				ddlCity.DataSource = citiesList.GetCities();
-				ddlCity.DataBind();
-				ddlCity.Items.Insert(0, new ListItem("<-Choose City->", ""));
-
 			}
-		//Session["City"]=ddlCity.SelectedValue.ToString();
+		
 			ViewState["City"] = ddlCity.SelectedValue.ToString();
 		}
 
 		protected void btnSearch_Click(object sender, EventArgs e)
 		{
-			
-			//string city = Session["City"].ToString();
 			string city = ViewState["City"].ToString();
-			TheaterServices showTheaters=new TheaterServices();
-			GridViewTheaterList.DataSource = showTheaters.GetTheaters(city);
+			LoadTheaters(city);
+
+			GridViewTheaterList.DataSource = Model.ListOfTheaters;
 			GridViewTheaterList.DataBind();
 			GridViewTheaterList.Columns[0].Visible = false;
 		}
 
 		protected void GridViewTheaterList_SelectedIndexChanged(object sender, EventArgs e)
 		{
-				//Session["TheaterID"] = GridViewTheaterList.SelectedRow.Cells[0].Text;
+				
 				string theaterID = GridViewTheaterList.SelectedRow.Cells[0].Text;
 				Response.Redirect("~/ContentPages/Theaters/TheaterInfo.aspx?TheaterID=" + theaterID);
 			

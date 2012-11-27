@@ -8,25 +8,23 @@ namespace Ometz.Cinema.BLL.Theaters
 {
 	public class TheaterServices : ITheater
 	{
-		public TheaterModelDTO GetTheater(Guid theaterId)
+		public String GetTheater(Guid theaterId)
 		{
 
-			Theater spesificTheater = new Theater();
+			String TheaterName = null;
 
 			using (var context = new CinemaEntities())
 			{
-				spesificTheater = (from theater in context.Theaters
+				var results = (from theater in context.Theaters
 													 where theater.TheaterID == theaterId
-													 select theater).FirstOrDefault();
+													 select theater);
+				foreach (var item in results)
+				{
+					TheaterName = item.Name;
+				}
 			}
 
-			TheaterModelDTO theaterToReturn = new TheaterModelDTO();
-			theaterToReturn.TheaterID = spesificTheater.TheaterID;
-			theaterToReturn.Name = spesificTheater.Name;
-
-
-
-			return theaterToReturn;
+			return TheaterName;
 		}
 
 
