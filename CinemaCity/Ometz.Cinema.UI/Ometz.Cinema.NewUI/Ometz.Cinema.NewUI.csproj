@@ -56,6 +56,10 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="ContentPages\MoviePeople\Actors\ActorMain.aspx" />
+    <Content Include="ContentPages\MoviePeople\Actors\ActorsInMovie.aspx" />
+    <Content Include="ContentPages\MoviePeople\MoviePeopleUserControls\MainMoviePeople.ascx" />
+    <Content Include="ContentPages\MoviePeople\MoviePeopleUserControls\PeopleInMovie.ascx" />
     <Content Include="ContentPages\Movies\Movie.aspx" />
     <Content Include="ContentPages\Movies\MovieMain.aspx" />
     <Content Include="ContentPages\Theaters\Theater.aspx" />
@@ -117,6 +121,34 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Actors\ActorMain.aspx.cs">
+      <DependentUpon>ActorMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Actors\ActorMain.aspx.designer.cs">
+      <DependentUpon>ActorMain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Actors\ActorsInMovie.aspx.cs">
+      <DependentUpon>ActorsInMovie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Actors\ActorsInMovie.aspx.designer.cs">
+      <DependentUpon>ActorsInMovie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\MoviePeopleUserControls\MainMoviePeople.ascx.cs">
+      <DependentUpon>MainMoviePeople.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\MoviePeopleUserControls\MainMoviePeople.ascx.designer.cs">
+      <DependentUpon>MainMoviePeople.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\MoviePeopleUserControls\PeopleInMovie.ascx.cs">
+      <DependentUpon>PeopleInMovie.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\MoviePeopleUserControls\PeopleInMovie.ascx.designer.cs">
+      <DependentUpon>PeopleInMovie.ascx</DependentUpon>
     </Compile>
     <Compile Include="ContentPages\Movies\Movie.aspx.cs">
       <DependentUpon>Movie.aspx</DependentUpon>
