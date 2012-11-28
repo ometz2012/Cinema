@@ -9,7 +9,7 @@
         Font-Size="Medium" ForeColor="#000099" Text="Title"></asp:Label>
 &nbsp;
     <asp:DropDownList ID="ddlTitleMovie" runat="server" Height="26px" 
-    Width="135px" onselectedindexchanged="DropDownList1_SelectedIndexChanged">
+    Width="135px" >
     </asp:DropDownList>
 &nbsp;
     <asp:Label ID="lblActorMovie" runat="server" Font-Bold="True" 

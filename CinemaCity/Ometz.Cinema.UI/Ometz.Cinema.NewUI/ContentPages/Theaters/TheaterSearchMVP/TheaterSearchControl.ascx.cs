@@ -53,13 +53,14 @@ namespace Ometz.Cinema.UI.ContentPages.Theaters.TheaterSearchMVP
 			LoadTheaters(city);
 
 			GridViewTheaterList.DataSource = Model.ListOfTheaters;
+			GridViewTheaterList.Columns[0].Visible = true;
 			GridViewTheaterList.DataBind();
 			GridViewTheaterList.Columns[0].Visible = false;
 		}
 
 		protected void GridViewTheaterList_SelectedIndexChanged(object sender, EventArgs e)
 		{
-				
+				GridViewTheaterList.Columns[0].Visible = true;
 				string theaterID = GridViewTheaterList.SelectedRow.Cells[0].Text;
 				Response.Redirect("~/ContentPages/Theaters/TheaterInfo.aspx?TheaterID=" + theaterID);
 			
