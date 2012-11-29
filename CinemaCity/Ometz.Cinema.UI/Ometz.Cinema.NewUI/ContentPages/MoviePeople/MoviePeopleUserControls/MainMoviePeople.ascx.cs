@@ -14,7 +14,11 @@ namespace Ometz.Cinema.UI.ContentPages.MoviePeople.MoviePeopleUserControls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //if (!IsPostBack)
+            //{
+            //    btnSearchPersonByName.Visible = false;
+            //}
+           
         }
         public MovieProperties SelectButton
         {
@@ -44,25 +48,45 @@ namespace Ometz.Cinema.UI.ContentPages.MoviePeople.MoviePeopleUserControls
         {
             get { return this.gridMovies; }
         }
+
+        public GridView GridPersonName
+        {
+            get { return this.gridPersonName; }
+        }
+
         public Label lblSearchMoviePersonType
         {
             get { return this.lblSearchByMovieName; }
             set {  }
         }
-        public void SetLabelText(string message)
+        public Label lblSearchMoviePersonByName
         {
-           // lblSearchByMovieName.Text = message;
-            lblSearchMoviePersonType.Text = message;
+            get { return this.lblSearchByPersonName; }
+            set { }
         }
-        //public Button SearchByMovieName
-        //{
-        //    get {return this.btnSearchByMovieName; }
-        //    set{}
+        public TextBox SearchPersonByName
+        {
+            get { return txtSearchPersonByName; }
+            set { }
         }
-        //protected void btnSearchByMovieName_Click(object sender, EventArgs e)
+        //public Button SearchPersonByNameButton
         //{
-        //    MovieServices moviestoGet = new MovieServices();
-        //    GridMovieList.DataSource = moviestoGet.GetAllMovies();
-        //    GridMovieList.DataBind();
+        //    get { return btnSearchPersonByName; }
+        //    set { }
         //}
+        public void SetLabelText(string messageMovieTitle, string messagePersonName)
+        {          
+            lblSearchMoviePersonType.Text = messageMovieTitle;
+            lblSearchByPersonName.Text = messagePersonName;
+        }
+
+        protected void txtSearchPersonByName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+       
+
+       
+        }
+      
     }

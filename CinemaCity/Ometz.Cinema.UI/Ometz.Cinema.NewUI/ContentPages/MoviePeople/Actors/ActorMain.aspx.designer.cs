@@ -20,5 +20,14 @@ namespace Ometz.Cinema.UI.ContentPages.MoviePeople.Actors {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ometz.Cinema.UI.ContentPages.MoviePeople.MoviePeopleUserControls.MainMoviePeople MainMoviePeople1;
+        
+        /// <summary>
+        /// btnSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSearch;
     }
 }

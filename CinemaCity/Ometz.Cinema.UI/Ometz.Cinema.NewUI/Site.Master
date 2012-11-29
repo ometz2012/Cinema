@@ -40,11 +40,12 @@
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" />
                         <asp:MenuItem NavigateUrl="~/" Text="Movies" />
-                        <asp:MenuItem NavigateUrl="~/ContentPages/MoviePeople/MoviePeopleMain.aspx" Text="People on Cast">
-                            <asp:MenuItem NavigateUrl="~/ContentPages/MoviePeople/MoviePeopleMain.aspx" Text="Actors" />
-                            <asp:MenuItem NavigateUrl="~/ContentPages/MoviePeople/MoviePeopleMain.aspx" Text="Producers" />
-                            <asp:MenuItem NavigateUrl="~/ContentPages/MoviePeople/MoviePeopleMain.aspx" Text="Directors" />
-                            <asp:MenuItem NavigateUrl="~/ContentPages/MoviePeople/MoviePeopleMain.aspx" Text="Composers" />
+                     
+                        <asp:MenuItem  Text="People on Cast">
+                            <asp:MenuItem NavigateUrl="ContentPages/MoviePeople/Actors/ActorMain.aspx" Text="Actors" />
+                            <asp:MenuItem NavigateUrl="ContentPages/MoviePeople/Actors/ActorMain.aspx" Text="Producers" />
+                            <asp:MenuItem NavigateUrl="ContentPages/MoviePeople/Actors/ActorMain.aspx" Text="Directors" />
+                            <asp:MenuItem NavigateUrl="ContentPages/MoviePeople/Actors/ActorMain.aspx" Text="Composers" />
                         </asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/" Text="Theaters">
                             <asp:MenuItem NavigateUrl="~/ContentPages/Theaters/Theater.aspx" Text="Search Theater" />

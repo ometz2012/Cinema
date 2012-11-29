@@ -43,6 +43,46 @@ namespace Ometz.Cinema.BLL.MoviePeople
 
         }
 
+        //Method gets First Name or Last Name or Full Name or Part of the Name of the person and
+       // person type ("actor", "director" etc..) and return the person's Data
+       public MoviePersonDTO GetMoviePersonByName(string personName, string personType)
+        {
+            using (var context = new CinemaEntities())
+            {
+                var allPeopleByType = (from person in context.People
+                                       where person.PersonType.Description == personType
+                                       select new
+                                       {
+                                           FullName = person.FirstName + " " + person.LastName,
+                                           BirthDate = person.BirthDate,
+                                           BirthPlace = person.BirthPlace,
+                                           FirstName = person.FirstName,
+                                           LastName = person.LastName
+                                       }).ToList();
+
+                var foundPerson = (from person in allPeopleByType
+                                   where person.FullName.ToLower().Contains(personName.ToLower())
+                                   select person).FirstOrDefault();
+                                  
+                if (foundPerson != null)
+                {
+                    MoviePersonDTO moviePersonToReturn = new MoviePersonDTO()
+                    {
+                        FirstName = foundPerson.FirstName,
+                        LastName = foundPerson.LastName,
+                        BirthDate = (DateTime)foundPerson.BirthDate,
+                        BirthPlace = foundPerson.BirthPlace
+                    };
+                    return moviePersonToReturn;
+                    
+                }
+                else
+                {
+                    return null;
+                }    
+            }
+        }
+
         //get list of actors for ddlActorMovie MainMovie.aspx
 
         public List<MoviePersonDTO> GetActors()

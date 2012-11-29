@@ -303,6 +303,7 @@ div.eliya
 .bold
 {
     font-weight: bold;
+    text-align: center;
 }
 
 .submitButton
