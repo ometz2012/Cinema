@@ -187,14 +187,14 @@ namespace Ometz.Cinema.BLL.Users
                 var results = (from pr in context.Perfomances.Include("Theater")
                                join ad in context.Addresses.Include("ObjectType")
                                on pr.TheaterID equals ad.ObjectID
-                               where pr.MovieID==movieID
+                               where pr.MovieID == movieID
                                where ad.City == City
-                               where ad.ObjectType.Description=="Theater"
+                               where ad.ObjectType.Description == "Theater"
                                select new
                                {
                                    TheaterID = pr.TheaterID,
                                    TheaterName = pr.Theater.Name,
-                                   AddressTh= ad
+                                   AddressTh = ad
                                });
 
                 foreach (var item in results)
@@ -202,10 +202,10 @@ namespace Ometz.Cinema.BLL.Users
                     UserTheaterDTO row = new UserTheaterDTO();
                     row.TheaterID = item.TheaterID;
                     row.TheaterName = item.TheaterName;
-                    row.TheaterAddress = String.Format("str. {0}, {1}, phone number: {2}.",item.AddressTh.AddressLine1,item.AddressTh.City,item.AddressTh.Phone);
+                    row.TheaterAddress = String.Format("str. {0}, {1}, phone number: {2}.", item.AddressTh.AddressLine1, item.AddressTh.City, item.AddressTh.Phone);
                     ListOfTheaters.Add(row);
                 }
-                               
+
             }
             return ListOfTheaters;
         }
@@ -218,7 +218,7 @@ namespace Ometz.Cinema.BLL.Users
             using (var context = new CinemaEntities())
             {
                 var results = (from pr in context.Perfomances.Include("Movie").Include("Theater")
-                               where pr.TheaterID == TheaterID && pr.MovieID==movieID
+                               where pr.TheaterID == TheaterID && pr.MovieID == movieID
                                select pr);
                 foreach (var item in results)
                 {
@@ -229,7 +229,7 @@ namespace Ometz.Cinema.BLL.Users
                     row.Date = item.Date.ToString("yyyy/MM/dd");
                     string hours = item.StartingTime.Hours.ToString();
                     string minutes = item.StartingTime.Minutes.ToString();
-                    row.StartingTime = string.Format("{0}:{1}",hours,minutes);
+                    row.StartingTime = string.Format("{0}:{1}", hours, minutes);
                     row.Duration = item.Duration;
                     row.price = item.Price;
                     ListOfPerformances.Add(row);
@@ -239,10 +239,188 @@ namespace Ometz.Cinema.BLL.Users
 
         }
 
+        //Method that gets Performance info by its ID
+        public UserPerformanceDTO GetPerformanceByID(int performanceID)
+        {
+            UserPerformanceDTO CurrentPerformance = new UserPerformanceDTO();
 
+            using (var context = new CinemaEntities())
+            {
+                var results = (from pr in context.Perfomances.Include("Theater").Include("Movie").Include("Room")
+                               where pr.PerfomanceID == performanceID
+                               join ad in context.Addresses
+                               on pr.TheaterID equals ad.ObjectID
+                               where ad.ObjectType.Description == "Theater"
+                               select new
+                               {
+                                   PerformanceOut = pr,
+                                   AddressOut = ad
+                               });
+                if (results != null)
+                {
+                    foreach (var item in results)
+                    {
+                        UserPerformanceDTO row = new UserPerformanceDTO();
+                        row.performanceID = performanceID;
+                        row.TheaterName = item.PerformanceOut.Theater.Name;
+                        row.Date = item.PerformanceOut.Date.ToString("yyy/MM/dd");
+                        row.Duration = item.PerformanceOut.Duration;
+                        string hour = item.PerformanceOut.StartingTime.Hours.ToString();
+                        string minutes = item.PerformanceOut.StartingTime.Minutes.ToString();
+                        row.StartingTime = string.Format("{0}:{1}", hour, minutes);
+                        row.price = item.PerformanceOut.Price;
+                        row.MovieTitle = item.PerformanceOut.Movie.Title;
+                        row.roomNumber = item.PerformanceOut.Room.RoomNumber;
+                        string street = item.AddressOut.AddressLine1;
+                        if (item.AddressOut.AddressLine2 != null)
+                        {
+                            street = string.Format("{0}, {1}", item.AddressOut.AddressLine1, item.AddressOut.AddressLine2);
+                        }
+                        string phone = item.AddressOut.Phone;
+                        row.TheaterAddress = string.Format("{0}, Phone: {1}", street, phone);
+
+                    }
+                }
+            }
+
+            return CurrentPerformance;
+
+        }
 
         #endregion
 
+        //Method that gets UserID during the login
+        public Guid GetUserID(String UserName)
+        {
+            Guid UserID = new Guid();
+
+            using (var context = new CinemaEntities())
+            {
+                var results = (from usr in context.aspnet_Users
+                               where usr.UserName == UserName
+                               select usr);
+                if (results != null)
+                {
+                    foreach (var item in results)
+                    {
+                        UserID = item.UserId;
+                    }
+
+                }
+                return UserID;
+
+            }
+        }
+        //Method that get user type by description
+        public int GetUserType(String Description)
+        {
+            int type = 0;
+            using (var context = new CinemaEntities())
+            {
+                var results = (from pt in context.PersonTypes
+                               where pt.Description == Description
+                               select pt);
+                if (results != null)
+                {
+                    foreach (var item in results)
+                    {
+                        type = item.PersonType1;
+
+                    }
+                }
+            }
+            return type;
+        }
+
+        //Method that creates new user
+        public bool CreateNewUser(UserModelDTO NewUser)
+        {
+            bool check = false;
+            using (TransactionScope Trans = new TransactionScope())
+            {
+                try
+                {
+                    using (var context = new CinemaEntities())
+                    {
+
+                        //Enetring into Users Table
+                        try
+                        {
+                            User NewUserIn = new User();
+                            NewUserIn.UserID = NewUser.UserID;
+                            NewUserIn.Password = NewUser.Password;
+
+                            if (NewUserIn.EntityState == EntityState.Detached)
+                            {
+                                context.Users.AddObject(NewUserIn);
+                            }
+                            context.SaveChanges();
+                        }
+                        catch { }
+
+
+                        //Entering into Person Table
+                        try
+                        {
+                            Person NewPersonIn = new Person();
+                            NewPersonIn.FirstName = NewUser.FirstName;
+                            NewPersonIn.LastName = NewUser.LastName;
+                            NewPersonIn.PersonTypeID = NewUser.personTypeID;
+                            NewPersonIn.PersonID = Guid.NewGuid();
+                            if (NewPersonIn.EntityState == EntityState.Detached)
+                            {
+                                context.People.AddObject(NewPersonIn);
+                            }
+                            context.SaveChanges();
+
+                        }
+                        catch { }
+
+
+                        ////Entering into Authonticated User Table
+                        //try
+                        //{
+                        //    AuthenticatedUser NewAuthUser = new AuthenticatedUser();
+                        //    NewAuthUser.PersonID = NewUser.PersonID;
+                        //    NewAuthUser.UserID = NewUser.UserID;
+                        //    NewAuthUser.AuthenticatedUserID = Guid.NewGuid();
+                        //    if (NewAuthUser.EntityState == EntityState.Detached)
+                        //    {
+                        //        context.AuthenticatedUsers.AddObject(NewAuthUser);
+                        //    }
+                        //    context.SaveChanges();
+
+                        //}
+                        //catch { }
+
+
+
+
+                    }
+
+                }
+                catch
+                {
+                    check = false;
+                    Trans.Dispose();
+                    return check;
+                }
+
+                check = true;
+                Trans.Complete();
+                return check;
+            }
+
+        }
+
 
     }
+
+    //Exceptions
+    #region Exceptions
+
+
+
+
+    #endregion
 }

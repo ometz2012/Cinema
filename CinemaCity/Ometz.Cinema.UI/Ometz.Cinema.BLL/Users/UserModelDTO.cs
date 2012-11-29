@@ -5,8 +5,9 @@ using System.Text;
 
 namespace Ometz.Cinema.BLL.Users
 {
-    public class UserModelDTO
+    public class UserModelDTO:UserModelBase
     {
+       
     }
 
     public class UserCommentDTO : UserCommentBase

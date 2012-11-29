@@ -43,8 +43,11 @@ namespace Ometz.Cinema.UI.ContentPages.Users.PaymentMVP
                         PerformanceDataArgs pda = new PerformanceDataArgs();
                         pda.PerformanceID = this.PerformanceID;
                         LoadData(pda);
-                        lblPerformance.Text = this.PerformanceID;
-
+                       
+                        lblMovie.Text = Model.MovieTitle;
+                        lblPerformance.Text = Model.PerformanceDetails;
+                        lblTheater.Text = Model.TheaterDetails;
+                        txtPrice.Text = Model.Price;
 
                     }
                 }

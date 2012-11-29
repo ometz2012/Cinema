@@ -37,7 +37,7 @@ p
 /* HEADINGS   
 ----------------------------------------------------------*/
 
-h1, h2, h3, h4, h5, h6
+h1, h2, h3, h4, h5, h6, h7
 {
     font-size: 1.5em;
     color: #666666;
@@ -45,6 +45,7 @@ h1, h2, h3, h4, h5, h6
     text-transform: none;
     font-weight: 200;
     margin-bottom: 0px;
+   
 }
 
 h1
@@ -54,10 +55,11 @@ h1
     margin-bottom: 0px;
 }
 
-h2
+h2, h7
 {
     font-size: 1.5em;
     font-weight: 600;
+    text-align: center;
 }
 
 h3
@@ -74,6 +76,12 @@ h5, h6
 {
     font-size: 1em;
 }
+
+h7
+{
+    right: 500px;
+}
+
 
 /* this rule styles <h1> and <h2> tags that are the 
 first child of the left and right table columns */
@@ -193,13 +201,14 @@ div.menu ul li a:active
 fieldset
 {
     margin: 1em 0px;
-    padding: 1em;
+    padding: 1em 1.5em 1em 1em;
     border: 1px solid #ccc;
 }
 
 fieldset p 
 {
     margin: 2px 12px 10px 10px;
+    width: 114px;
 }
 
 fieldset.login label, fieldset.register label, fieldset.changePassword label
@@ -234,6 +243,15 @@ input.passwordEntry
 div.accountInfo
 {
     width: 42%;
+}
+
+div.eliya
+{
+    width: 42%;
+    position: fixed;
+    top:108%;
+    right: 10%;
+    z-index: 1;
 }
 
 /* MISC  

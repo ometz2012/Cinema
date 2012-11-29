@@ -7,7 +7,13 @@ namespace Ometz.Cinema.BLL.Users
 {
     public class UserModelBase
     {
-
+        public Guid UserID { get; set; }
+        public String Password { get; set; }
+        public String FirstName { get; set; }
+        public String LastName { get; set; }
+        public int personTypeID { get; set; }
+        public Guid PersonID { get; set; }
+        public String UserName { get; set; }
     }
 
     public abstract class UserBase

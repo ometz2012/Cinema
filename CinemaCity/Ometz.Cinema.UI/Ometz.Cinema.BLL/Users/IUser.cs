@@ -9,7 +9,7 @@ namespace Ometz.Cinema.BLL.Users
     {
 
         //Method that gets all Comments of specific user
-       IList< UserCommentDTO> GetAllUserComments(System.Guid userID);
+        IList<UserCommentDTO> GetAllUserComments(System.Guid userID);
 
         //Method that gets comments of a specific user for specific movie
         IList<UserCommentDTO> GetUserCommentByMovie(System.Guid userID, int movieID);
@@ -21,7 +21,7 @@ namespace Ometz.Cinema.BLL.Users
         IList<UserRatingDTO> GetUserRatingsByMovie(System.Guid userID, int movieID);
 
         //Method that gets all Favorite movies of a specific user
-        IList<UserFavoriteMovieDTO> GetFavoriteMoviesByUser(System.Guid userID); 
+        IList<UserFavoriteMovieDTO> GetFavoriteMoviesByUser(System.Guid userID);
 
         //===========================================25/11/2012
         //Method that gets all movies
@@ -41,8 +41,18 @@ namespace Ometz.Cinema.BLL.Users
         //Method that gets Performances by Theater
         IList<UserPerformanceDTO> GetPerformancesByTheaterIDandMovieID(Guid TheaterID, int movieID);
 
-        
-        //Method that presents User information
+        //Method that gets Performance info by its ID
+        UserPerformanceDTO GetPerformanceByID(int performanceID);
+
+
+        //Method that gets UserID during the login
+        Guid GetUserID(String UserName);
+
+        //Method that get user type by description
+        int GetUserType(String Description);
+
+        //Method that creates new user
+        bool CreateNewUser(UserModelDTO NewUser);
 
 
         //Method that updates comment

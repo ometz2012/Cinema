@@ -122,7 +122,7 @@
             <br />
         </td>
         <td>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;
             <asp:Button ID="btnReset" runat="server" Text="RESET" Width="143px" 
                 onclick="btnReset_Click" 
                 ToolTip="By pushing the button you will be able reset your choice and start over." />
