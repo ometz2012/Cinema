@@ -43,9 +43,9 @@
                      
                         <asp:MenuItem  Text="People on Cast">
                             <asp:MenuItem NavigateUrl="~/ContentPages/MoviePeople/Actors/ActorMain.aspx" Text="Actors" />
-                            <asp:MenuItem NavigateUrl="~/ContentPages/MoviePeople/Actors/ActorMain.aspx" Text="Producers" />
-                            <asp:MenuItem NavigateUrl="~/ContentPages/MoviePeople/Actors/ActorMain.aspx" Text="Directors" />
-                            <asp:MenuItem NavigateUrl="~/ContentPages/MoviePeople/Actors/ActorMain.aspx" Text="Composers" />
+                            <asp:MenuItem NavigateUrl="ContentPages/MoviePeople/Actors/ActorMain.aspx" Text="Producers" />
+                            <asp:MenuItem NavigateUrl="ContentPages/MoviePeople/Directors/DirectorMain.aspx" Text="Directors" />
+                            <asp:MenuItem NavigateUrl="ContentPages/MoviePeople/Actors/ActorMain.aspx" Text="Composers" />
                         </asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/" Text="Theaters">
                             <asp:MenuItem NavigateUrl="~/ContentPages/Theaters/Theater.aspx" Text="Search Theater" />

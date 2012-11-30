@@ -31,15 +31,6 @@ namespace Ometz.Cinema.UI.ContentPages.MoviePeople.MoviePeopleUserControls {
         protected global::System.Web.UI.WebControls.GridView gridMovies;
         
         /// <summary>
-        /// gridPersonName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridPersonName;
-        
-        /// <summary>
         /// lblSearchByPersonName control.
         /// </summary>
         /// <remarks>

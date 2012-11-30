@@ -4,18 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Ometz.Cinema.BLL.Movies;
 using Ometz.Cinema.BLL.MoviePeople;
+using Ometz.Cinema.BLL.Movies;
 
-namespace Ometz.Cinema.UI.ContentPages.MoviePeople.Actors
+namespace Ometz.Cinema.NewUI.ContentPages.MoviePeople.Directors
 {
-    public partial class ActorMain : System.Web.UI.Page
+    public partial class DirectorMain : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                MainMoviePeople1.SetLabelText("Search Actors by Movie Title", "Search Actor by Name");
+                MainMoviePeople1.SetLabelText("Search Director(s) by Movie Title", "Search Director by Name");
             }
             MovieServices movieList = new MovieServices();
             GridView MovieGrid = new GridView();
@@ -23,9 +23,8 @@ namespace Ometz.Cinema.UI.ContentPages.MoviePeople.Actors
             MovieGrid.DataSource = movieList.GetAllMovies();
             MovieGrid.DataBind();
             GetAppropriateView(MovieGrid);
-
-
         }
+
         protected override void OnPreRender(EventArgs e)
         {
             if (IsPostBack)
@@ -34,9 +33,9 @@ namespace Ometz.Cinema.UI.ContentPages.MoviePeople.Actors
                 {
                     int movieId = Convert.ToInt32(MainMoviePeople1.GridMovieList.SelectedRow.Cells[(int)MainMoviePeople1.MovieId].Text);
                     string movieTitle = MainMoviePeople1.GridMovieList.SelectedRow.Cells[(int)MainMoviePeople1.Title].Text;
-                    string url = "ActorsInMovie.aspx?movieId=" + movieId + "&movieTitle=" + movieTitle + "&selector=actorsInMovie";
+                    string url = "DirectorsInMovie.aspx?movieId=" + movieId + "&movieTitle=" + movieTitle + "&selector=directorInMovie";
                     Response.Redirect(url);
-                }              
+                }
             }
         }
         private void GetAppropriateView(GridView movies)
@@ -56,7 +55,7 @@ namespace Ometz.Cinema.UI.ContentPages.MoviePeople.Actors
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            if (MainMoviePeople1.SearchPersonByName.Text == "")
+             if (MainMoviePeople1.SearchPersonByName.Text == "")
             {
                 return;
             }
@@ -64,11 +63,10 @@ namespace Ometz.Cinema.UI.ContentPages.MoviePeople.Actors
 
             MoviePeopleServices personInfo = new MoviePeopleServices();
             string personToShow = MainMoviePeople1.SearchPersonByName.Text;           
-            string url = "ActorsInMovie.aspx?personToShow=" + personToShow + "&selector=actorFoundByName";
+            string url = "DirectorsInMovie.aspx?personToShow=" + personToShow + "&selector=directorFoundByName";
             Response.Redirect(url);               
             MainMoviePeople1.SearchPersonByName.Text = "";
-
-            }
+            
         }
-
     }
+}

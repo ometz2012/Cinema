@@ -58,6 +58,8 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="ContentPages\MoviePeople\Actors\ActorMain.aspx" />
     <Content Include="ContentPages\MoviePeople\Actors\ActorsInMovie.aspx" />
+    <Content Include="ContentPages\MoviePeople\Directors\DirectorMain.aspx" />
+    <Content Include="ContentPages\MoviePeople\Directors\DirectorsInMovie.aspx" />
     <Content Include="ContentPages\MoviePeople\MoviePeopleUserControls\MainMoviePeople.ascx" />
     <Content Include="ContentPages\MoviePeople\MoviePeopleUserControls\PeopleInMovie.ascx" />
     <Content Include="ContentPages\Movies\Movie.aspx" />
@@ -135,6 +137,20 @@
     </Compile>
     <Compile Include="ContentPages\MoviePeople\Actors\ActorsInMovie.aspx.designer.cs">
       <DependentUpon>ActorsInMovie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Directors\DirectorMain.aspx.cs">
+      <DependentUpon>DirectorMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Directors\DirectorMain.aspx.designer.cs">
+      <DependentUpon>DirectorMain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Directors\DirectorsInMovie.aspx.cs">
+      <DependentUpon>DirectorsInMovie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Directors\DirectorsInMovie.aspx.designer.cs">
+      <DependentUpon>DirectorsInMovie.aspx</DependentUpon>
     </Compile>
     <Compile Include="ContentPages\MoviePeople\MoviePeopleUserControls\MainMoviePeople.ascx.cs">
       <DependentUpon>MainMoviePeople.ascx</DependentUpon>

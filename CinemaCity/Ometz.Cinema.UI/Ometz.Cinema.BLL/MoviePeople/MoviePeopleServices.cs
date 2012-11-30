@@ -26,11 +26,27 @@ namespace Ometz.Cinema.BLL.MoviePeople
                         
                             moviePeopleRow.FirstName = item.Person.FirstName;
                             moviePeopleRow.LastName = item.Person.LastName;
-                            moviePeopleRow.BirthDate = (DateTime)item.Person.BirthDate;
-                            //
-                         // string BirthDate = item.Person.BirthDate.ToString("yyyy'/'MM'/'dd");
-                          moviePeopleRow.BirthPlace = item.Person.BirthPlace;
-                        
+                            if (item.Person.BirthDate == null)
+                            {
+                                DateTime unavailableDateOfBirth = DateTime.ParseExact("01/01/9999","d/MM/yyyy", null);
+                                moviePeopleRow.BirthDate = unavailableDateOfBirth;
+                            }
+                               
+                            else
+                            {
+                                moviePeopleRow.BirthDate = (DateTime)item.Person.BirthDate;
+                            }
+                          //  moviePeopleRow.BirthDate = (DateTime)item.Person.BirthDate;
+
+                            if (item.Person.BirthPlace == null)
+                            {
+                                moviePeopleRow.BirthPlace = "Unknown";
+                            }
+                            else
+                            {
+                                moviePeopleRow.BirthPlace = item.Person.BirthPlace;                        
+                            }
+                          
                         moviePeopleToReturn.Add(moviePeopleRow);
                     }
                     return moviePeopleToReturn;
@@ -66,13 +82,29 @@ namespace Ometz.Cinema.BLL.MoviePeople
                                   
                 if (foundPerson != null)
                 {
-                    MoviePersonDTO moviePersonToReturn = new MoviePersonDTO()
-                    {
-                        FirstName = foundPerson.FirstName,
-                        LastName = foundPerson.LastName,
-                        BirthDate = (DateTime)foundPerson.BirthDate,
-                        BirthPlace = foundPerson.BirthPlace
-                    };
+                    MoviePersonDTO moviePersonToReturn = new MoviePersonDTO();
+                  
+                        moviePersonToReturn.FirstName = foundPerson.FirstName;
+                        moviePersonToReturn.LastName = foundPerson.LastName;
+                         if (foundPerson.BirthDate == null)
+                            {
+                                DateTime unavailableDateOfBirth = DateTime.ParseExact("01/01/9999","d/MM/yyyy", null);
+                                moviePersonToReturn.BirthDate = unavailableDateOfBirth;
+                            }
+                               
+                            else
+                            {
+                                moviePersonToReturn.BirthDate = (DateTime)foundPerson.BirthDate;
+                            }
+                         if (foundPerson.BirthPlace == null)
+                         {
+                             moviePersonToReturn.BirthPlace = "Unknown";
+                         }
+                         else
+                         {
+                             moviePersonToReturn.BirthPlace = foundPerson.BirthPlace;
+                         }                        
+                 
                     return moviePersonToReturn;
                     
                 }
@@ -163,5 +195,7 @@ namespace Ometz.Cinema.BLL.MoviePeople
         //{
         //    throw new NotImplementedException();
         //}
+
+        public DateTime unavailableDateOfBirth { get; set; }
     }
 }

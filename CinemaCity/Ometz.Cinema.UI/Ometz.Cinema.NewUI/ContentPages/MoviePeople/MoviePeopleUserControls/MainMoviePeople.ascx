@@ -44,9 +44,7 @@
         <td class="style2">
           &nbsp;</td>
         <td class="style3">
-         <asp:GridView ID="gridPersonName" runat="server">
-            </asp:GridView>
-        </td>
+            &nbsp;</td>
         
         <td>
             &nbsp;</td>
@@ -69,15 +67,12 @@
             &nbsp;</td>
     </tr>
     <tr>
-        <td class="style2">
-        
-          </td>
         <td class="style3">
+            &nbsp;</td>
+        <td>
             <asp:TextBox ID="txtSearchPersonByName" runat="server" 
                 ontextchanged="txtSearchPersonByName_TextChanged"></asp:TextBox>
         </td>
-        <td>
-            &nbsp;</td>
            	
 
     </tr>

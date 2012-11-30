@@ -49,10 +49,10 @@ namespace Ometz.Cinema.UI.ContentPages.MoviePeople.MoviePeopleUserControls
             get { return this.gridMovies; }
         }
 
-        public GridView GridPersonName
-        {
-            get { return this.gridPersonName; }
-        }
+        //public GridView GridPersonName
+        //{
+        //    get { return this.gridPersonName; }
+        //}
 
         public Label lblSearchMoviePersonType
         {
