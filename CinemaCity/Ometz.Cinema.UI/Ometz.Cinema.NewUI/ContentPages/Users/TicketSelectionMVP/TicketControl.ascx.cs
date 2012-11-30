@@ -82,7 +82,7 @@ namespace Ometz.Cinema.UI.ContentPages.Users.TicketSelectionMVP
             String SelectedMovie = lblMovieID.Text;
             if (SelectedCity != "None")
             {
-                SelectedParamterArgs esp = new SelectedParamterArgs(SelectedCity,SelectedMovie);
+                SelectedParamterArgs esp = new SelectedParamterArgs(SelectedCity, SelectedMovie);
                 if (CitySelection != null)
                 {
                     CitySelection(esp);
@@ -176,8 +176,10 @@ namespace Ometz.Cinema.UI.ContentPages.Users.TicketSelectionMVP
 
             String SelectedPerformanceID = row.Cells[0].Text;
 
-            string path = string.Format("~/ContentPages/Users/Payment.aspx?PerformanceID={0}",SelectedPerformanceID);
+            string path = string.Format("~/ContentPages/Users/Payment.aspx?PerformanceID={0}", SelectedPerformanceID);
             Response.Redirect(path);
+
+
         }
 
         #endregion

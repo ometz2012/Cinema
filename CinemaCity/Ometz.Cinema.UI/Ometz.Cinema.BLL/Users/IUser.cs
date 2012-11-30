@@ -44,6 +44,9 @@ namespace Ometz.Cinema.BLL.Users
         //Method that gets Performance info by its ID
         UserPerformanceDTO GetPerformanceByID(int performanceID);
 
+        //Method that submits the order
+        UserOrderDTO CreateOrder(UserOrderDTO NewOrder);
+
 
         //Method that gets UserID during the login
         Guid GetUserID(String UserName);

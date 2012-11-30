@@ -22,13 +22,14 @@ namespace Ometz.Cinema.UI.ContentPages.Users.MyAreaMVP
              this.Presenter = new MyAreaPresenter(this);
          }
 
-        protected void Page_Load(object sender, EventArgs e)
+         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 if (this.LoadData != null)
                 {
-                    var ex = new EventArgs();
+                    var ex = new LoadDataArgs();
+                    ex.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                     LoadData(ex);
                 }
                // Label1.Text = "it works, yeah!!!!";

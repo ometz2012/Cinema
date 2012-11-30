@@ -15,14 +15,7 @@ namespace Ometz.Cinema.UI.Account
             RegisterHyperLink.NavigateUrl = "Register.aspx?ReturnUrl=" + HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
         }
 
-        protected void LoginButton_Click(object sender, EventArgs e)
-        {
-            String SelectedUserName = LoginUser.UserName;
-            Guid UserID = new Guid();
-            IUser UserServices = new UserServices();
-            UserID = UserServices.GetUserID(SelectedUserName);
-            Session.Add("UserID", UserID);
-        }
+      
 
     }
 }

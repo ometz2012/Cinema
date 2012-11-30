@@ -11,5 +11,7 @@ namespace Ometz.Cinema.UI.ContentPages.Users.PaymentMVP
        public String TheaterDetails { get; set; }
        public String PerformanceDetails { get; set; }
        public String Price { get; set; }
+       public String ValidOrder { get; set; }
+       public bool IsValidOrder { get; set; }
     }
 }

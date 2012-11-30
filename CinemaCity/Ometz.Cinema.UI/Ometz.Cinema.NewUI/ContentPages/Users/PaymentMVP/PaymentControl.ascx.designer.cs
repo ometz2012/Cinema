@@ -67,6 +67,15 @@ namespace Ometz.Cinema.UI.ContentPages.Users.PaymentMVP {
         protected global::System.Web.UI.WebControls.TextBox txtTicketsAmount;
         
         /// <summary>
+        /// btnConfirmTickets control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConfirmTickets;
+        
+        /// <summary>
         /// ValidatorEmptyTextTicketsAmount control.
         /// </summary>
         /// <remarks>
@@ -157,21 +166,12 @@ namespace Ometz.Cinema.UI.ContentPages.Users.PaymentMVP {
         protected global::System.Web.UI.WebControls.Button btnSubmit;
         
         /// <summary>
-        /// btnReset control.
+        /// lblOrderDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReset;
-        
-        /// <summary>
-        /// btnCancel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel;
+        protected global::System.Web.UI.WebControls.Label lblOrderDetails;
     }
 }

@@ -25,4 +25,7 @@ namespace Ometz.Cinema.BLL.Users
     { }
     public class UserPerformanceDTO : UserPerformanceBase
     { }
+
+    public class UserOrderDTO : UserOrderBase
+    { }
 }

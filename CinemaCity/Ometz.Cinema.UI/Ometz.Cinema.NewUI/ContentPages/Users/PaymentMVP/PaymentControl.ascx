@@ -23,12 +23,58 @@
         font-weight: 200;
         margin-bottom: 0px;
         font-size: 1.2em;
-        }
+    }
     .style4
     {
-        width: 181px;
+    }
+    #ButtonBack
+    {
+        width: 138px;
+    }
+    .style5
+    {
+        color: #666666;
+        font-variant: small-caps;
+        text-transform: none;
+        font-weight: 200;
+        margin-bottom: 0px;
+        font-size: 1.2em;
+        width: 71px;
+        text-align: right;
+    }
+    .style6
+    {
+        width: 71px;
+    }
+    .style7
+    {
+        color: #666666;
+        font-variant: small-caps;
+        text-transform: none;
+        font-weight: 200;
+        margin-bottom: 0px;
+        font-size: 1.2em;
+        width: 94px;
+        text-align: right;
+    }
+    .style8
+    {
+        width: 94px;
     }
 </style>
+<html>
+<head>
+  <script type="text/javascript" language="JavaScript">
+      function clickedButton() {
+
+          window.location = "/Default.aspx"
+
+      }
+    </script>
+</head>
+</html>
+
+ 
 <table class="style1">
     <tr>
         <td class="style3">
@@ -61,8 +107,7 @@
         </td>
         <td colspan="4">
             &nbsp;
-            <asp:TextBox ID="txtPrice" runat="server" BackColor="#CCCCCC" ReadOnly="True" 
-                Width="49px"></asp:TextBox>
+            <asp:TextBox ID="txtPrice" runat="server" BackColor="#CCCCCC" ReadOnly="True" Width="49px"></asp:TextBox>
         </td>
     </tr>
     <tr>
@@ -71,14 +116,13 @@
         </td>
         <td colspan="4">
             &nbsp;
-            <asp:TextBox ID="txtTicketsAmount" runat="server" AutoPostBack="True" 
-                MaxLength="4" ontextchanged="txtTicketsAmount_TextChanged" Width="50px"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="ValidatorEmptyTextTicketsAmount" runat="server" 
-                ControlToValidate="txtTicketsAmount" 
+            <asp:TextBox ID="txtTicketsAmount" runat="server" AutoPostBack="True" MaxLength="4"
+                OnTextChanged="txtTicketsAmount_TextChanged" Width="50px"></asp:TextBox>
+            &nbsp;<asp:Button ID="btnConfirmTickets" runat="server" Text="Confirm" />
+            <asp:RequiredFieldValidator ID="ValidatorEmptyTextTicketsAmount" runat="server" ControlToValidate="txtTicketsAmount"
                 ErrorMessage="Please enter amount of tickets." ForeColor="Red"></asp:RequiredFieldValidator>
-            <asp:CustomValidator ID="ValidatorTicketAmountINT" runat="server" 
-                ControlToValidate="txtTicketsAmount" ErrorMessage="Please enter numbers only." 
-                ForeColor="Red" onservervalidate="ValidatorTicketAmountINT_ServerValidate"></asp:CustomValidator>
+            <asp:CustomValidator ID="ValidatorTicketAmountINT" runat="server" ControlToValidate="txtTicketsAmount"
+                ErrorMessage="Please enter numbers only." ForeColor="Red" OnServerValidate="ValidatorTicketAmountINT_ServerValidate"></asp:CustomValidator>
         </td>
     </tr>
     <tr>
@@ -88,8 +132,7 @@
         </td>
         <td colspan="4">
             &nbsp;
-            <asp:TextBox ID="txtTotal" runat="server" BackColor="#CCCCCC" ReadOnly="True" 
-                Width="51px"></asp:TextBox>
+            <asp:TextBox ID="txtTotal" runat="server" BackColor="#CCCCCC" ReadOnly="True" Width="51px"></asp:TextBox>
         </td>
     </tr>
     <tr>
@@ -102,8 +145,7 @@
     </tr>
     <tr>
         <td class="style3" colspan="5">
-            &nbsp;
-            Please fill out your credit card details:
+            &nbsp; Please fill out your credit card details:
         </td>
     </tr>
     <tr>
@@ -112,21 +154,21 @@
         </td>
         <td colspan="4">
             &nbsp;
-            <asp:TextBox ID="txbCreditCardNumber" runat="server" MaxLength="16" 
-                Width="191px" CausesValidation="True"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="ValidatorEmptyText" runat="server" 
-                ControlToValidate="txbCreditCardNumber" 
-                ErrorMessage="Please fill out credit card number." ForeColor="Red"></asp:RequiredFieldValidator>
-            <asp:CustomValidator ID="ValidatorInteger" runat="server" 
-                ControlToValidate="txbCreditCardNumber" ErrorMessage="Please use numbers only." 
-                ForeColor="Red" onservervalidate="ValidatorInteger_ServerValidate"></asp:CustomValidator>
+            <asp:TextBox ID="txbCreditCardNumber" runat="server" MaxLength="16" Width="191px"
+                CausesValidation="True"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="ValidatorEmptyText" runat="server" ControlToValidate="txbCreditCardNumber"
+                ErrorMessage="Please fill out credit card number and the expiration date." ForeColor="Red"></asp:RequiredFieldValidator>
+            <asp:CustomValidator ID="ValidatorInteger" runat="server" ControlToValidate="txbCreditCardNumber"
+                ErrorMessage="Please use numbers only." ForeColor="Red" OnServerValidate="ValidatorInteger_ServerValidate"></asp:CustomValidator>
         </td>
     </tr>
     <tr>
         <td class="style2">
-            &nbsp;Expiration Date</td>
-        <td class="style2">
-            Month:</td>
+            &nbsp;Expiration Date
+        </td>
+        <td class="style5">
+            Month:
+        </td>
         <td class="style2">
             <asp:DropDownList ID="ddlMonth" runat="server">
                 <asp:ListItem Value="0">Select Month...</asp:ListItem>
@@ -144,8 +186,9 @@
                 <asp:ListItem>12</asp:ListItem>
             </asp:DropDownList>
         </td>
-        <td class="style2">
-            Year:</td>
+        <td class="style7">
+            Year:
+        </td>
         <td class="style2">
             <asp:DropDownList ID="ddlYear" runat="server">
                 <asp:ListItem Value="0">Select Year...</asp:ListItem>
@@ -166,30 +209,50 @@
     </tr>
     <tr>
         <td class="style3">
-            &nbsp;</td>
+            &nbsp;
+        </td>
+        <td class="style6">
+            &nbsp;
+        </td>
         <td class="style4">
-            &nbsp;</td>
+            &nbsp;
+        </td>
+        <td class="style8">
+            &nbsp;
+        </td>
         <td class="style4">
-            &nbsp;</td>
-        <td class="style4">
-            &nbsp;</td>
-        <td class="style4">
-            &nbsp;</td>
+            &nbsp;
+        </td>
     </tr>
     <tr>
         <td class="style3">
+            &nbsp;
+        </td>
+        <td class="style6">
             &nbsp;</td>
         <td class="style4">
-            <asp:Button ID="btnSubmit" runat="server" onclick="btnSubmit_Click" 
-                Text="SUBMIT" Width="96px" />
+            <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="SUBMIT"
+                Width="96px" />
+        </td>
+        <td class="style8">
+            <input id="ButtonBack" type="button" value="GO TO MAIN PAGE" onclick="clickedButton()" />
         </td>
         <td class="style4">
-            <asp:Button ID="btnReset" runat="server" Text="RESET" Width="91px" />
+            &nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td class="style3">
+            &nbsp;
+        </td>
+        <td class="style4" colspan="2">
+            <asp:Label ID="lblOrderDetails" runat="server"></asp:Label>
+        </td>
+        <td class="style8">
+            &nbsp;
         </td>
         <td class="style4">
-            <asp:Button ID="btnCancel" runat="server" Text="CANCEL" Width="109px" />
+            &nbsp;
         </td>
-        <td class="style4">
-            &nbsp;</td>
     </tr>
 </table>

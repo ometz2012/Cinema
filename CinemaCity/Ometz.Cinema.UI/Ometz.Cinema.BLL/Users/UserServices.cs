@@ -228,6 +228,10 @@ namespace Ometz.Cinema.BLL.Users
                     row.roomNumber = item.Room.RoomNumber;
                     row.Date = item.Date.ToString("yyyy/MM/dd");
                     string hours = item.StartingTime.Hours.ToString();
+                    if (hours.Length < 2)
+                    {
+                        hours = string.Format("{0}{1}", "0", hours);
+                    }
                     string minutes = item.StartingTime.Minutes.ToString();
                     row.StartingTime = string.Format("{0}:{1}", hours, minutes);
                     row.Duration = item.Duration;
@@ -260,30 +264,73 @@ namespace Ometz.Cinema.BLL.Users
                 {
                     foreach (var item in results)
                     {
-                        UserPerformanceDTO row = new UserPerformanceDTO();
-                        row.performanceID = performanceID;
-                        row.TheaterName = item.PerformanceOut.Theater.Name;
-                        row.Date = item.PerformanceOut.Date.ToString("yyy/MM/dd");
-                        row.Duration = item.PerformanceOut.Duration;
+                        CurrentPerformance = new UserPerformanceDTO();
+                        CurrentPerformance.performanceID = performanceID;
+                        CurrentPerformance.TheaterName = item.PerformanceOut.Theater.Name;
+                        CurrentPerformance.Date = item.PerformanceOut.Date.ToString("yyy/MM/dd");
+                        CurrentPerformance.Duration = item.PerformanceOut.Duration;
                         string hour = item.PerformanceOut.StartingTime.Hours.ToString();
+                        if (hour.Length < 2)
+                        {
+                            hour = string.Format("{0}{1}", "0", hour);
+                        }
                         string minutes = item.PerformanceOut.StartingTime.Minutes.ToString();
-                        row.StartingTime = string.Format("{0}:{1}", hour, minutes);
-                        row.price = item.PerformanceOut.Price;
-                        row.MovieTitle = item.PerformanceOut.Movie.Title;
-                        row.roomNumber = item.PerformanceOut.Room.RoomNumber;
+                        CurrentPerformance.StartingTime = string.Format("{0}:{1}", hour, minutes);
+                        CurrentPerformance.price = item.PerformanceOut.Price;
+                        CurrentPerformance.MovieTitle = item.PerformanceOut.Movie.Title;
+                        CurrentPerformance.roomNumber = item.PerformanceOut.Room.RoomNumber;
                         string street = item.AddressOut.AddressLine1;
                         if (item.AddressOut.AddressLine2 != null)
                         {
                             street = string.Format("{0}, {1}", item.AddressOut.AddressLine1, item.AddressOut.AddressLine2);
                         }
                         string phone = item.AddressOut.Phone;
-                        row.TheaterAddress = string.Format("{0}, Phone: {1}", street, phone);
+                        CurrentPerformance.TheaterAddress = string.Format("{0}, Phone: {1}", street, phone);
 
                     }
                 }
             }
 
             return CurrentPerformance;
+
+        }
+
+        //Method that submits the order
+        public UserOrderDTO CreateOrder(UserOrderDTO NewOrder)
+        {
+            UserOrderDTO OrderOut = new UserOrderDTO();
+            Order OrderIn = new Order();
+
+            using (TransactionScope Trans = new TransactionScope())
+            {
+                try 
+                {
+                    using (var context = new CinemaEntities())
+                    {
+                        OrderIn.NumberOfSeatsReserved = NewOrder.NumberOfSeats;
+                        OrderIn.TotalPrice = NewOrder.TotalPrice;
+                        OrderIn.UserID = NewOrder.UserID;
+                        OrderIn.PerfomanceID = NewOrder.PerformanceID;
+
+                        if (OrderIn.EntityState == EntityState.Detached)
+                        {
+                            context.Orders.AddObject(OrderIn);
+                        }
+                        context.SaveChanges();
+
+                        OrderOut.OrderID = OrderIn.OrderID;
+                    }
+                }
+                catch
+                {
+                    OrderOut.isValid = false;
+                    Trans.Dispose();
+                    return OrderOut;
+                }
+                OrderOut.isValid = true;
+                Trans.Complete();
+                return OrderOut;
+            }
 
         }
 
@@ -412,7 +459,6 @@ namespace Ometz.Cinema.BLL.Users
             }
 
         }
-
 
     }
 

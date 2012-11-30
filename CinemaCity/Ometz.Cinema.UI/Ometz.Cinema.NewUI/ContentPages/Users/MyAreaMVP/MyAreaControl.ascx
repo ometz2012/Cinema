@@ -37,7 +37,7 @@ a:link, a:visited
         <tr>
             <td class="style3">
                 <h3>
-                    &nbsp;My Favorite Movies:
+                    My Favorite Movies:
                 </h3>
             </td>
             <td class="style2">
@@ -109,7 +109,7 @@ a:link, a:visited
                 &nbsp;
             </td>
             <td class="style2">
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                <asp:Label ID="Label1" runat="server"></asp:Label>
             </td>
         </tr>
         <tr>

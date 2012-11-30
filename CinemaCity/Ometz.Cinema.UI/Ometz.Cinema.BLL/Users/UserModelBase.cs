@@ -65,4 +65,14 @@ namespace Ometz.Cinema.BLL.Users
         public int roomNumber { get; set; }
     }
 
+    public abstract class UserOrderBase
+    {
+        public Int32 OrderID { get; set; }
+        public Int32 NumberOfSeats { get; set; }
+        public Decimal TotalPrice { get; set; }
+        public Int32 PerformanceID { get; set; }
+        public Guid UserID { get; set; }
+        public bool isValid { get; set; }
+    }
+
 }
