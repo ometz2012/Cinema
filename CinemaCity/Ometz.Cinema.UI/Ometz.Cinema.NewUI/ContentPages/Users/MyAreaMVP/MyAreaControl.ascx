@@ -32,7 +32,7 @@ a:link, a:visited
         }
     </style>
 
-<link href="../../Styles/Site.css" rel="stylesheet" type="text/css" />
+<link href="../../../Styles/Site.css" rel="stylesheet" type="text/css" />
     <table class="style1">
         <tr>
             <td class="style3">
@@ -41,10 +41,11 @@ a:link, a:visited
                 </h3>
             </td>
             <td class="style2">
-                <asp:GridView ID="GridViewFavorite" runat="server" AutoGenerateColumns="False">
+                <asp:GridView ID="GridViewFavorite" runat="server" AutoGenerateColumns="False" 
+                    onselectedindexchanged="GridViewFavorite_SelectedIndexChanged">
                     <Columns>
                         <asp:BoundField DataField="MovieTitle" HeaderText="Movie Name" />
-                        <asp:ButtonField HeaderText="Remove" Text="Remove" />
+                        <asp:ButtonField HeaderText="Remove" Text="Remove" CommandName="Select" />
                     </Columns>
                 </asp:GridView>
             </td>
@@ -64,13 +65,26 @@ a:link, a:visited
                 </h3>
             </td>
             <td class="style2">
-                <asp:GridView ID="GridViewComments" runat="server" AutoGenerateColumns="False">
+                <asp:GridView ID="GridViewComments" runat="server" AutoGenerateColumns="False" 
+                    onrowdatabound="GridViewComments_RowDataBound" 
+                    onrowcommand="GridViewComments_RowCommand" 
+                    onrowcreated="GridViewComments_RowCreated">
                     <Columns>
+                        <asp:BoundField DataField="CommentID" HeaderText="Comment ID"  />
                         <asp:BoundField DataField="MovieTitle" HeaderText="Movie Name" />
-                        <asp:BoundField DataField="CommentContent" HeaderText="My Comments" />
-                        <asp:ButtonField HeaderText="Edit Comment" Text="Edit" />
+                      <%--  <asp:BoundField DataField="CommentContent" HeaderText="My Comments" ItemStyle-CssClass="hidden" />--%>
+                        <asp:TemplateField HeaderText="My Comments">
+                        <ItemTemplate>
+                        <asp:TextBox runat="server" ID="txtComment"></asp:TextBox>
+                        </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:ButtonField HeaderText="Update Comment" Text="Update" 
+                            CommandName="Select">
+                        <ItemStyle HorizontalAlign="Center" />
+                        </asp:ButtonField>
                     </Columns>
                 </asp:GridView>
+                <asp:Label ID="lblGridCommentsUpdate" runat="server"></asp:Label>
             </td>
         </tr>
         <tr>

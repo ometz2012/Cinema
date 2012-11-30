@@ -53,7 +53,7 @@
                         <asp:MenuItem NavigateUrl="~/" Text="My Area">
                             <asp:MenuItem NavigateUrl="~/ContentPages/Users/MyArea.aspx" Text="My Area" />
                             <asp:MenuItem NavigateUrl="~/ContentPages/Users/TicketSelection.aspx" Text="Buy a Ticket" />
-                            <asp:MenuItem NavigateUrl="~/" Text="Update my Profile" />
+                            <asp:MenuItem NavigateUrl="~/Account/ChangePassword.aspx" Text="Change Password" />
                         </asp:MenuItem>
                     </Items>
                 </asp:Menu>

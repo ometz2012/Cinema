@@ -12,12 +12,14 @@ namespace Ometz.Cinema.UI.ContentPages.Users.MyAreaMVP
         public List<FavoriteLine> ListOfFavorites { get; set; }
 
         public String ChosenMovie { get; set; }
+        public bool IsValidTransastion { get; set; }
 
 
     }
 
     public class CommentLine
     {
+        public int CommentID { get; set; }
         public String MovieTitle { get; set; }
         public String CommentContent { get; set; }
     }

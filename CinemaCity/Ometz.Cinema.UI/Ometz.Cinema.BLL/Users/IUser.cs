@@ -59,12 +59,13 @@ namespace Ometz.Cinema.BLL.Users
 
 
         //Method that updates comment
-
+        bool UpdateComment(UserCommentDTO UpdatedComment);
 
         //Method that deletes comment
 
 
-        //Method that updates User Information
+        //Method that deletes movie from favorite list
+        bool RemoveMovieFromFavoriteList(Guid UserID, string movieTitle);
 
 
     }

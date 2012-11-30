@@ -303,7 +303,7 @@ namespace Ometz.Cinema.BLL.Users
 
             using (TransactionScope Trans = new TransactionScope())
             {
-                try 
+                try
                 {
                     using (var context = new CinemaEntities())
                     {
@@ -458,6 +458,79 @@ namespace Ometz.Cinema.BLL.Users
                 return check;
             }
 
+        }
+
+        //Method that updates comment
+        public bool UpdateComment(UserCommentDTO UpdatedComment)
+        {
+            bool check = false;
+            using (TransactionScope Trans = new TransactionScope())
+            {
+                try
+                {
+                    using (var context = new CinemaEntities())
+                    {
+                        var results = (from cm in context.Comments
+                                       where cm.CommentID == UpdatedComment.commentID
+                                       select cm);
+                        if (results != null)
+                        {
+                            Comment CommentToUpdate = new Comment();
+                            CommentToUpdate = (Comment)results.First();
+                            CommentToUpdate.Content = UpdatedComment.Content;
+                            context.ObjectStateManager.ChangeObjectState(CommentToUpdate, System.Data.EntityState.Modified);
+                            context.SaveChanges();
+                        }
+                    }
+
+                }
+                catch
+                {
+                    check = false;
+                    Trans.Dispose();
+                    return check;
+                }
+
+                check = true;
+                Trans.Complete();
+                return check;
+            }
+
+        }
+
+        //Method that deletes movie from favorite list
+        public bool RemoveMovieFromFavoriteList(Guid UserID, string movieTitle)
+        {
+            bool check;
+            using (TransactionScope Trans = new TransactionScope())
+            {
+                try
+                {
+                    using (var context = new CinemaEntities())
+                    {
+                        var results = (from fv in context.Favorites.Include("Movie")
+                                       where fv.Movie.Title == movieTitle &&
+                                       fv.UserID == UserID
+                                       select fv);
+                        if (results != null)
+                        {
+                            Favorite LineToDelete = (Favorite)results.First();
+                            context.Favorites.DeleteObject(LineToDelete);
+                            context.SaveChanges();
+                        }
+                    }
+                }
+                catch
+                {
+                    check = false;
+                    Trans.Dispose();
+                    return check;
+                }
+
+                check = true;
+                Trans.Complete();
+                return check;
+            }
         }
 
     }
