@@ -5,6 +5,10 @@
 <head runat="server">
     <title></title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+		<script src="Scripts/jquery-1.4.1.js" type="text/javascript" ></script>
+    <script src="galleria/galleria-1.2.8.js" type="text/javascript" ></script>
+
+
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -47,7 +51,7 @@
                             <asp:MenuItem NavigateUrl="ContentPages/MoviePeople/Directors/DirectorMain.aspx" Text="Directors" />
                             <asp:MenuItem NavigateUrl="ContentPages/MoviePeople/Actors/ActorMain.aspx" Text="Composers" />
                         </asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/" Text="Theaters">
+                        <asp:MenuItem  Text="Theaters">
                             <asp:MenuItem NavigateUrl="~/ContentPages/Theaters/Theater.aspx" Text="Search Theater" />
                         </asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/" Text="My Area">
