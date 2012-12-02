@@ -56,5 +56,11 @@ namespace Ometz.Cinema.UI.ContentPages.MoviePeople.MoviePeopleUserControls
             get { return this.gridPersonInMovie; }
             set { }
         }
+        public Image PersonImage
+        {
+            get { return this.imgPerson; }
+            set {}
+        }
+           
     }
 }

@@ -1,16 +1,16 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ActorMain.aspx.cs" Inherits="Ometz.Cinema.UI.ContentPages.MoviePeople.Actors.ActorMain" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ComposerMain.aspx.cs" Inherits="Ometz.Cinema.NewUI.ContentPages.MoviePeople.Composers.ComposerMain" %>
 <%@ Register src="../MoviePeopleUserControls/MainMoviePeople.ascx" tagname="MainMoviePeople" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
         .style4
         {
-            width: 4px;
+            width: 84px;
         }
         .style5
         {
-            width: 303px;
+            width: 212px;
         }
-        .style14
+          .style14
         {       
             text-align: center;
             font-weight: bold;
@@ -19,11 +19,11 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <p class="style14">
-Actors
+  <p class="style14">
+Composers
 <br /></p>
     <uc1:MainMoviePeople ID="MainMoviePeople1" runat="server" />
-    <table class="style1">
+     <table class="style1">
         <tr>
             <td class="style4">
                 &nbsp;</td>

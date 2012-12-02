@@ -19,15 +19,27 @@ namespace Ometz.Cinema.UI.ContentPages.MoviePeople.Actors
             }
             switch(Request.QueryString["selector"])
             {
-                case "actorsInMovie":
+                case "actorsInMovie":                  
                     ActorsInMovieHandler();
                     break;
                 case "actorFoundByName":
-                    PeopleInMovie2.SetLabelText("Actor Full Information");
+                    PeopleInMovie2.SetLabelText("Actor's Full Information");
                     ActorFoundByNameHandler();
                     break;
             }          
           
+        }
+        protected override void  OnPreRender(EventArgs e)
+        {
+            if (IsPostBack)
+            {
+                if (PeopleInMovie2.gridPeopleInMovie.SelectedIndex > -1)
+                {
+                    GetPersonInfo(PeopleInMovie2.gridPeopleInMovie.SelectedRow.Cells[(int)PeopleInMovie2.FirstName].Text, 
+                        PeopleInMovie2.gridPeopleInMovie.SelectedRow.Cells[(int)PeopleInMovie2.LastName].Text);
+                    PeopleInMovie2.SetLabelText("Actor's Full Information");
+                }   
+            }
         }
         private void ActorsInMovieHandler()
         {
@@ -46,6 +58,7 @@ namespace Ometz.Cinema.UI.ContentPages.MoviePeople.Actors
             else
                 return;
         }
+
         private void ActorFoundByNameHandler()
         {
                MoviePeopleServices personInfo = new MoviePeopleServices();
@@ -53,22 +66,45 @@ namespace Ometz.Cinema.UI.ContentPages.MoviePeople.Actors
                MoviePersonDTO actor = personInfo.GetMoviePersonByName(Request.QueryString["personToShow"].ToString(), "Actor");
                if (actor != null)
                {
-                   actorToShow.Add(actor);
-                   GridView actorFoundByName = new GridView();
-                   actorFoundByName = PeopleInMovie2.gridPeopleInMovie;
-                   actorFoundByName.DataSource = actorToShow;
-                   actorFoundByName.DataBind();
-                   GetAppropriateView(actorFoundByName);
 
+                   Guid personId = personInfo.GetMoviePersonIdByFirstAndLastName(actor.FirstName, actor.LastName);
+                   actorToShow.Add(actor);
+                   ShowPersonFullInfo(actorToShow, personId);
+                  
                }
-               //actorToShow.Add(Request.QueryString["personToShow"]);
+               
+        }
+
+        private void GetPersonInfo(string firstName, string lastName)
+        {
+            MoviePeopleServices personInfo = new MoviePeopleServices();
+            List<MoviePersonDTO> actorToShow = new List<MoviePersonDTO>();
+            MoviePersonDTO actor = personInfo.GetMoviePersonByName(firstName + " " + lastName, "Actor");
+            Guid personId = personInfo.GetMoviePersonIdByFirstAndLastName(firstName, lastName);
+            actorToShow.Add(actor);
+            ShowPersonFullInfo(actorToShow, personId);
+        }
+        private void ShowPersonFullInfo(List<MoviePersonDTO> actorToShow, Guid personId)
+        {
+            GridView actorFoundByName = new GridView();
+            actorFoundByName = PeopleInMovie2.gridPeopleInMovie;
+            actorFoundByName.DataSource = actorToShow;
+            actorFoundByName.DataBind();
+            GetAppropriateView(actorFoundByName);
+            PeopleInMovie2.PersonImage.ImageUrl = String.Format("~/ContentPages/MoviePeople/MoviePeopleUserControls/MoviePersonPhoto.ashx?personId=" + personId);
+            PeopleInMovie2.PersonImage.Visible = true;
+            actorFoundByName.HeaderRow.Cells[(int)PeopleInMovie2.SelectButton].Visible = false;
+            foreach (GridViewRow row in actorFoundByName.Rows)
+            {
+                row.Cells[(int)PeopleInMovie2.SelectButton].Visible = false;
+            }
         }
         private void GetAppropriateView(GridView actorsGrid)
         {
-            actorsGrid.HeaderRow.Cells[(int)PeopleInMovie2.SelectButton].Visible = false;
+          //  actorsGrid.HeaderRow.Cells[(int)PeopleInMovie2.SelectButton].Visible = false;
             foreach (GridViewRow row in actorsGrid.Rows)
             {
-                row.Cells[(int)PeopleInMovie2.SelectButton].Visible = false;
+               // row.Cells[(int)PeopleInMovie2.SelectButton].Visible = false;
                 DateTime birthDate = Convert.ToDateTime(row.Cells[(int)PeopleInMovie2.BirthDate].Text);
                 string result = birthDate.ToString("d/MM/yyyy");
                 if (result == "01/01/9999")

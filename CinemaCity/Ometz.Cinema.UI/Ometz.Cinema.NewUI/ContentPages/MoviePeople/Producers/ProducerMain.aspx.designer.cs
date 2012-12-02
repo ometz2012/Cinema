@@ -7,36 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ometz.Cinema.UI.ContentPages.MoviePeople.MoviePeopleUserControls {
+namespace Ometz.Cinema.NewUI.ContentPages.MoviePeople.Producers {
     
     
-    public partial class PeopleInMovie {
+    public partial class ProducerMain {
         
         /// <summary>
-        /// lblPersonInMovie control.
+        /// MainMoviePeople1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPersonInMovie;
+        protected global::Ometz.Cinema.UI.ContentPages.MoviePeople.MoviePeopleUserControls.MainMoviePeople MainMoviePeople1;
         
         /// <summary>
-        /// gridPersonInMovie control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridPersonInMovie;
-        
-        /// <summary>
-        /// imgPerson control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgPerson;
+        protected global::System.Web.UI.WebControls.Button btnSearch;
     }
 }

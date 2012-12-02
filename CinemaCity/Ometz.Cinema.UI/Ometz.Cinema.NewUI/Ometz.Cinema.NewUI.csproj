@@ -58,10 +58,16 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="ContentPages\MoviePeople\Actors\ActorMain.aspx" />
     <Content Include="ContentPages\MoviePeople\Actors\ActorsInMovie.aspx" />
+    <Content Include="ContentPages\MoviePeople\Composers\ComposerMain.aspx" />
+    <Content Include="ContentPages\MoviePeople\Composers\ComposersInMovie.aspx" />
     <Content Include="ContentPages\MoviePeople\Directors\DirectorMain.aspx" />
     <Content Include="ContentPages\MoviePeople\Directors\DirectorsInMovie.aspx" />
     <Content Include="ContentPages\MoviePeople\MoviePeopleUserControls\MainMoviePeople.ascx" />
     <Content Include="ContentPages\MoviePeople\MoviePeopleUserControls\PeopleInMovie.ascx" />
+    <Content Include="ContentPages\MoviePeople\Producers\ProducerMain.aspx" />
+    <Content Include="ContentPages\MoviePeople\Producers\ProducersInMovie.aspx" />
+    <Content Include="ContentPages\MoviePeople\Writers\WriterMain.aspx" />
+    <Content Include="ContentPages\MoviePeople\Writers\WritersInMovie.aspx" />
     <Content Include="ContentPages\Movies\Movie.aspx" />
     <Content Include="ContentPages\Movies\MovieMain.aspx" />
     <Content Include="ContentPages\Theaters\Theater.aspx" />
@@ -74,30 +80,6 @@
     <Content Include="ContentPages\Users\PaymentMVP\PaymentControl.ascx" />
     <Content Include="ContentPages\Users\TicketSelection.aspx" />
     <Content Include="ContentPages\Users\TicketSelectionMVP\TicketControl.ascx" />
-    <Content Include="galleria\galleria-1.2.8.js" />
-    <Content Include="galleria\galleria-1.2.8.min.js" />
-    <Content Include="galleria\plugins\flickr\flickr-demo.html" />
-    <Content Include="galleria\plugins\flickr\flickr-loader.gif" />
-    <Content Include="galleria\plugins\flickr\galleria.flickr.js" />
-    <Content Include="galleria\plugins\flickr\galleria.flickr.min.js" />
-    <Content Include="galleria\plugins\flickr\loader.gif" />
-    <Content Include="galleria\plugins\history\galleria.history.js" />
-    <Content Include="galleria\plugins\history\galleria.history.min.js" />
-    <Content Include="galleria\plugins\history\history-demo.html" />
-    <Content Include="galleria\plugins\picasa\galleria.picasa.js" />
-    <Content Include="galleria\plugins\picasa\galleria.picasa.min.js" />
-    <Content Include="galleria\plugins\picasa\loader.gif" />
-    <Content Include="galleria\plugins\picasa\picasa-demo.html" />
-    <Content Include="galleria\themes\classic\classic-demo.html" />
-    <Content Include="galleria\themes\classic\classic-loader.gif" />
-    <Content Include="galleria\themes\classic\classic-map.png" />
-    <Content Include="galleria\themes\classic\galleria.classic.css" />
-    <Content Include="galleria\themes\classic\galleria.classic.js" />
-    <Content Include="galleria\themes\classic\galleria.classic.min.js" />
-    <Content Include="images\Iron Lady.jpg" />
-    <Content Include="images\MONEYBALL.jpg" />
-    <Content Include="images\The Bourne Identity.jpg" />
-    <Content Include="images\THE HELP.jpg" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -162,6 +144,20 @@
     <Compile Include="ContentPages\MoviePeople\Actors\ActorsInMovie.aspx.designer.cs">
       <DependentUpon>ActorsInMovie.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ContentPages\MoviePeople\Composers\ComposerMain.aspx.cs">
+      <DependentUpon>ComposerMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Composers\ComposerMain.aspx.designer.cs">
+      <DependentUpon>ComposerMain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Composers\ComposersInMovie.aspx.cs">
+      <DependentUpon>ComposersInMovie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Composers\ComposersInMovie.aspx.designer.cs">
+      <DependentUpon>ComposersInMovie.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ContentPages\MoviePeople\Directors\DirectorMain.aspx.cs">
       <DependentUpon>DirectorMain.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -183,12 +179,43 @@
     <Compile Include="ContentPages\MoviePeople\MoviePeopleUserControls\MainMoviePeople.ascx.designer.cs">
       <DependentUpon>MainMoviePeople.ascx</DependentUpon>
     </Compile>
+    <Compile Include="ContentPages\MoviePeople\MoviePeopleUserControls\MoviePersonPhoto.ashx.cs">
+      <DependentUpon>MoviePersonPhoto.ashx</DependentUpon>
+    </Compile>
     <Compile Include="ContentPages\MoviePeople\MoviePeopleUserControls\PeopleInMovie.ascx.cs">
       <DependentUpon>PeopleInMovie.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ContentPages\MoviePeople\MoviePeopleUserControls\PeopleInMovie.ascx.designer.cs">
       <DependentUpon>PeopleInMovie.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Producers\ProducerMain.aspx.cs">
+      <DependentUpon>ProducerMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Producers\ProducerMain.aspx.designer.cs">
+      <DependentUpon>ProducerMain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Producers\ProducersInMovie.aspx.cs">
+      <DependentUpon>ProducersInMovie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Producers\ProducersInMovie.aspx.designer.cs">
+      <DependentUpon>ProducersInMovie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Writers\WriterMain.aspx.cs">
+      <DependentUpon>WriterMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Writers\WriterMain.aspx.designer.cs">
+      <DependentUpon>WriterMain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Writers\WritersInMovie.aspx.cs">
+      <DependentUpon>WritersInMovie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentPages\MoviePeople\Writers\WritersInMovie.aspx.designer.cs">
+      <DependentUpon>WritersInMovie.aspx</DependentUpon>
     </Compile>
     <Compile Include="ContentPages\Movies\Movie.aspx.cs">
       <DependentUpon>Movie.aspx</DependentUpon>
@@ -322,7 +349,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="galleria\LICENSE" />
+    <Content Include="ContentPages\MoviePeople\MoviePeopleUserControls\MoviePersonPhoto.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

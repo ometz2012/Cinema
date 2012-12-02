@@ -37,6 +37,8 @@
             </asp:GridView>
         </td>
         <td>
+        <asp:Image ID="imgPerson" runat="server" Height="200px" Width="160px" 
+                AlternateText="No Picture Available Yet" Visible="False"/>
             &nbsp;</td>
     </tr>
     <tr>

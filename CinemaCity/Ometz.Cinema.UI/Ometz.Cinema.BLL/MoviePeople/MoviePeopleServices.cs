@@ -59,6 +59,47 @@ namespace Ometz.Cinema.BLL.MoviePeople
 
         }
 
+        public Byte[] GetPhoto(Guid personId)
+        {
+
+            byte[] photo = null;
+            using (var context = new CinemaEntities())
+            {
+                var result = (from image in context.People
+                              where image.PersonID == personId
+                              select image).SingleOrDefault();
+                if (result == null)
+                {
+                    return null;
+                }
+                photo = result.Photo;
+                //foreach (var item in result)
+                //{
+                    //photo = item.Photo;
+                //}
+            }
+            return photo;
+        }
+
+        // The method gets Movie Person (actor, director etc.. first and last name and returns the person's Id
+        public Guid GetMoviePersonIdByFirstAndLastName(string firstName, string lastName)
+        {
+            using (var context = new CinemaEntities())
+            {
+                var personId = (from person in context.People
+                                where (person.FirstName == firstName && person.LastName == lastName)
+                                select person.PersonID).FirstOrDefault();   //SingleOrDefault();
+                if (personId == Guid.Empty)
+                {
+                    return default(Guid);
+                }
+                else
+                {
+                    return personId;
+                }
+            }
+        }
+
         //Method gets First Name or Last Name or Full Name or Part of the Name of the person and
        // person type ("actor", "director" etc..) and return the person's Data
        public MoviePersonDTO GetMoviePersonByName(string personName, string personType)
