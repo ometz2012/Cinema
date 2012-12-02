@@ -2,13 +2,14 @@
     CodeBehind="Default.aspx.cs" Inherits="Ometz.Cinema.NewUI._Default" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+
+<style type="text/css">
+    #galleria{ width: 400px; height: 400px; background: #000 }
+	</style>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
    
-	<style>
-    #galleria{ width: 400px; height: 400px; background: #000 }
-	</style>
-	 
+		 
 	  <h2>
         Welcome to Cinema Management System!
     </h2>
@@ -16,14 +17,14 @@
         <b> Developed By Ometz .NET Course </b> 
     </p>
     <p>
-       <b> November- December 2012 </b> 
+       <b> November - December 2012 </b> 
     </p>
-		<p>
+		
 			<div id="galleria">
-            <img src="images/The Bourne Identity.jpg"  >
-            <img src="images/MONEYBALL.jpg"  >
-						<img src="images/THE HELP.jpg"  >
-						<img src="images/Iron Lady.jpg"  >
+            <img src="images/The Bourne Identity.jpg" alt="Smiley Face" />
+            <img src="images/MONEYBALL.jpg"  alt="Smiley Face" />
+						<img src="images/THE HELP.jpg" alt="Smiley Face" />
+						<img src="images/Iron Lady.jpg" alt="Smiley Face" />
         </div>
 
 				<script type="text/javascript">
@@ -34,5 +35,5 @@
 					});
     </script>
 
-		</p>
+		
 </asp:Content>
