@@ -40,7 +40,8 @@ namespace Ometz.Cinema.UI.ContentPages.Users.TicketSelectionMVP
                     ListBoxMovies.DataTextField = "MovieTitle";
                     ListBoxMovies.DataValueField = "MovieID";
                     ListBoxMovies.DataBind();
-                    lblMovieDescription.Text = this.Model.MovieDescription;
+                    //lblMovieDescription.Text = this.Model.MovieDescription;
+
                 }
             }
         }
@@ -53,7 +54,8 @@ namespace Ometz.Cinema.UI.ContentPages.Users.TicketSelectionMVP
             if (MovieSelection != null)
             {
                 MovieSelection(esp);
-                lblMovieDescription.Text = Model.MovieDescription;
+                //lblMovieDescription.Text = Model.MovieDescription;
+                inputContainer.InnerText = Model.MovieDescription;
             }
         }
 

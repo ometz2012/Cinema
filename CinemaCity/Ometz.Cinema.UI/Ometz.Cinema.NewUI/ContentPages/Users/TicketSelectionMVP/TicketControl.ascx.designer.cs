@@ -22,13 +22,13 @@ namespace Ometz.Cinema.UI.ContentPages.Users.TicketSelectionMVP {
         protected global::System.Web.UI.WebControls.ListBox ListBoxMovies;
         
         /// <summary>
-        /// lblMovieDescription control.
+        /// inputContainer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMovieDescription;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl inputContainer;
         
         /// <summary>
         /// btnSelectMovie control.
