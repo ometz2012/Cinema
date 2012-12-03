@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="~/" title="Home"  description="">
+    <siteMapNode url="~/Default.aspx" title="Home"  description="" />
+    <siteMapNode url="" title="Movies"  description="Movies" />
+    <siteMapNode url="" title="People on Cast" description="">
+      <siteMapNode url="ContentPages/MoviePeople/Actors/ActorMain.aspx" title="Actors"/>
+      <siteMapNode url="ContentPages/MoviePeople/Producers/ProducerMain.aspx" title="Producers"/>
+      <siteMapNode url="ContentPages/MoviePeople/Directors/DirectorMain.aspx" title="Directors"/>
+      <siteMapNode url="ContentPages/MoviePeople/Composers/ComposerMain.aspx" title="Composers"/>
+      <siteMapNode url="ContentPages/MoviePeople/Writers/WriterMain.aspx" title="Writers"/>
+    </siteMapNode>
+    <siteMapNode url="" title="Theaters">
+      <siteMapNode url="~/ContentPages/Theaters/Theater.aspx" title="Search Theaters"/>
+    </siteMapNode>
+    <siteMapNode url="" title="My Area">
+      <siteMapNode url="~/ContentPages/Users/MyArea.aspx" title="My Area"/>
+      <siteMapNode url="~/ContentPages/Users/TicketSelection.aspx" title="Buy a Ticket"/>
+      <siteMapNode url="~/Account/ChangePassword.aspx" title="Change Password"/>
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

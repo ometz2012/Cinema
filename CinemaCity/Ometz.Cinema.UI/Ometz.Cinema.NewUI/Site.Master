@@ -38,29 +38,12 @@
                 </asp:LoginView>
             </div>
             <div class="clear hideSkiplink">
-                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false"
-                    IncludeStyleBlock="false" Orientation="Horizontal">
-                    <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" />
-                        <asp:MenuItem NavigateUrl="~/" Text="Movies" />
-                     
-                        <asp:MenuItem  Text="People on Cast">
-                            <asp:MenuItem NavigateUrl="ContentPages/MoviePeople/Actors/ActorMain.aspx" Text="Actors" />
-                            <asp:MenuItem NavigateUrl="ContentPages/MoviePeople/Producers/ProducerMain.aspx" Text="Producers" />
-                            <asp:MenuItem NavigateUrl="ContentPages/MoviePeople/Directors/DirectorMain.aspx" Text="Directors" />
-                            <asp:MenuItem NavigateUrl="ContentPages/MoviePeople/Composers/ComposerMain.aspx" Text="Composers" />
-                            <asp:MenuItem NavigateUrl="ContentPages/MoviePeople/Writers/WriterMain.aspx" Text="Writers" />
-                        </asp:MenuItem>
-                        <asp:MenuItem  Text="Theaters">
-                            <asp:MenuItem NavigateUrl="~/ContentPages/Theaters/Theater.aspx" Text="Search Theater" />
-                        </asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/" Text="My Area">
-                            <asp:MenuItem NavigateUrl="~/ContentPages/Users/MyArea.aspx" Text="My Area" />
-                            <asp:MenuItem NavigateUrl="~/ContentPages/Users/TicketSelection.aspx" Text="Buy a Ticket" />
-                            <asp:MenuItem NavigateUrl="~/Account/ChangePassword.aspx" Text="Change Password" />
-                        </asp:MenuItem>
-                    </Items>
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="False"
+                    IncludeStyleBlock="False" Orientation="Horizontal" 
+                    DataSourceID="SiteMapDataSource1">
                 </asp:Menu>
+                <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" 
+                    ShowStartingNode="False" />
             </div>
         </div>
         <div class="main">
