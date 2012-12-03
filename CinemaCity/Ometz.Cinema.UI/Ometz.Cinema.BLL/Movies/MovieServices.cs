@@ -10,13 +10,16 @@ namespace Ometz.Cinema.BLL.Movies
     {
         public List<MovieModelDTO> GetAllMovies()
         {
+            
             using (var context = new CinemaEntities())
             {
                 var allMovies = (from movie in context.Movies
                                  select new
                                  {
-                                     MovieId = movie.MovieID,
-                                     Title = movie.Title
+                                    MovieID = movie.MovieID,
+                                     Title = movie.Title,
+                                     Photo=movie.Photo,//added by Elena for RepeaterMovie MovieMain.aspx
+                                     Description=movie.Description//
 
                                  }).ToList();
                 List<MovieModelDTO> allMoviesToReturn = new List<MovieModelDTO>();
@@ -27,9 +30,15 @@ namespace Ometz.Cinema.BLL.Movies
                     {
                         MovieModelDTO movieRow = new MovieModelDTO()
                         {
-                            MovieID = item.MovieId,
-                            Title = item.Title
+
+                            MovieID = item.MovieID,
+                            Title = item.Title,
+                            //Photo=item.Photo,
+                            Description=item.Description,
+                            Photo = (byte[])item.Photo
+
                         };
+
                         allMoviesToReturn.Add(movieRow);
                     }
 

@@ -203,17 +203,19 @@ namespace Ometz.Cinema.BLL.MoviePeople
 
                 if (castmovie.Count() > 0)
                 {
-                    List<MoviePersonDTO> moviePeopleToReturn = new List<MoviePersonDTO>();
+                    List<MoviePersonDTO> castPeopleToReturn = new List<MoviePersonDTO>();
+                                       
                     foreach (var item in castmovie)
                     {
-                        MoviePersonDTO moviePeopleRow = new MoviePersonDTO()
+                        MoviePersonDTO castPeopleRow = new MoviePersonDTO()
                         {
                             FirstName = item.Person.FirstName,
                             LastName = item.Person.LastName,
                         };
-                        moviePeopleToReturn.Add(moviePeopleRow);
+                        castPeopleToReturn.Add(castPeopleRow);
                     }
-                    return moviePeopleToReturn;
+                    return castPeopleToReturn;
+                            
                 }
                 else
                 {
@@ -226,12 +228,7 @@ namespace Ometz.Cinema.BLL.MoviePeople
         }
     
         
-        
-        
-        
-        
-        
-        
+                
         //public object GetMoviePeopleByMovieId(string p, string p_2)
         //{
         //    throw new NotImplementedException();

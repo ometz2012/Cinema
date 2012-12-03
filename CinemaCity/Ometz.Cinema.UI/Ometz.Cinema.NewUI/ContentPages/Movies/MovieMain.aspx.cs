@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -13,26 +15,36 @@ namespace Ometz.Cinema.NewUI.ContentPages.Movies
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            MovieServices listmovie = new MovieServices();
-            MoviePeopleServices castlist = new MoviePeopleServices();
+            if (!IsPostBack)
+            {
+                MovieServices listmovie = new MovieServices();
+                MoviePeopleServices castlist = new MoviePeopleServices();
 
-            ddlTitleMovie.DataSource = listmovie.GetAllMovies();
-            ddlTitleMovie.DataBind();
+                ddlTitleMovie.DataSource = listmovie.GetAllMovies();
+                ddlTitleMovie.DataBind();
 
-            ddlYearMovie.DataSource = listmovie.GetAllYears();
-            ddlYearMovie.DataBind();
+                ddlYearMovie.DataSource = listmovie.GetAllYears();
+                ddlYearMovie.DataBind();
 
-            ddlActorMovie.DataSource = castlist.GetActors();
-            ddlActorMovie.DataBind();
+                ddlActorMovie.DataSource = castlist.GetActors();
+                ddlActorMovie.DataBind();
 
-            ddlProducerMovie.DataSource = castlist.GetProducers();
-            ddlProducerMovie.DataBind();
+                ddlProducerMovie.DataSource = castlist.GetProducers();
+                ddlProducerMovie.DataBind();
 
-            //genre to bind
+                //genre to bind
+                ddlGenreMovie.DataSource = listmovie.GetAllGenres();
+                ddlGenreMovie.DataBind();
 
-            //repeater to bind
-            //RepeaterMovie.DataSource = listmovie.GetMovies();
-            //RepeaterMovie.DataBind();
+                //repeater to bind
+                RepeaterMovie.DataSource = listmovie.GetAllMovies();
+                RepeaterMovie.DataBind();
+            }
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
