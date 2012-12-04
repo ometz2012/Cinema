@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ometz.Cinema.BLL.Movies;
 using Ometz.Cinema.BLL.MoviePeople;
+using System.IO;
 
 namespace Ometz.Cinema.NewUI.ContentPages.Movies
 {
@@ -19,6 +20,7 @@ namespace Ometz.Cinema.NewUI.ContentPages.Movies
             {
                 MovieServices listmovie = new MovieServices();
                 MoviePeopleServices castlist = new MoviePeopleServices();
+                
 
                 ddlTitleMovie.DataSource = listmovie.GetAllMovies();
                 ddlTitleMovie.DataBind();
@@ -35,8 +37,9 @@ namespace Ometz.Cinema.NewUI.ContentPages.Movies
                 //genre to bind
                 ddlGenreMovie.DataSource = listmovie.GetAllGenres();
                 ddlGenreMovie.DataBind();
-
+               
                 //repeater to bind
+                
                 RepeaterMovie.DataSource = listmovie.GetAllMovies();
                 RepeaterMovie.DataBind();
             }

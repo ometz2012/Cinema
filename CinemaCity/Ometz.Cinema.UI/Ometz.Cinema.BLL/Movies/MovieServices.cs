@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Ometz.Cinema.DAL;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
+
 
 namespace Ometz.Cinema.BLL.Movies
 {
@@ -19,9 +23,10 @@ namespace Ometz.Cinema.BLL.Movies
                                     MovieID = movie.MovieID,
                                      Title = movie.Title,
                                      Photo=movie.Photo,//added by Elena for RepeaterMovie MovieMain.aspx
-                                     Description=movie.Description//
+                                    Description=movie.Description//
 
                                  }).ToList();
+
                 List<MovieModelDTO> allMoviesToReturn = new List<MovieModelDTO>();
                 if (allMovies != null)
                 {
@@ -48,6 +53,16 @@ namespace Ometz.Cinema.BLL.Movies
                 {
                     return null;
                 }
+
+                //byte[] buffer = binary.ToArray();
+                //MemoryStream stream = new MemoryStream(buffer);
+                //BitmapImage image = new BitmapImage();
+                //image.BeginInit();
+                //image.StreamSource = stream;
+                //image.EndInit();
+                //return image;
+
+
 
             }
         }
@@ -125,6 +140,13 @@ namespace Ometz.Cinema.BLL.Movies
             }
 
         }
+
+        
+        
+
+
     }
+
+
 }
 

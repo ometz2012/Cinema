@@ -55,15 +55,18 @@
       <ItemTemplate> 
        <td bgcolor="white" /> 
            <b> <%#DataBinder.Eval(Container.DataItem,"Title") %> </b><br /> 
-            <img runat="server" src='<%# DataBinder.Eval(Container.DataItem,"Photo")  %>' ID="Img1"/>
-            <%#DataBinder.Eval(Container.DataItem, "Photo") %> <br />
+           <br />
+            <img runat="server" src='<%# DataBinder.Eval(Container.DataItem,"Photo")  %>' ID="Img1"
+            alt="" style="height:100px;width:100px;border:1px solid gray;"/><br />
             <%#DataBinder.Eval(Container.DataItem, "Description") %> 
         </td> 
      </ItemTemplate> 
     <AlternatingItemTemplate> 
           <td bgcolor="white">
            <b> <%#DataBinder.Eval(Container.DataItem, "Title") %></b><br /> 
-            <%#DataBinder.Eval(Container.DataItem, "Photo") %> <br />
+           <br />
+            <img runat="server" src='<%# DataBinder.Eval(Container.DataItem,"Photo")  %>' ID="Img1"
+            alt="" style="height:100px;width:100px;border:1px solid gray;"/><br />
             <%#DataBinder.Eval(Container.DataItem, "Description") %> 
         </td> 
      </AlternatingItemTemplate> 
