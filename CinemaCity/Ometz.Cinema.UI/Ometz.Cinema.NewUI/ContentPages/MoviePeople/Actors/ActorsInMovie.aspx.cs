@@ -107,7 +107,7 @@ namespace Ometz.Cinema.UI.ContentPages.MoviePeople.Actors
                // row.Cells[(int)PeopleInMovie2.SelectButton].Visible = false;
                 DateTime birthDate = Convert.ToDateTime(row.Cells[(int)PeopleInMovie2.BirthDate].Text);
                 string result = birthDate.ToString("d/MM/yyyy");
-                if (result == "01/01/9999")
+                if (result == "1/01/9999")
                 {
                     result = "Unknown";
                 }

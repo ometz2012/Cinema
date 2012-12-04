@@ -175,8 +175,9 @@ namespace Ometz.Cinema.BLL.MoviePeople
                     {
                         MoviePersonDTO moviePeopleRow = new MoviePersonDTO()
                         {
-                            FirstName = item.Person.FirstName,
-                            LastName = item.Person.LastName,
+                          //  FirstName = item.Person.FirstName,
+                          FirstName = item.Person.FirstName + " " + item.Person.LastName, //Fiction for getting a person full name into a drop
+                            LastName = item.Person.LastName,                              // down list (Marat)
                         };
                         moviePeopleToReturn.Add(moviePeopleRow);
                     }
@@ -209,8 +210,8 @@ namespace Ometz.Cinema.BLL.MoviePeople
                     {
                         MoviePersonDTO castPeopleRow = new MoviePersonDTO()
                         {
-                            FirstName = item.Person.FirstName,
-                            LastName = item.Person.LastName,
+                            FirstName = item.Person.FirstName + " " + item.Person.LastName, //Fiction for getting a person full name into a drop
+                            LastName = item.Person.LastName,                              // down list (Marat)
                         };
                         castPeopleToReturn.Add(castPeopleRow);
                     }

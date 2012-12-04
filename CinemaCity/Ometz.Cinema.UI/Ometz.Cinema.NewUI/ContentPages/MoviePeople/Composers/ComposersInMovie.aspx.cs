@@ -105,7 +105,7 @@ namespace Ometz.Cinema.NewUI.ContentPages.MoviePeople.Composers
             {                
                 DateTime birthDate = Convert.ToDateTime(row.Cells[(int)PeopleInMovie1.BirthDate].Text);
                 string result = birthDate.ToString("d/MM/yyyy");
-                if (result == "01/01/9999")
+                if (result == "1/01/9999")
                 {
                     result = "Unknown";
                 }

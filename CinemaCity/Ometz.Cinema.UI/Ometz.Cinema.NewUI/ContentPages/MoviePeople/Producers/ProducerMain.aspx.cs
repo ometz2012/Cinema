@@ -16,7 +16,7 @@ namespace Ometz.Cinema.NewUI.ContentPages.MoviePeople.Producers
         {
             if (!IsPostBack)
             {
-                MainMoviePeople1.SetLabelText("Search Producers by Movie Title", "Search Producer by Name");
+                MainMoviePeople1.SetLabelText("Search Producer(s) by Movie Title", "Search Producer by Name");
             }
             MovieServices movieList = new MovieServices();
             GridView MovieGrid = new GridView();

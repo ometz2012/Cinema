@@ -15,7 +15,7 @@ namespace Ometz.Cinema.NewUI.ContentPages.MoviePeople.Composers
         {
             if (!IsPostBack)
             {
-                MainMoviePeople1.SetLabelText("Search Composers by Movie Title", "Search Composer by Name");
+                MainMoviePeople1.SetLabelText("Search Composer(s) by Movie Title", "Search Composer by Name");
             }
             MovieServices movieList = new MovieServices();
             GridView MovieGrid = new GridView();

@@ -18,6 +18,8 @@
     </p>
     <p>
        <b> November - December 2012 </b> 
+       <br />
+       <br />
     </p>
 		
 			<div id="galleria">
