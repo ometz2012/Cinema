@@ -8,35 +8,35 @@
         Font-Size="Medium" ForeColor="#333333" Text="Title"></asp:Label>
 &nbsp;
     <asp:DropDownList ID="ddlTitleMovie" runat="server" Height="26px" 
-    Width="130px" >
+    Width="130px" DataTextField="Title" DataValueField="MovieID" >
     </asp:DropDownList>
 &nbsp;
     <asp:Label ID="lblActorMovie" runat="server" Font-Bold="True" 
         Font-Size="Medium" ForeColor="#333333" Text="Actor"></asp:Label>
 &nbsp;
     <asp:DropDownList ID="ddlActorMovie" runat="server" Height="25px" 
-    Width="130px">
+    Width="130px" DataTextField="FullName" DataValueField="LastName">
     </asp:DropDownList>
 &nbsp; 
     <asp:Label ID="lblGenreMovie" runat="server" Font-Bold="True" 
         Font-Size="Medium" ForeColor="#333333" Text="Genre"></asp:Label>
 &nbsp;
     <asp:DropDownList ID="ddlGenreMovie" runat="server" Height="25px" 
-    Width="130px">
+    Width="130px" DataTextField="GenreName" DataValueField="GenreName">
     </asp:DropDownList>
 &nbsp;
     <asp:Label ID="lblYearMovie" runat="server" Font-Bold="True" Font-Size="Medium" 
         ForeColor="#333333" Text="Year"></asp:Label>
 &nbsp;
     <asp:DropDownList ID="ddlYearMovie" runat="server" Height="25px" 
-    Width="66px">
+    Width="66px" DataTextField="Year" DataValueField="Year">
     </asp:DropDownList>
 &nbsp;
     <asp:Label ID="lblProducerMovie" runat="server" Font-Bold="True" 
         Font-Size="Medium" ForeColor="#333333" Text="Producer"></asp:Label>
 &nbsp;
     <asp:DropDownList ID="ddlProducerMovie" runat="server" Height="25px" 
-    Width="130px">
+    Width="130px" DataTextField="FullName" DataValueField="LastName">
     </asp:DropDownList>
     <br />
     <br />

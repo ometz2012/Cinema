@@ -20,26 +20,49 @@ namespace Ometz.Cinema.NewUI.ContentPages.Movies
             {
                 MovieServices listmovie = new MovieServices();
                 MoviePeopleServices castlist = new MoviePeopleServices();
-                
+
 
                 ddlTitleMovie.DataSource = listmovie.GetAllMovies();
                 ddlTitleMovie.DataBind();
 
-                ddlYearMovie.DataSource = listmovie.GetAllYears();
+                ddlYearMovie.DataSource = listmovie.GetAllYears().Distinct();
                 ddlYearMovie.DataBind();
 
-                ddlActorMovie.DataSource = castlist.GetActors();
-                ddlActorMovie.DataBind();
+                //-----------------------------
+                List<MoviePersonDTO> ListOfAcotrs = castlist.GetActors();
+                List<MoviePersonDTO> ListOfActorsNames = new List<MoviePersonDTO>();
+                foreach (var item in ListOfAcotrs)
+                {
+                    MoviePersonDTO row = new MoviePersonDTO();
+                    row.FullName = string.Format("{0} {1}", item.FirstName, item.LastName);
+                    row.LastName = item.LastName;
+                    ListOfActorsNames.Add(row);
 
-                ddlProducerMovie.DataSource = castlist.GetProducers();
+                }
+                ddlActorMovie.DataSource = ListOfActorsNames;
+                ddlActorMovie.DataBind();
+                //----------------------------------------------
+
+
+                List<MoviePersonDTO> ListOfProducers = castlist.GetProducers();
+                List<MoviePersonDTO> ListOfProducersNames = new List<MoviePersonDTO>();
+                foreach (var item in ListOfProducers)
+                {
+                    MoviePersonDTO row = new MoviePersonDTO();
+                    row.FullName=string.Format("{0} {1}", item.FirstName, item.LastName);
+                    row.LastName=item.LastName;
+                    ListOfProducersNames.Add(row);
+                }
+                ddlProducerMovie.DataSource = ListOfProducersNames;
                 ddlProducerMovie.DataBind();
+                //-------------------------------------------------------
 
                 //genre to bind
                 ddlGenreMovie.DataSource = listmovie.GetAllGenres();
                 ddlGenreMovie.DataBind();
-               
+
+
                 //repeater to bind
-                
                 RepeaterMovie.DataSource = listmovie.GetAllMovies();
                 RepeaterMovie.DataBind();
             }

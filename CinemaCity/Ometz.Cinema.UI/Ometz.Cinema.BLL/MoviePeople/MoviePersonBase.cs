@@ -19,5 +19,8 @@ namespace Ometz.Cinema.BLL.MoviePeople
         public string BirthPlace
         { get; set; }
 
+        public string FullName
+        { get; set; }
+
     }
 }
