@@ -231,6 +231,9 @@
     <Compile Include="ContentPages\Movies\MovieMain.aspx.designer.cs">
       <DependentUpon>MovieMain.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ContentPages\Movies\MoviePhotoHandler.ashx.cs">
+      <DependentUpon>MoviePhotoHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="ContentPages\Theaters\Theater.aspx.cs">
       <DependentUpon>Theater.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -353,6 +356,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.sitemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ContentPages\Movies\MoviePhotoHandler.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

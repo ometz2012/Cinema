@@ -99,14 +99,16 @@ namespace Ometz.Cinema.BLL.Users
                 var results = (from fv in context.Favorites.Include("Movie")
                                where fv.UserID == userID
                                select fv);
-
-                foreach (var item in results)
+                if (results != null)
                 {
-                    UserFavoriteMovieDTO row = new UserFavoriteMovieDTO();
-                    row.userID = userID.ToString();
-                    row.movieID = item.MovieID;
-                    row.MovieTitle = item.Movie.Title;
-                    ListOfMovies.Add(row);
+                    foreach (var item in results)
+                    {
+                        UserFavoriteMovieDTO row = new UserFavoriteMovieDTO();
+                        row.userID = userID.ToString();
+                        row.movieID = item.MovieID;
+                        row.MovieTitle = item.Movie.Title;
+                        ListOfMovies.Add(row);
+                    }
                 }
             }
 
@@ -126,12 +128,15 @@ namespace Ometz.Cinema.BLL.Users
                 var results = (from mv in context.Movies
                                select mv);
 
-                foreach (var item in results)
+                if (results != null)
                 {
-                    UserFavoriteMovieDTO row = new UserFavoriteMovieDTO();
-                    row.movieID = item.MovieID;
-                    row.MovieTitle = item.Title;
-                    ListOfMovies.Add(row);
+                    foreach (var item in results)
+                    {
+                        UserFavoriteMovieDTO row = new UserFavoriteMovieDTO();
+                        row.movieID = item.MovieID;
+                        row.MovieTitle = item.Title;
+                        ListOfMovies.Add(row);
+                    }
                 }
             }
             return ListOfMovies;
@@ -146,10 +151,12 @@ namespace Ometz.Cinema.BLL.Users
                 var results = (from mv in context.Movies
                                where mv.MovieID == movieID
                                select mv);
-
-                foreach (var item in results)
+                if (results != null)
                 {
-                    Description = item.Description;
+                    foreach (var item in results)
+                    {
+                        Description = item.Description;
+                    }
                 }
 
             }
@@ -167,11 +174,14 @@ namespace Ometz.Cinema.BLL.Users
                                join ad in context.Addresses
                                on pr.TheaterID equals ad.ObjectID
                                select new { City = ad.City });
-                foreach (var item in results)
+                if (results != null)
                 {
-                    String row = null;
-                    row = item.City;
-                    ListOfCities.Add(row);
+                    foreach (var item in results)
+                    {
+                        String row = null;
+                        row = item.City;
+                        ListOfCities.Add(row);
+                    }
                 }
             }
             return ListOfCities;
@@ -196,14 +206,16 @@ namespace Ometz.Cinema.BLL.Users
                                    TheaterName = pr.Theater.Name,
                                    AddressTh = ad
                                });
-
-                foreach (var item in results)
+                if (results != null)
                 {
-                    UserTheaterDTO row = new UserTheaterDTO();
-                    row.TheaterID = item.TheaterID;
-                    row.TheaterName = item.TheaterName;
-                    row.TheaterAddress = String.Format("str. {0}, {1}, phone number: {2}.", item.AddressTh.AddressLine1, item.AddressTh.City, item.AddressTh.Phone);
-                    ListOfTheaters.Add(row);
+                    foreach (var item in results)
+                    {
+                        UserTheaterDTO row = new UserTheaterDTO();
+                        row.TheaterID = item.TheaterID;
+                        row.TheaterName = item.TheaterName;
+                        row.TheaterAddress = String.Format("str. {0}, {1}, phone number: {2}.", item.AddressTh.AddressLine1, item.AddressTh.City, item.AddressTh.Phone);
+                        ListOfTheaters.Add(row);
+                    }
                 }
 
             }
@@ -220,23 +232,26 @@ namespace Ometz.Cinema.BLL.Users
                 var results = (from pr in context.Perfomances.Include("Movie").Include("Theater")
                                where pr.TheaterID == TheaterID && pr.MovieID == movieID
                                select pr);
-                foreach (var item in results)
+                if (results != null)
                 {
-                    UserPerformanceDTO row = new UserPerformanceDTO();
-                    row.performanceID = item.PerfomanceID;
-                    row.MovieTitle = item.Movie.Title;
-                    row.roomNumber = item.Room.RoomNumber;
-                    row.Date = item.Date.ToString("yyyy/MM/dd");
-                    string hours = item.StartingTime.Hours.ToString();
-                    if (hours.Length < 2)
+                    foreach (var item in results)
                     {
-                        hours = string.Format("{0}{1}", "0", hours);
+                        UserPerformanceDTO row = new UserPerformanceDTO();
+                        row.performanceID = item.PerfomanceID;
+                        row.MovieTitle = item.Movie.Title;
+                        row.roomNumber = item.Room.RoomNumber;
+                        row.Date = item.Date.ToString("yyyy/MM/dd");
+                        string hours = item.StartingTime.Hours.ToString();
+                        if (hours.Length < 2)
+                        {
+                            hours = string.Format("{0}{1}", "0", hours);
+                        }
+                        string minutes = item.StartingTime.Minutes.ToString();
+                        row.StartingTime = string.Format("{0}:{1}", hours, minutes);
+                        row.Duration = item.Duration;
+                        row.price = item.Price;
+                        ListOfPerformances.Add(row);
                     }
-                    string minutes = item.StartingTime.Minutes.ToString();
-                    row.StartingTime = string.Format("{0}:{1}", hours, minutes);
-                    row.Duration = item.Duration;
-                    row.price = item.Price;
-                    ListOfPerformances.Add(row);
                 }
             }
             return ListOfPerformances;

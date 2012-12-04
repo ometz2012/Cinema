@@ -63,7 +63,19 @@ namespace Ometz.Cinema.NewUI.ContentPages.Movies
 
 
                 //repeater to bind
-                RepeaterMovie.DataSource = listmovie.GetAllMovies();
+                List<MovieModelDTO> ListOfMovies = new List<MovieModelDTO>();
+                ListOfMovies = listmovie.GetAllMovies();
+                //List<MovieModelDTO> ListOfMoviesWithPhoto = new List<MovieModelDTO>();
+                //foreach (var item in ListOfMovies)
+                //{
+                //    MovieModelDTO row = new MovieModelDTO();
+                //    row.MovieID = item.MovieID;
+                //    row.Title = item.Title;
+                //    row.Description = item.Description;
+                //    MoviePhotoHandler PhotoServices = new MoviePhotoHandler();
+                //    row.Photo = PhotoServices.ProcessRequest(item.MovieID);
+                //}
+                RepeaterMovie.DataSource = ListOfMovies;
                 RepeaterMovie.DataBind();
             }
         }
@@ -72,5 +84,40 @@ namespace Ometz.Cinema.NewUI.ContentPages.Movies
         {
 
         }
+
+        protected void RepeaterMovie_DataBinding(object sender, EventArgs e)
+        {
+           
+        }
+
+        protected void RepeaterMovie_ItemCreated(object sender, RepeaterItemEventArgs e)
+        {
+            var ctrl = e.Item.FindControl("Img1");
+            string movieID=null;
+
+            if (e.Item.DataItem is MovieModelDTO)
+            {
+                var currentMovie = e.Item.DataItem;
+                MovieModelDTO CurrentMovie = new MovieModelDTO();
+                CurrentMovie = (MovieModelDTO)currentMovie;
+                movieID = CurrentMovie.MovieID.ToString();
+            }
+            if (ctrl is System.Web.UI.WebControls.Image)
+            {
+                string path = string.Format("~/ContentPages/Movies/MoviePhotoHandler.ashx?MovieID={0}",movieID);
+                ((System.Web.UI.WebControls.Image)ctrl).ImageUrl = path;
+
+            }
+        }
+
+        protected void ddlTitleMovie_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string movieID = ddlTitleMovie.SelectedItem.Value;
+            string path=string.Format("~/ContentPages/Movies/Movie.aspx?MovieID={0}",movieID);
+            Response.Redirect(path);
+        }
     }
+
+    
+
 }

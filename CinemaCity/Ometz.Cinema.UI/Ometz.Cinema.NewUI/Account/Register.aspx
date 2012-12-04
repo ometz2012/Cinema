@@ -74,7 +74,7 @@
             </asp:CreateUserWizardStep>
         </WizardSteps>
     </asp:CreateUserWizard>
-    <div id="PersonalInfoContainer" runat="server" class="eliya">
+    <div id="PersonalInfoContainer" runat="server" >
         <fieldset class="register">
             <legend>Personal Information</legend>
             <p>

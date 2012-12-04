@@ -6,6 +6,7 @@ using Ometz.Cinema.DAL;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Web;
 
 
 namespace Ometz.Cinema.BLL.Movies
@@ -77,7 +78,7 @@ namespace Ometz.Cinema.BLL.Movies
                                     MovieId = movie.MovieID,
                                     Year = movie.Year
 
-                                }).ToList();
+                                }).ToList().Distinct();
 
                 List<MovieModelDTO> allYearsToReturn = new List<MovieModelDTO>();
 
@@ -91,6 +92,7 @@ namespace Ometz.Cinema.BLL.Movies
                             MovieID = item.MovieId,
                             Year = item.Year
                         };
+   
                         allYearsToReturn.Add(yearRow);
                     }
 
@@ -141,12 +143,60 @@ namespace Ometz.Cinema.BLL.Movies
 
         }
 
+        //---Method that extracts movie photo
+        public Byte[] GetPhoto(int movieId)
+        {
+
+            byte[] photo = null;
+            using (var context = new CinemaEntities())
+            {
+                var result = (from image in context.Movies
+                              where image.MovieID == movieId
+                              select image).SingleOrDefault();
+                if (result == null)
+                {
+                    return null;
+                }
+                photo = result.Photo;
+                //foreach (var item in result)
+                //{
+                //photo = item.Photo;
+                //}
+            }
+            return photo;
+        }
+
+        public MovieModelDTO GetMovieByID(int movieID)
+        {
+            MovieModelDTO SelectedMovie = new MovieModelDTO();
+
+            using (var context = new CinemaEntities())
+            {
+                var results = (from mv in context.Movies.Include("Genre")
+                               where mv.MovieID == movieID
+                               select mv);
+
+                if (results != null)
+                {
+                    foreach (var item in results)
+                    {
+                        SelectedMovie.MovieID = item.MovieID;
+                        SelectedMovie.Title = item.Title;
+                        SelectedMovie.GenreName = item.Genre.Name;
+                        SelectedMovie.Description = item.Description;
+                        SelectedMovie.Year = item.Year;
+                    }
+                }
+            }
+
+            return SelectedMovie;
+        }
+
         
         
 
 
     }
-
 
 }
 

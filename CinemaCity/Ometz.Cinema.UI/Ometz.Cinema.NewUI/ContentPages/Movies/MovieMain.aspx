@@ -8,7 +8,9 @@
         Font-Size="Medium" ForeColor="#333333" Text="Title"></asp:Label>
 &nbsp;
     <asp:DropDownList ID="ddlTitleMovie" runat="server" Height="26px" 
-    Width="130px" DataTextField="Title" DataValueField="MovieID" >
+    Width="130px" DataTextField="Title" DataValueField="MovieID" 
+        AutoPostBack="True" 
+        onselectedindexchanged="ddlTitleMovie_SelectedIndexChanged" >
     </asp:DropDownList>
 &nbsp;
     <asp:Label ID="lblActorMovie" runat="server" Font-Bold="True" 
@@ -43,7 +45,9 @@
     <br />
     <br />
     
-    <asp:Repeater runat="server" id="RepeaterMovie" > 
+    <asp:Repeater runat="server" id="RepeaterMovie" 
+        ondatabinding="RepeaterMovie_DataBinding" 
+        onitemcreated="RepeaterMovie_ItemCreated" > 
      
      <HeaderTemplate> 
         <table>
@@ -56,20 +60,20 @@
        <td bgcolor="white" /> 
            <b> <%#DataBinder.Eval(Container.DataItem,"Title") %> </b><br /> 
            <br />
-            <img runat="server" src='<%# DataBinder.Eval(Container.DataItem,"Photo")  %>' ID="Img1"
+            <asp:Image runat="server" ID="Img1"
             alt="" style="height:100px;width:100px;border:1px solid gray;"/><br />
             <%#DataBinder.Eval(Container.DataItem, "Description") %> 
         </td> 
      </ItemTemplate> 
-    <AlternatingItemTemplate> 
+<%--    <AlternatingItemTemplate> 
           <td bgcolor="white">
            <b> <%#DataBinder.Eval(Container.DataItem, "Title") %></b><br /> 
            <br />
-            <img runat="server" src='<%# DataBinder.Eval(Container.DataItem,"Photo")  %>' ID="Img1"
+            <asp:Image runat="server" ID="Img1"
             alt="" style="height:100px;width:100px;border:1px solid gray;"/><br />
             <%#DataBinder.Eval(Container.DataItem, "Description") %> 
-        </td> 
-     </AlternatingItemTemplate> 
+        </td> --%>
+   <%--  </AlternatingItemTemplate> --%>
      <FooterTemplate></tr></table></FooterTemplate> 
      </asp:Repeater> 
 
