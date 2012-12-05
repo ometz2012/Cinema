@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Ometz.Cinema.DAL;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Web;
+
 
 namespace Ometz.Cinema.BLL.Movies
 {
@@ -19,9 +24,10 @@ namespace Ometz.Cinema.BLL.Movies
                                     MovieID = movie.MovieID,
                                      Title = movie.Title,
                                      Photo=movie.Photo,//added by Elena for RepeaterMovie MovieMain.aspx
-                                     Description=movie.Description//
+                                    Description=movie.Description//
 
                                  }).ToList();
+
                 List<MovieModelDTO> allMoviesToReturn = new List<MovieModelDTO>();
                 if (allMovies != null)
                 {
@@ -49,6 +55,16 @@ namespace Ometz.Cinema.BLL.Movies
                     return null;
                 }
 
+                //byte[] buffer = binary.ToArray();
+                //MemoryStream stream = new MemoryStream(buffer);
+                //BitmapImage image = new BitmapImage();
+                //image.BeginInit();
+                //image.StreamSource = stream;
+                //image.EndInit();
+                //return image;
+
+
+
             }
         }
 
@@ -57,12 +73,13 @@ namespace Ometz.Cinema.BLL.Movies
             using (var context = new CinemaEntities())
             {
                 var allYears = (from movie in context.Movies
+                                orderby movie.Year ascending
                                 select new
                                 {
-                                  //  MovieId = movie.MovieID, We don't need a movie Id(changed by Marat)
+                                    MovieId = movie.MovieID,
                                     Year = movie.Year
 
-                                }).Distinct().ToList();
+                                }).ToList();
 
                 List<MovieModelDTO> allYearsToReturn = new List<MovieModelDTO>();
 
@@ -73,9 +90,10 @@ namespace Ometz.Cinema.BLL.Movies
                     {
                         MovieModelDTO yearRow = new MovieModelDTO()
                         {
-                            // MovieID = item.MovieId,   We don't need a movie Id (changed by Marat)
+                            MovieID = item.MovieId,
                             Year = item.Year
                         };
+   
                         allYearsToReturn.Add(yearRow);
                     }
 
@@ -125,6 +143,66 @@ namespace Ometz.Cinema.BLL.Movies
             }
 
         }
+
+        //---Method that extracts movie photo
+        public Byte[] GetPhoto(int movieId)
+        {
+
+            byte[] photo = null;
+            using (var context = new CinemaEntities())
+            {
+                var result = (from image in context.Movies
+                              where image.MovieID == movieId
+                              select image).SingleOrDefault();
+                if (result == null)
+                {
+                    return null;
+                }
+                photo = result.Photo;
+                //foreach (var item in result)
+                //{
+                //photo = item.Photo;
+                //}
+            }
+            return photo;
+        }
+
+        public MovieModelDTO GetMovieByID(int movieID)
+        {
+            MovieModelDTO SelectedMovie = new MovieModelDTO();
+
+            using (var context = new CinemaEntities())
+            {
+                var results = (from mv in context.Movies.Include("Genre")
+                               where mv.MovieID == movieID
+                               select mv);
+
+                if (results != null)
+                {
+                    foreach (var item in results)
+                    {
+                        SelectedMovie.MovieID = item.MovieID;
+                        SelectedMovie.Title = item.Title;
+                        SelectedMovie.GenreName = item.Genre.Name;
+                        SelectedMovie.Description = item.Description;
+                        SelectedMovie.Year = item.Year;
+                    }
+                }
+            }
+
+            return SelectedMovie;
+        }
+
+        public void ToDelete()
+        {
+            bool check = false;
+        }
+
+        
+        
+
+
     }
+
 }
 

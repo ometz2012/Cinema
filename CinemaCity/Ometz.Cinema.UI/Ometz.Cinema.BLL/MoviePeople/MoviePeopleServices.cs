@@ -14,7 +14,7 @@ namespace Ometz.Cinema.BLL.MoviePeople
             using (var context = new CinemaEntities())
             {
                 var moviePeople = (from moviePerson in context.PersonMovies
-                                 //  where moviePerson.MovieID == movieId && moviePerson.Person.PersonType.Description.Contains("actor")
+                                   //  where moviePerson.MovieID == movieId && moviePerson.Person.PersonType.Description.Contains("actor")
                                    where moviePerson.MovieID == movieId && moviePerson.Person.PersonType.Description == personType
                                    select moviePerson).ToList();
                 if (moviePeople.Count() > 0)
@@ -23,30 +23,30 @@ namespace Ometz.Cinema.BLL.MoviePeople
                     foreach (var item in moviePeople)
                     {
                         MoviePersonDTO moviePeopleRow = new MoviePersonDTO();
-                        
-                            moviePeopleRow.FirstName = item.Person.FirstName;
-                            moviePeopleRow.LastName = item.Person.LastName;
-                            if (item.Person.BirthDate == null)
-                            {
-                                DateTime unavailableDateOfBirth = DateTime.ParseExact("01/01/9999","d/MM/yyyy", null);
-                                moviePeopleRow.BirthDate = unavailableDateOfBirth;
-                            }
-                               
-                            else
-                            {
-                                moviePeopleRow.BirthDate = (DateTime)item.Person.BirthDate;
-                            }
-                          //  moviePeopleRow.BirthDate = (DateTime)item.Person.BirthDate;
 
-                            if (item.Person.BirthPlace == null)
-                            {
-                                moviePeopleRow.BirthPlace = "Unknown";
-                            }
-                            else
-                            {
-                                moviePeopleRow.BirthPlace = item.Person.BirthPlace;                        
-                            }
-                          
+                        moviePeopleRow.FirstName = item.Person.FirstName;
+                        moviePeopleRow.LastName = item.Person.LastName;
+                        if (item.Person.BirthDate == null)
+                        {
+                            DateTime unavailableDateOfBirth = DateTime.ParseExact("01/01/9999", "d/MM/yyyy", null);
+                            moviePeopleRow.BirthDate = unavailableDateOfBirth;
+                        }
+
+                        else
+                        {
+                            moviePeopleRow.BirthDate = (DateTime)item.Person.BirthDate;
+                        }
+                        //  moviePeopleRow.BirthDate = (DateTime)item.Person.BirthDate;
+
+                        if (item.Person.BirthPlace == null)
+                        {
+                            moviePeopleRow.BirthPlace = "Unknown";
+                        }
+                        else
+                        {
+                            moviePeopleRow.BirthPlace = item.Person.BirthPlace;
+                        }
+
                         moviePeopleToReturn.Add(moviePeopleRow);
                     }
                     return moviePeopleToReturn;
@@ -75,7 +75,7 @@ namespace Ometz.Cinema.BLL.MoviePeople
                 photo = result.Photo;
                 //foreach (var item in result)
                 //{
-                    //photo = item.Photo;
+                //photo = item.Photo;
                 //}
             }
             return photo;
@@ -101,8 +101,8 @@ namespace Ometz.Cinema.BLL.MoviePeople
         }
 
         //Method gets First Name or Last Name or Full Name or Part of the Name of the person and
-       // person type ("actor", "director" etc..) and return the person's Data
-       public MoviePersonDTO GetMoviePersonByName(string personName, string personType)
+        // person type ("actor", "director" etc..) and return the person's Data
+        public MoviePersonDTO GetMoviePersonByName(string personName, string personType)
         {
             using (var context = new CinemaEntities())
             {
@@ -120,39 +120,39 @@ namespace Ometz.Cinema.BLL.MoviePeople
                 var foundPerson = (from person in allPeopleByType
                                    where person.FullName.ToLower().Contains(personName.ToLower())
                                    select person).FirstOrDefault();
-                                  
+
                 if (foundPerson != null)
                 {
                     MoviePersonDTO moviePersonToReturn = new MoviePersonDTO();
-                  
-                        moviePersonToReturn.FirstName = foundPerson.FirstName;
-                        moviePersonToReturn.LastName = foundPerson.LastName;
-                         if (foundPerson.BirthDate == null)
-                            {
-                                DateTime unavailableDateOfBirth = DateTime.ParseExact("01/01/9999","d/MM/yyyy", null);
-                                moviePersonToReturn.BirthDate = unavailableDateOfBirth;
-                            }
-                               
-                            else
-                            {
-                                moviePersonToReturn.BirthDate = (DateTime)foundPerson.BirthDate;
-                            }
-                         if (foundPerson.BirthPlace == null)
-                         {
-                             moviePersonToReturn.BirthPlace = "Unknown";
-                         }
-                         else
-                         {
-                             moviePersonToReturn.BirthPlace = foundPerson.BirthPlace;
-                         }                        
-                 
+
+                    moviePersonToReturn.FirstName = foundPerson.FirstName;
+                    moviePersonToReturn.LastName = foundPerson.LastName;
+                    if (foundPerson.BirthDate == null)
+                    {
+                        DateTime unavailableDateOfBirth = DateTime.ParseExact("01/01/9999", "d/MM/yyyy", null);
+                        moviePersonToReturn.BirthDate = unavailableDateOfBirth;
+                    }
+
+                    else
+                    {
+                        moviePersonToReturn.BirthDate = (DateTime)foundPerson.BirthDate;
+                    }
+                    if (foundPerson.BirthPlace == null)
+                    {
+                        moviePersonToReturn.BirthPlace = "Unknown";
+                    }
+                    else
+                    {
+                        moviePersonToReturn.BirthPlace = foundPerson.BirthPlace;
+                    }
+
                     return moviePersonToReturn;
-                    
+
                 }
                 else
                 {
                     return null;
-                }    
+                }
             }
         }
 
@@ -175,8 +175,8 @@ namespace Ometz.Cinema.BLL.MoviePeople
                     {
                         MoviePersonDTO moviePeopleRow = new MoviePersonDTO()
                         {
-                          //  FirstName = item.Person.FirstName,
-                          FirstName = item.Person.FirstName + " " + item.Person.LastName, //Fiction for getting a person full name into a drop
+
+                            FirstName = item.Person.FirstName + " " + item.Person.LastName, //Fiction for getting a person full name into a drop
                             LastName = item.Person.LastName,                              // down list (Marat)
                         };
                         moviePeopleToReturn.Add(moviePeopleRow);
@@ -205,7 +205,7 @@ namespace Ometz.Cinema.BLL.MoviePeople
                 if (castmovie.Count() > 0)
                 {
                     List<MoviePersonDTO> castPeopleToReturn = new List<MoviePersonDTO>();
-                                       
+
                     foreach (var item in castmovie)
                     {
                         MoviePersonDTO castPeopleRow = new MoviePersonDTO()
@@ -216,7 +216,7 @@ namespace Ometz.Cinema.BLL.MoviePeople
                         castPeopleToReturn.Add(castPeopleRow);
                     }
                     return castPeopleToReturn;
-                            
+
                 }
                 else
                 {
@@ -227,9 +227,9 @@ namespace Ometz.Cinema.BLL.MoviePeople
 
 
         }
-    
-        
-                
+
+
+
         //public object GetMoviePeopleByMovieId(string p, string p_2)
         //{
         //    throw new NotImplementedException();
