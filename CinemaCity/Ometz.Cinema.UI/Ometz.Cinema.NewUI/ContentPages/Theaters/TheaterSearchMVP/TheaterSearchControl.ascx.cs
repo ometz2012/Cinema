@@ -44,18 +44,22 @@ namespace Ometz.Cinema.UI.ContentPages.Theaters.TheaterSearchMVP
 				}
 			}
 		
-			ViewState["City"] = ddlCity.SelectedValue.ToString();
+			
 		}
 
 		protected void btnSearch_Click(object sender, EventArgs e)
 		{
-			string city = ViewState["City"].ToString();
-			LoadTheaters(city);
+            string city = ddlCity.SelectedValue.ToString();
+            if (city != null)
+            {
+                LoadTheaters(city);
 
-			GridViewTheaterList.DataSource = Model.ListOfTheaters;
-			GridViewTheaterList.Columns[0].Visible = true;
-			GridViewTheaterList.DataBind();
-			GridViewTheaterList.Columns[0].Visible = false;
+                GridViewTheaterList.DataSource = Model.ListOfTheaters;
+                GridViewTheaterList.Columns[0].Visible = true;
+                GridViewTheaterList.DataBind();
+                GridViewTheaterList.Columns[0].Visible = false;
+            }
+            else { }
 		}
 
 		protected void GridViewTheaterList_SelectedIndexChanged(object sender, EventArgs e)
