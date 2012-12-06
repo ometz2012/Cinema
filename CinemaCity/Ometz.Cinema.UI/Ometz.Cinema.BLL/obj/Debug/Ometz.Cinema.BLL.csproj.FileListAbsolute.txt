@@ -40,3 +40,10 @@ C:\Development\Projects\19 NEW movie app\Project\Ometz.Cinema.BLL\bin\Debug\Omet
 C:\Development\Projects\19 NEW movie app\Project\Ometz.Cinema.BLL\obj\Debug\ResolveAssemblyReference.cache
 C:\Development\Projects\19 NEW movie app\Project\Ometz.Cinema.BLL\obj\Debug\Ometz.Cinema.BLL.dll
 C:\Development\Projects\19 NEW movie app\Project\Ometz.Cinema.BLL\obj\Debug\Ometz.Cinema.BLL.pdb
+C:\Development\Projects\19 MAIN Movies Application\Project\Ometz.Cinema.BLL\bin\Debug\Ometz.Cinema.BLL.dll
+C:\Development\Projects\19 MAIN Movies Application\Project\Ometz.Cinema.BLL\bin\Debug\Ometz.Cinema.BLL.pdb
+C:\Development\Projects\19 MAIN Movies Application\Project\Ometz.Cinema.BLL\bin\Debug\Ometz.Cinema.DAL.dll
+C:\Development\Projects\19 MAIN Movies Application\Project\Ometz.Cinema.BLL\bin\Debug\Ometz.Cinema.DAL.pdb
+C:\Development\Projects\19 MAIN Movies Application\Project\Ometz.Cinema.BLL\obj\Debug\ResolveAssemblyReference.cache
+C:\Development\Projects\19 MAIN Movies Application\Project\Ometz.Cinema.BLL\obj\Debug\Ometz.Cinema.BLL.dll
+C:\Development\Projects\19 MAIN Movies Application\Project\Ometz.Cinema.BLL\obj\Debug\Ometz.Cinema.BLL.pdb

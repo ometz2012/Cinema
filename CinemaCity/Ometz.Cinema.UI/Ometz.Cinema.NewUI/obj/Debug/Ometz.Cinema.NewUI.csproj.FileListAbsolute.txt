@@ -52,3 +52,12 @@ C:\Development\Projects\19 NEW movie app\Project\Ometz.Cinema.NewUI\bin\Ometz.Ci
 C:\Development\Projects\19 NEW movie app\Project\Ometz.Cinema.NewUI\bin\Ometz.Cinema.DAL.dll
 C:\Development\Projects\19 NEW movie app\Project\Ometz.Cinema.NewUI\bin\Ometz.Cinema.BLL.pdb
 C:\Development\Projects\19 NEW movie app\Project\Ometz.Cinema.NewUI\bin\Ometz.Cinema.DAL.pdb
+C:\Development\Projects\19 MAIN Movies Application\Project\Ometz.Cinema.NewUI\bin\Ometz.Cinema.NewUI.dll
+C:\Development\Projects\19 MAIN Movies Application\Project\Ometz.Cinema.NewUI\bin\Ometz.Cinema.NewUI.pdb
+C:\Development\Projects\19 MAIN Movies Application\Project\Ometz.Cinema.NewUI\bin\Ometz.Cinema.BLL.dll
+C:\Development\Projects\19 MAIN Movies Application\Project\Ometz.Cinema.NewUI\bin\Ometz.Cinema.DAL.dll
+C:\Development\Projects\19 MAIN Movies Application\Project\Ometz.Cinema.NewUI\bin\Ometz.Cinema.BLL.pdb
+C:\Development\Projects\19 MAIN Movies Application\Project\Ometz.Cinema.NewUI\bin\Ometz.Cinema.DAL.pdb
+C:\Development\Projects\19 MAIN Movies Application\Project\Ometz.Cinema.NewUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Development\Projects\19 MAIN Movies Application\Project\Ometz.Cinema.NewUI\obj\Debug\Ometz.Cinema.NewUI.dll
+C:\Development\Projects\19 MAIN Movies Application\Project\Ometz.Cinema.NewUI\obj\Debug\Ometz.Cinema.NewUI.pdb

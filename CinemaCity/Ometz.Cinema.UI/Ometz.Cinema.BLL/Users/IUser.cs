@@ -14,6 +14,9 @@ namespace Ometz.Cinema.BLL.Users
         //Method that gets comments of a specific user for specific movie
         IList<UserCommentDTO> GetUserCommentByMovie(System.Guid userID, int movieID);
 
+        //Method that gets list of movies to which the specific user commented
+        IList<String> GetMoviesToWhichTheUserCommented(Guid userID);
+
         //Method that gets all Ratings for specific user
         IList<UserRatingDTO> GetAllUserRatings(System.Guid userID);
 
@@ -61,11 +64,15 @@ namespace Ometz.Cinema.BLL.Users
         //Method that updates comment
         bool UpdateComment(UserCommentDTO UpdatedComment);
 
-        //Method that deletes comment
+        //Method that removes comment
+        bool DeleteComment(int commentID);
 
 
         //Method that deletes movie from favorite list
         bool RemoveMovieFromFavoriteList(Guid UserID, string movieTitle);
+
+      
+        
 
 
     }

@@ -10,6 +10,7 @@ namespace Ometz.Cinema.UI.ContentPages.Users.MyAreaMVP
         public List<CommentLine> ListOfComments { get; set; }
         public List<RatingLine> ListOfRatings { get; set; }
         public List<FavoriteLine> ListOfFavorites { get; set; }
+        public List<String> ListOfMovies { get; set; }
 
         public String ChosenMovie { get; set; }
         public bool IsValidTransastion { get; set; }
@@ -20,6 +21,7 @@ namespace Ometz.Cinema.UI.ContentPages.Users.MyAreaMVP
     public class CommentLine
     {
         public int CommentID { get; set; }
+        public int MovieID { get; set; }
         public String MovieTitle { get; set; }
         public String CommentContent { get; set; }
     }

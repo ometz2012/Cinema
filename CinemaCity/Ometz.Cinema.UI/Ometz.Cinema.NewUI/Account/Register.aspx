@@ -2,17 +2,22 @@
     CodeBehind="Register.aspx.cs" Inherits="Ometz.Cinema.UI.Account.Register" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <style type="text/css">
+        .style1
+        {
+        }
+        .style3
+        {
+            width: 454px;
+        }
+    </style>
+    <link href="../Styles/Site.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <asp:CreateUserWizard ID="RegisterUser" runat="server" EnableViewState="false" OnCreatedUser="RegisterUser_CreatedUser">
-        <LayoutTemplate>
-            <asp:PlaceHolder ID="wizardStepPlaceholder" runat="server"></asp:PlaceHolder>
-            <asp:PlaceHolder ID="navigationPlaceholder" runat="server"></asp:PlaceHolder>
-        </LayoutTemplate>
-        <WizardSteps>
-            <asp:CreateUserWizardStep ID="RegisterUserWizardStep" runat="server">
-                <ContentTemplate>
-                    <h2>
+<table width="100%">
+<tr>
+<td class="style1" colspan="2">
+  <h2>
                         Create a New Account
                     </h2>
                     <p>
@@ -23,14 +28,55 @@
                         <%= Membership.MinRequiredPasswordLength %>
                         characters in length.
                     </p>
-                    <span class="failureNotification">
+                     <span class="failureNotification">
                         <asp:Literal ID="ErrorMessage" runat="server"></asp:Literal>
                     </span>
                     <asp:ValidationSummary ID="RegisterUserValidationSummary" runat="server" CssClass="failureNotification"
                         ValidationGroup="RegisterUserValidationGroup" />
-                    <div class="accountInfo">
+</td>
+ 
+</tr>
+
+<tr>
+<td class="style3" >
+<div id="PersonalInfoContainer" runat="server" >
+        <fieldset class="register">
+            <legend>Personal Information</legend>
+            <p>
+                <asp:Label ID="FirstNameLabel" runat="server" AssociatedControlID="FirstName">First Name:</asp:Label>
+                <asp:TextBox ID="FirstName" runat="server" CssClass="textEntry"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="FirstNameRequired" runat="server" ControlToValidate="FirstName"
+                    CssClass="failureNotification" ErrorMessage="Fisrt name is required." ToolTip="First name is required."
+                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+            </p>
+            <p>
+                <asp:Label ID="LastNameLabel" runat="server" AssociatedControlID="LastName">Last Name:</asp:Label>
+                <asp:TextBox ID="LastName" runat="server" CssClass="textEntry"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="LastNameRequired" runat="server" ControlToValidate="LastName"
+                    CssClass="failureNotification" ErrorMessage="Last name is required." ToolTip="Last name is required."
+                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+            </p>
+        </fieldset>
+    </div>
+</td>
+<td >
+    &nbsp;</td>
+ 
+</tr>
+
+<tr>
+<td class="style1" colspan="2">
+    <asp:CreateUserWizard ID="RegisterUser" runat="server" EnableViewState="false" OnCreatedUser="RegisterUser_CreatedUser">
+        <LayoutTemplate>
+            <asp:PlaceHolder ID="wizardStepPlaceholder" runat="server"></asp:PlaceHolder>
+            <asp:PlaceHolder ID="navigationPlaceholder" runat="server"></asp:PlaceHolder>
+        </LayoutTemplate>
+        <WizardSteps>
+            <asp:CreateUserWizardStep ID="RegisterUserWizardStep" runat="server">
+                <ContentTemplate>
+                   <div class="accountInfo">
                         <fieldset class="register">
-                            <legend>Account Information</legend>
+                            <legend>Account Information </legend>
                             <p>
                                 <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name:</asp:Label>
                                 <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
@@ -74,23 +120,10 @@
             </asp:CreateUserWizardStep>
         </WizardSteps>
     </asp:CreateUserWizard>
-    <div id="PersonalInfoContainer" runat="server" >
-        <fieldset class="register">
-            <legend>Personal Information</legend>
-            <p>
-                <asp:Label ID="FirstNameLabel" runat="server" AssociatedControlID="FirstName">First Name:</asp:Label>
-                <asp:TextBox ID="FirstName" runat="server" CssClass="textEntry"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="FirstNameRequired" runat="server" ControlToValidate="FirstName"
-                    CssClass="failureNotification" ErrorMessage="Fisrt name is required." ToolTip="First name is required."
-                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
-            </p>
-            <p>
-                <asp:Label ID="LastNameLabel" runat="server" AssociatedControlID="LastName">Last Name:</asp:Label>
-                <asp:TextBox ID="LastName" runat="server" CssClass="textEntry"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="LastNameRequired" runat="server" ControlToValidate="LastName"
-                    CssClass="failureNotification" ErrorMessage="Last name is required." ToolTip="Last name is required."
-                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
-            </p>
-        </fieldset>
-    </div>
+ 
+</tr>
+
+</table>
+   
+   
 </asp:Content>

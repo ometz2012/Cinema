@@ -79,6 +79,7 @@ namespace Ometz.Cinema.UI.ContentPages.Users.PaymentMVP
                 decimal total = price * amount;
                 txtTotal.Text = total.ToString();
             }
+            txbCreditCardNumber.Focus();
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -108,7 +109,6 @@ namespace Ometz.Cinema.UI.ContentPages.Users.PaymentMVP
                             lblOrderDetails.BackColor = Color.LightGreen;
                             lblOrderDetails.Focus();
                             btnSubmit.Enabled = false;
-                            btnConfirmTickets.Enabled = false;
                         }
                         else
                         {

@@ -8,8 +8,8 @@ namespace Ometz.Cinema.UI.ContentPages.Users.MyAreaMVP
    public interface IMyAreaView
     {
        event DataLoadHandler LoadData;
-       event GridUpdateHandler GridUpdate;
        event GridUpdateHandler RemoveMovie;
+       event TreeViewUpdateHandler TreeViewUpdateDelete;
 
 
        MyAreaModel Model { get; set; }

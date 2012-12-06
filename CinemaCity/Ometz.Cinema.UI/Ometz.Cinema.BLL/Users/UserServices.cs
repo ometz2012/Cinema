@@ -50,6 +50,34 @@ namespace Ometz.Cinema.BLL.Users
             return ListOfComments;
         }
 
+        //Method that gets list of movies to which the specific user commented
+        public IList<String> GetMoviesToWhichTheUserCommented(Guid userID)
+        {
+            IList<String> ListOfMovies = new List<String>();
+
+            using (var context = new CinemaEntities())
+            {
+                var results = (from cm in context.Comments
+                               where cm.UserID == userID
+                               select new
+                               {
+                                   MovieName = cm.Movie.Title
+                               });
+                if (results != null)
+                {
+                    results = results.Distinct();
+                    foreach (var item in results)
+                    {
+                        String row = item.MovieName;
+                        ListOfMovies.Add(row);
+
+                    }
+                }
+            }
+
+            return ListOfMovies;
+        }
+
         //Method that gets all Ratings for specific user
         public IList<UserRatingDTO> GetAllUserRatings(Guid userID)
         {
@@ -512,6 +540,44 @@ namespace Ometz.Cinema.BLL.Users
             }
 
         }
+
+
+        //Method that removes comment
+        public bool DeleteComment(int commentID)
+        {
+            bool check = false;
+
+            using (TransactionScope Trans = new TransactionScope())
+            {
+                try
+                {
+                    using (var context = new CinemaEntities())
+                    {
+                        var results = (from cm in context.Comments
+                                       where cm.CommentID == commentID
+                                       select cm);
+                        if (results != null)
+                        {
+                            Comment CommentToDelete = results.First();
+                            context.Comments.DeleteObject(CommentToDelete);
+                            context.SaveChanges();
+                        }
+                    }
+
+                }
+                catch
+                {
+                    check = false;
+                    Trans.Dispose();
+                    return check;
+                }
+                check = true;
+                Trans.Complete();
+                return check;
+
+            }
+        }
+
 
         //Method that deletes movie from favorite list
         public bool RemoveMovieFromFavoriteList(Guid UserID, string movieTitle)

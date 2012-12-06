@@ -13,22 +13,22 @@ namespace Ometz.Cinema.UI.Account {
     public partial class Register {
         
         /// <summary>
-        /// RegisterUser control.
+        /// ErrorMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CreateUserWizard RegisterUser;
+        protected global::System.Web.UI.WebControls.Literal ErrorMessage;
         
         /// <summary>
-        /// RegisterUserWizardStep control.
+        /// RegisterUserValidationSummary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CreateUserWizardStep RegisterUserWizardStep;
+        protected global::System.Web.UI.WebControls.ValidationSummary RegisterUserValidationSummary;
         
         /// <summary>
         /// PersonalInfoContainer control.
@@ -92,5 +92,23 @@ namespace Ometz.Cinema.UI.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator LastNameRequired;
+        
+        /// <summary>
+        /// RegisterUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CreateUserWizard RegisterUser;
+        
+        /// <summary>
+        /// RegisterUserWizardStep control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CreateUserWizardStep RegisterUserWizardStep;
     }
 }

@@ -118,8 +118,7 @@
             &nbsp;
             <asp:TextBox ID="txtTicketsAmount" runat="server" AutoPostBack="True" MaxLength="4"
                 OnTextChanged="txtTicketsAmount_TextChanged" Width="50px"></asp:TextBox>
-            &nbsp;<asp:Button ID="btnConfirmTickets" runat="server" Text="Confirm" />
-            <asp:RequiredFieldValidator ID="ValidatorEmptyTextTicketsAmount" runat="server" ControlToValidate="txtTicketsAmount"
+            &nbsp;<asp:RequiredFieldValidator ID="ValidatorEmptyTextTicketsAmount" runat="server" ControlToValidate="txtTicketsAmount"
                 ErrorMessage="Please enter amount of tickets." ForeColor="Red"></asp:RequiredFieldValidator>
             <asp:CustomValidator ID="ValidatorTicketAmountINT" runat="server" ControlToValidate="txtTicketsAmount"
                 ErrorMessage="Please enter numbers only." ForeColor="Red" OnServerValidate="ValidatorTicketAmountINT_ServerValidate"></asp:CustomValidator>
@@ -145,7 +144,9 @@
     </tr>
     <tr>
         <td class="style3" colspan="5">
-            &nbsp; Please fill out your credit card details:
+            <h3>
+            Please fill out your credit card details:
+            </h3> 
         </td>
     </tr>
     <tr>

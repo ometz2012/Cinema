@@ -11,8 +11,8 @@ namespace Ometz.Cinema.UI.ContentPages.Users.MyAreaMVP
     public partial class MyAreaControl : System.Web.UI.UserControl, IMyAreaView
     {
         public event DataLoadHandler LoadData;
-        public event GridUpdateHandler GridUpdate;
         public event GridUpdateHandler RemoveMovie;
+        public event TreeViewUpdateHandler TreeViewUpdateDelete;
 
         public MyAreaPresenter Presenter { get; set; }
         public MyAreaModel Model { get; set; }
@@ -35,10 +35,6 @@ namespace Ometz.Cinema.UI.ContentPages.Users.MyAreaMVP
                     ex.UserName = System.Web.HttpContext.Current.User.Identity.Name;
                     LoadData(ex);
                 }
-                // Label1.Text = "it works, yeah!!!!";
-
-                GridViewComments.DataSource = Model.ListOfComments;
-                //GridViewComments.DataBind();
 
                 GridViewRating.DataSource = Model.ListOfRatings;
                 GridViewRating.DataBind();
@@ -46,84 +42,13 @@ namespace Ometz.Cinema.UI.ContentPages.Users.MyAreaMVP
                 GridViewFavorite.DataSource = Model.ListOfFavorites;
                 GridViewFavorite.DataBind();
 
-
-
-
-            }
-        }
-
-        //GridViewComments - making ID colomn invisible
-        protected void GridViewComments_RowCreated(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.Header)
-            {
-                e.Row.Cells[0].Visible = false;
-            }
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                e.Row.Cells[0].Visible = false;
-            }
-
-        }
-
-        //GridViewComments - populating the textbox with comment content 
-        protected void GridViewComments_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                if (e.Row.DataItem is CommentLine)
-                {
-                    var currentLine = (CommentLine)e.Row.DataItem;
-                    var myCommentCell = (TextBox)e.Row.FindControl("txtComment");
-                    int length = currentLine.CommentContent.Length;
-                    myCommentCell.Width = length * 6;
-                    myCommentCell.ToolTip = currentLine.CommentContent;
-                    myCommentCell.Text = currentLine.CommentContent;
-                }
-            }
-        }
-
-        protected void GridViewComments_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "Select")
-            {
-                int index = Convert.ToInt32(e.CommandArgument);
-
-                GridViewRow row = GridViewComments.Rows[index];
-
-                string selectedID = row.Cells[0].Text;
-
-                var commentBox = (TextBox)row.FindControl("txtComment");
-                string updatedComment = commentBox.Text;
-
-                GridUpdateArgs gua = new GridUpdateArgs();
-                gua.ID = selectedID;
-                gua.NewText = updatedComment;
-
-                if (GridUpdate != null)
-                {
-                    GridUpdate(gua);
-                }
-
-                if (Model.IsValidTransastion)
-                {
-                    var ex = new LoadDataArgs();
-                    ex.UserName = System.Web.HttpContext.Current.User.Identity.Name;
-                    LoadData(ex);
-                    GridViewComments.DataSource = Model.ListOfComments;
-                    lblGridCommentsUpdate.Text = "Your update was saved.";
-                    lblGridCommentsUpdate.BackColor = Color.LightGreen;
-                }
-                else
-                {
-                    lblGridCommentsUpdate.Text = "The data was not saved, plese try again.";
-                    lblGridCommentsUpdate.BackColor = Color.OrangeRed;
-
-
-                }
+                PopulateTreeView();
+                trvComments.CollapseAll();
 
             }
         }
+
+
 
 
         protected void GridViewFavorite_SelectedIndexChanged(object sender, EventArgs e)
@@ -143,18 +68,145 @@ namespace Ometz.Cinema.UI.ContentPages.Users.MyAreaMVP
                     LoadData(ex);
                     GridViewFavorite.DataSource = Model.ListOfFavorites;
                     GridViewFavorite.DataBind();
-                    GridViewComments.DataSource = Model.ListOfComments;
                 }
             }
 
         }
 
-        protected override void OnPreRender(EventArgs e)
+        protected void PopulateTreeView()
         {
-            base.OnPreRender(e);
+            trvComments.Nodes.Clear();
 
-            GridViewComments.DataBind();
+            foreach (var item in Model.ListOfMovies)
+            {
+                TreeNode node = new TreeNode();
+                node.Text = item;
+                node.Value = item;
+                trvComments.Nodes.Add(node);
+                AddChildNode(node, item);
+
+            }
+
+
         }
+
+        private void AddChildNode(TreeNode ParentNode, string movieName)
+        {
+            var ListOfCommentsPerMovie = from line in Model.ListOfComments
+                                         where line.MovieTitle == movieName
+                                         select line;
+
+            if (ListOfCommentsPerMovie != null)
+            {
+                foreach (var item in ListOfCommentsPerMovie)
+                {
+                    TreeNode ChildNode = new TreeNode();
+                    ChildNode.Text = item.CommentContent;
+                    ChildNode.Value = item.CommentID.ToString();
+                    ParentNode.ChildNodes.Add(ChildNode);
+                    //place recursion
+
+                }
+
+            }
+            else
+            {
+                return;
+            }
+
+
+        }
+
+        protected void btnComments_Click(object sender, EventArgs e)
+        {
+            MultiView1.ActiveViewIndex = 1;
+            btnComments.BackColor = Color.LightGreen;
+            btnFavoritesAndRatings.BackColor = Color.LightGray;
+        }
+        protected void btnFavoritesAndRatings_Click(object sender, EventArgs e)
+        {
+            MultiView1.ActiveViewIndex = 0;
+            btnComments.BackColor = Color.LightGray;
+            btnFavoritesAndRatings.BackColor = Color.LightGreen;
+        }
+
+        protected void trvComments_SelectedNodeChanged(object sender, EventArgs e)
+        {
+            TreeNode SelectedNode = trvComments.SelectedNode;
+            lblStatus.Text = "";
+            lblStatus.BackColor = Color.White;
+
+            if (SelectedNode.Parent != null)
+            {
+                txtMovieTitle.Text = SelectedNode.Parent.Text;
+                txtCommentContent.Text = SelectedNode.Text;
+                lblMovieID.Text = SelectedNode.Parent.Value;
+                lblCommentID.Text = SelectedNode.Value;
+ 
+            }
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            TreeViewUpdateArgs tua = new TreeViewUpdateArgs();
+            tua.ChildContent = txtCommentContent.Text;
+            int commentID;
+            bool checkIntCommentID = int.TryParse(lblCommentID.Text,out commentID);
+            tua.ChildID = commentID;
+            tua.ActionToPerform = "Update";
+            tua.UserName = System.Web.HttpContext.Current.User.Identity.Name;
+
+            if (checkIntCommentID)
+            {
+                if (TreeViewUpdateDelete != null)
+                {
+                    TreeViewUpdateDelete(tua);
+                }
+            }
+            if (Model.IsValidTransastion == true)
+            {
+                txtMovieTitle.Text = "";
+                txtCommentContent.Text = "";
+                PopulateTreeView();
+                trvComments.CollapseAll();
+                lblStatus.Text = "Comment was updated.";
+                lblStatus.BackColor = Color.LightGreen;
+            }
+
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            TreeViewUpdateArgs tua = new TreeViewUpdateArgs();
+            tua.ChildContent = txtCommentContent.Text;
+            int commentID;
+            bool checkIntCommentID = int.TryParse(lblCommentID.Text, out commentID);
+            tua.ChildID = commentID;
+            tua.ActionToPerform = "Delete";
+            tua.UserName = System.Web.HttpContext.Current.User.Identity.Name;
+
+            if (checkIntCommentID)
+            {
+                if (TreeViewUpdateDelete != null)
+                {
+                    TreeViewUpdateDelete(tua);
+                }
+            }
+            if (Model.IsValidTransastion == true)
+            {
+                txtMovieTitle.Text = "";
+                txtCommentContent.Text = "";
+                PopulateTreeView();
+                trvComments.CollapseAll();
+                lblStatus.Text = "Comment was deleted.";
+                lblStatus.BackColor = Color.LightGreen;
+ 
+            }
+           
+          
+        }
+
+
 
 
 
